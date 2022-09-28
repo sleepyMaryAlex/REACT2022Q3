@@ -1,0 +1,38 @@
+.header {
+    height: 65px;
+    background-color: #000000;
+}
+
+.header__wrapper {
+    max-width: 1680px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.header__title {
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.header__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 12px;
+    gap: 50px;
+}
+
+.nav__item,
+.nav__item_active {
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+.nav__item_active {
+    border-bottom: 2px solid rebeccapurple;
+    margin-bottom: 7px;
+}
+
