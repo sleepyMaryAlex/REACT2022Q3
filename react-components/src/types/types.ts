@@ -28,6 +28,8 @@ export interface IMain {
   handleClickByDiet: (event: React.ChangeEvent<HTMLSelectElement>) => Promise<void>;
   cards: [] | ICard[];
   numShow: number;
+  cuisine: string;
+  diet: string;
 }
 
 export interface IResults {
@@ -35,6 +37,8 @@ export interface IResults {
   numShow: number;
   handleClickByCuisine: (event: React.ChangeEvent<HTMLSelectElement>) => Promise<void>;
   handleClickByDiet: (event: React.ChangeEvent<HTMLSelectElement>) => Promise<void>;
+  cuisine: string;
+  diet: string;
 }
 
 export interface ICards {
@@ -43,7 +47,9 @@ export interface ICards {
 }
 
 export interface IDropdown {
-  cards: ICard[];
+  cards: [] | ICard[];
   handleClickByCuisine: (event: React.ChangeEvent<HTMLSelectElement>) => Promise<void>;
   handleClickByDiet: (event: React.ChangeEvent<HTMLSelectElement>) => Promise<void>;
+  cuisine: string;
+  diet: string;
 }

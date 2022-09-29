@@ -32,7 +32,8 @@
 }
 
 .nav__item_active {
-    border-bottom: 2px solid rebeccapurple;
+    border-bottom: 2px solid rgb(0, 136, 255);
     margin-bottom: 7px;
 }
+
 
