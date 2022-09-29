@@ -1,4 +1,4 @@
-import Cards from 'components/Cards/Cards';
+import Results from 'components/Results/Results';
 import SearchBar from 'components/SearchBar/SearchBar';
 import React from 'react';
 import { IMain } from 'types/types';
@@ -13,11 +13,18 @@ class Main extends React.Component<IMain> {
       <div className="main">
         <SearchBar
           value={this.props.value}
-          onValueChange={this.props.onValueChange}
-          onSubmit={this.props.onSubmit}
-          onKeyDown={this.props.onKeyDown}
+          handleChange={this.props.handleChange}
+          handleSubmit={this.props.handleSubmit}
+          handleKeyDown={this.props.handleKeyDown}
         />
-        <Cards cards={this.props.cards} numShow={this.props.numShow} />
+        <Results
+          cards={this.props.cards}
+          numShow={this.props.numShow}
+          handleClickByCuisine={this.props.handleClickByCuisine}
+          handleClickByDiet={this.props.handleClickByDiet}
+          cuisine={this.props.cuisine}
+          diet={this.props.diet}
+        />
       </div>
     );
   }

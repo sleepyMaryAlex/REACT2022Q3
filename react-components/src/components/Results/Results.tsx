@@ -16,6 +16,8 @@ class Results extends React.Component<IResults> {
             cards={this.props.cards}
             handleClickByCuisine={this.props.handleClickByCuisine}
             handleClickByDiet={this.props.handleClickByDiet}
+            cuisine={this.props.cuisine}
+            diet={this.props.diet}
           />
         </div>
         <Cards cards={this.props.cards} numShow={this.props.numShow} />

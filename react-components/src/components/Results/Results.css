@@ -10,3 +10,9 @@
     width: 100%;
     background-color: #ffffff;
 }
+
+.results__title {
+    font-size: 40px;
+    font-weight: 700;
+    width: 220px;
+}
