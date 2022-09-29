@@ -11,8 +11,6 @@ class Header extends React.Component {
             SPOONACULAR.
           </NavLink>
           <div className="header__nav">
-            <p className="nav__item">COISINE</p>
-            <p className="nav__item">DIET</p>
             <NavLink
               className={(navData) => (navData.isActive ? 'nav__item_active' : 'nav__item')}
               to="/about"
