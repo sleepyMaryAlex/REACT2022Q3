@@ -1,19 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+}
+
 li {
     list-style: none;
 }
 
+select {
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+}
+
+input[type="text"] {
+    outline: none;
+    background: transparent;
+    border: none;
+}
+
 body {
-    background-color: #27272B;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    font-family: 'Darker Grotesque', sans-serif;
+    max-height: 100vh;
+    overflow: hidden;
 }
 
 .app {
-    max-width: 1480px;
-    margin: 0 auto;
+    max-height: 100vh;
+    overflow-y: scroll;
 }
