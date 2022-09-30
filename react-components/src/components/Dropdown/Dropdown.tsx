@@ -7,6 +7,7 @@ class Dropdown extends React.Component<IDropdown, { cuisine: string[]; diet: str
     super(props);
     this.state = {
       cuisine: [
+        'ALL CUISINES',
         'AFRICAN',
         'AMERICAN',
         'BRITISH',
@@ -17,6 +18,7 @@ class Dropdown extends React.Component<IDropdown, { cuisine: string[]; diet: str
         'NORDIC',
       ],
       diet: [
+        'ALL DIETS',
         'GLUTEN FREE',
         'KETOGENIC',
         'VEGETARIAN',
@@ -38,7 +40,6 @@ class Dropdown extends React.Component<IDropdown, { cuisine: string[]; diet: str
             value={this.props.cuisine}
             onChange={(event) => this.props.handleClickByCuisine(event)}
           >
-            <option value="cuisine">ALL CUISINES</option>
             {this.state.cuisine.map((value) => (
               <option value={value.toLowerCase()} key={value}>
                 {value}
@@ -50,7 +51,6 @@ class Dropdown extends React.Component<IDropdown, { cuisine: string[]; diet: str
             value={this.props.diet}
             onChange={(event) => this.props.handleClickByDiet(event)}
           >
-            <option value="diet">ALL DIETS</option>
             {this.state.diet.map((value) => (
               <option value={value.toLowerCase()} key={value}>
                 {value}

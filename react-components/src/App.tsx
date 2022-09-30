@@ -23,8 +23,8 @@ class App extends React.Component<
       cards: [],
       value: localStorage.getItem('value') || '',
       numShow: 30,
-      cuisine: localStorage.getItem('cuisine') || 'cuisine',
-      diet: localStorage.getItem('diet') || 'diet',
+      cuisine: localStorage.getItem('cuisine') || 'all cuisines',
+      diet: localStorage.getItem('diet') || 'all diets',
     };
   }
   async componentDidMount(cuisine = this.state.cuisine, diet = this.state.diet) {
@@ -41,10 +41,12 @@ class App extends React.Component<
     localStorage.setItem('diet', diet);
   }
   handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({ value: (event.target as HTMLInputElement).value });
+    const target = event.target as HTMLInputElement;
+    this.setState({ value: target.value });
   }
   async handleSubmit() {
     const { value, cuisine, diet } = this.state;
+    localStorage.setItem('value', value);
     this.setState({
       cards: await Loader.getCards(value, cuisine, diet),
     });
@@ -52,6 +54,7 @@ class App extends React.Component<
   async handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === 'Enter') {
       const { value, cuisine, diet } = this.state;
+      localStorage.setItem('value', value);
       this.setState({
         cards: await Loader.getCards(value, cuisine, diet),
       });
@@ -59,10 +62,12 @@ class App extends React.Component<
   }
   async handleClickByCuisine(event: React.ChangeEvent<HTMLSelectElement>) {
     const target = event.target as HTMLSelectElement;
+    localStorage.setItem('cuisine', target.value);
     this.componentDidMount(target.value);
   }
   async handleClickByDiet(event: React.ChangeEvent<HTMLSelectElement>) {
     const target = event.target as HTMLSelectElement;
+    localStorage.setItem('diet', target.value);
     const { cuisine } = this.state;
     this.componentDidMount(cuisine, target.value);
   }

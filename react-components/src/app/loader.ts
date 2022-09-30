@@ -1,6 +1,6 @@
 import { ICard } from './../types/types';
 const baseUrl = 'https://api.spoonacular.com/recipes/complexSearch';
-const APIKey = 'b2b57db151c44166a308cb1b06dd5be5';
+const APIKey = '71d3bbcc36f6457ab6ffc6baea157881';
 
 class Loader {
   public static async getCards(
@@ -9,8 +9,8 @@ class Loader {
     diet: string,
     number = 100
   ): Promise<ICard[]> {
-    const cuisineParam = cuisine !== 'cuisine' ? `&cuisine=${cuisine}` : '';
-    const dietParam = diet !== 'diet' ? `&diet=${diet}` : '';
+    const cuisineParam = cuisine !== 'all cuisines' ? `&cuisine=${cuisine}` : '';
+    const dietParam = diet !== 'all diets' ? `&diet=${diet}` : '';
     const queryParam = query ? `&query=${query}` : '';
     const response = await fetch(
       `${baseUrl}?apiKey=${APIKey}${queryParam}${cuisineParam}${dietParam}&number=${number}`
