@@ -36,4 +36,28 @@
     margin-bottom: 7px;
 }
 
+@media (max-width: 400px) {
+    .header {
+        height: 100px;
+        background-color: #000000;
+    }
+
+    .header__wrapper {
+        max-width: 1680px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header__nav {
+        padding-top: 5px;
+    }
+
+    .nav__item,
+    .nav__item_active {
+        margin-top: 0;
+    }
+}
+
 

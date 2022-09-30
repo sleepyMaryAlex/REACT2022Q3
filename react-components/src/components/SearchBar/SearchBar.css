@@ -33,3 +33,30 @@
     font-size: 20px;
     padding: 0 5px;
 }
+
+@media (max-width: 600px) {
+    .search {
+        height: 100px;
+    }
+
+    .search__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 280px;
+        height: 80px;
+        position: relative;
+    }
+
+    .search__image {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    .search__bar {
+        width: 270px;
+        align-self: center;
+        padding: 10px 5px;
+    }
+}

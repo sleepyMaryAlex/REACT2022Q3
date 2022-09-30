@@ -103,3 +103,78 @@
 .contacts__content {
     width: 500px;
 }
+
+@media (max-width: 1150px) {
+    .about img {
+        margin: 50px 20px 50px 0;
+    }
+}
+
+@media (max-width: 1050px) {
+    .about__container,
+    .opportunities__container {
+        flex-direction: column;
+    }
+
+    .about img {
+        width: 400px;
+        margin: 50px 0 50px 0;
+    }
+
+    .about__content {
+        margin-top: 50px;
+    }
+
+    .opportunities__container img {
+        margin: 50px 0;
+    }
+
+    .opportunities__content {
+        margin-top: 50px;
+    }
+
+    .contacts__content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 950px) {
+    .diet {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 800px) {
+    .contacts {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50px 0 80px 0;
+    }
+}
+
+@media (max-width: 540px) {
+    .about__content {
+        width: 280px;
+    }
+
+    .about img {
+        width: 280px;
+    }
+
+    .opportunities__content {
+        width: 280px;
+    }
+    
+    .opportunities__content ul {
+        width: 280px;
+    }
+
+    .opportunities__container img {
+        width: 280px;
+    }
+
+    .contacts__content {
+        width: 280px;
+    }
+}

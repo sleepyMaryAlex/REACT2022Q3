@@ -34,6 +34,12 @@ class App extends React.Component<
       diet: diet,
     });
   }
+  componentWillUnmount() {
+    const { value, cuisine, diet } = this.state;
+    localStorage.setItem('value', value);
+    localStorage.setItem('cuisine', cuisine);
+    localStorage.setItem('diet', diet);
+  }
   handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     this.setState({ value: (event.target as HTMLInputElement).value });
   }
@@ -60,7 +66,7 @@ class App extends React.Component<
     const { cuisine } = this.state;
     this.componentDidMount(cuisine, target.value);
   }
-  addWords(e: React.UIEvent<HTMLDivElement, UIEvent>) {
+  displayNextCards(e: React.UIEvent<HTMLDivElement, UIEvent>) {
     if (
       Math.ceil(
         (e.target as HTMLDivElement).offsetHeight + (e.target as HTMLDivElement).scrollTop
@@ -74,7 +80,7 @@ class App extends React.Component<
   render() {
     const { cards, value, numShow } = this.state;
     return (
-      <div className="app" onScroll={(e) => this.addWords(e)}>
+      <div className="app" onScroll={(e) => this.displayNextCards(e)}>
         <Header />
         <Routes>
           <Route

@@ -7,6 +7,14 @@
     justify-content: space-between;
 }
 
+.selects {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
 .select__coisine,
 .select__diet {
     background-color: #ffffff;
@@ -22,4 +30,14 @@
 
 .select__coisine {
     width: 110px;
+}
+
+@media (max-width: 600px) {
+    .cards__results {
+        width: 280px;
+        height: 100px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }

@@ -1,6 +1,6 @@
 import { ICard } from './../types/types';
 const baseUrl = 'https://api.spoonacular.com/recipes/complexSearch';
-const APIKey = '2e7fb1b0322a484ca3161fbb00fea1c7';
+const APIKey = 'b2b57db151c44166a308cb1b06dd5be5';
 
 class Loader {
   public static async getCards(

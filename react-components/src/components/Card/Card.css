@@ -3,7 +3,7 @@
     background-color: #ffffff;
     border-bottom: 5px solid rgb(0, 136, 255);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-    transition: all 0.5s;
+    transition: box-shadow 0.5s;
 }
 
 .card:hover {
@@ -17,4 +17,14 @@
 
 .card img {
     width: 312px;
+}
+
+@media (max-width: 700px) {
+    .card {
+        width: 100%;
+    }
+
+    .card img {
+        width: 100%;
+    }
 }
