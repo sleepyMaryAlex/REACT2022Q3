@@ -4,7 +4,24 @@ import foodImg from '../../assets/images/diet.png';
 import ontologyImg from '../../assets/icons/ontology.svg';
 import spoonacularImg from '../../assets/icons/spoonacular.svg';
 
-class AboutPage extends React.Component {
+class AboutPage extends React.Component<object, { options: string[] }> {
+  constructor(props: object) {
+    super(props);
+    this.state = {
+      options: [
+        `find recipes to use ingredients you already have ("what's in your fridge"; search)`,
+        `find recipes based on nutritional requirements`,
+        `extract recipes from any website`,
+        `classify a recipe's type or cuisine`,
+        `generate an entire meal plan`,
+        `generate shopping lists`,
+        `UPC lookup of American grocery products`,
+        `detect food in text (NER)`,
+        `food trivia and jokes`,
+        `create a chatbot`,
+      ],
+    };
+  }
   render() {
     return (
       <div className="about-page">
@@ -95,19 +112,9 @@ class AboutPage extends React.Component {
                 a reality.
               </p>
               <ul>
-                <li>
-                  ✓ find recipes to use ingredients you already have (&quot;what&apos;s in your
-                  fridge&quot; search)
-                </li>
-                <li>✓ find recipes based on nutritional requirements</li>
-                <li>✓ extract recipes from any website</li>
-                <li>✓ classify a recipe&apos;s type or cuisine</li>
-                <li>✓ generate an entire meal plan</li>
-                <li>✓ generate shopping lists</li>
-                <li>✓ UPC lookup of American grocery products</li>
-                <li>✓ detect food in text (NER)</li>
-                <li>✓ food trivia and jokes</li>
-                <li>✓ create a chatbot</li>
+                {this.state.options.map((option) => (
+                  <li key={option}>✓ {option}</li>
+                ))}
               </ul>
             </div>
             <img src={foodImg} alt="food" />
