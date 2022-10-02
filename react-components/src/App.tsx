@@ -4,19 +4,15 @@ import Header from 'components/Header/Header';
 import Main from 'components/Main/Main';
 import NotFound from 'components/NotFound/NotFound';
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { ICard } from 'types/types';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { IState } from 'types/types';
+import withGracefulUnmount from 'withGracefulUnmount';
 import './App.css';
 
-class App extends React.Component<
-  object,
-  { cards: [] | ICard[]; value: string; numShow: number; cuisine: string; diet: string }
-> {
+class App extends React.Component<object, IState> {
   constructor(props: object) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleClickByCuisine = this.handleClickByCuisine.bind(this);
     this.handleClickByDiet = this.handleClickByDiet.bind(this);
     this.state = {
@@ -27,50 +23,48 @@ class App extends React.Component<
       diet: localStorage.getItem('diet') || 'all diets',
     };
   }
-  async componentDidMount(cuisine = this.state.cuisine, diet = this.state.diet) {
-    this.setState({
-      cards: await Loader.getCards(this.state.value, cuisine, diet),
-      cuisine: cuisine,
-      diet: diet,
-    });
-  }
-  componentWillUnmount() {
-    const { value, cuisine, diet } = this.state;
-    localStorage.setItem('value', value);
-    localStorage.setItem('cuisine', cuisine);
-    localStorage.setItem('diet', diet);
-  }
-  handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const target = event.target as HTMLInputElement;
-    this.setState({ value: target.value });
-  }
-  async handleSubmit() {
-    const { value, cuisine, diet } = this.state;
-    localStorage.setItem('value', value);
+
+  async updateState(value: string, cuisine: string, diet: string) {
     this.setState({
       cards: await Loader.getCards(value, cuisine, diet),
     });
   }
-  async handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === 'Enter') {
-      const { value, cuisine, diet } = this.state;
-      localStorage.setItem('value', value);
-      this.setState({
-        cards: await Loader.getCards(value, cuisine, diet),
-      });
-    }
+
+  async componentDidMount() {
+    const { value, cuisine, diet } = this.state;
+    this.updateState(value, cuisine, diet);
   }
-  async handleClickByCuisine(event: React.ChangeEvent<HTMLSelectElement>) {
+
+  componentWillUnmount() {
+    localStorage.setItem('value', this.state.value);
+  }
+
+  handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const target = event.target as HTMLInputElement;
+    const { cuisine, diet } = this.state;
+    const value = target.value;
+    this.updateState(value, cuisine, diet);
+    this.setState({ value });
+  }
+
+  handleClickByCuisine(event: React.ChangeEvent<HTMLSelectElement>) {
     const target = event.target as HTMLSelectElement;
-    localStorage.setItem('cuisine', target.value);
-    this.componentDidMount(target.value);
+    const { value, diet } = this.state;
+    const cuisine = target.value;
+    localStorage.setItem('cuisine', cuisine);
+    this.updateState(value, cuisine, diet);
+    this.setState({ cuisine: cuisine });
   }
-  async handleClickByDiet(event: React.ChangeEvent<HTMLSelectElement>) {
+
+  handleClickByDiet(event: React.ChangeEvent<HTMLSelectElement>) {
     const target = event.target as HTMLSelectElement;
-    localStorage.setItem('diet', target.value);
-    const { cuisine } = this.state;
-    this.componentDidMount(cuisine, target.value);
+    const { value, cuisine } = this.state;
+    const diet = target.value;
+    localStorage.setItem('diet', diet);
+    this.updateState(value, cuisine, diet);
+    this.setState({ diet: diet });
   }
+
   displayNextCards(e: React.UIEvent<HTMLDivElement, UIEvent>) {
     if (
       Math.ceil(
@@ -82,35 +76,36 @@ class App extends React.Component<
       }));
     }
   }
+
   render() {
     const { cards, value, numShow } = this.state;
     return (
       <div className="app" onScroll={(e) => this.displayNextCards(e)}>
-        <Header />
-        <Routes>
-          <Route
-            index
-            element={
-              <Main
-                value={value}
-                handleChange={this.handleChange}
-                handleSubmit={this.handleSubmit}
-                handleKeyDown={this.handleKeyDown}
-                handleClickByCuisine={this.handleClickByCuisine}
-                handleClickByDiet={this.handleClickByDiet}
-                cards={cards}
-                numShow={numShow}
-                cuisine={this.state.cuisine}
-                diet={this.state.diet}
-              />
-            }
-          />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route
+              index
+              element={
+                <Main
+                  value={value}
+                  handleChange={this.handleChange}
+                  handleClickByCuisine={this.handleClickByCuisine}
+                  handleClickByDiet={this.handleClickByDiet}
+                  cards={cards}
+                  numShow={numShow}
+                  cuisine={this.state.cuisine}
+                  diet={this.state.diet}
+                />
+              }
+            />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
       </div>
     );
   }
 }
 
-export default App;
+export default withGracefulUnmount(App);

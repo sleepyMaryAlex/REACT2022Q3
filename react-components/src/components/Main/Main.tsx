@@ -11,12 +11,7 @@ class Main extends React.Component<IMain> {
   render() {
     return (
       <div className="main">
-        <SearchBar
-          value={this.props.value}
-          handleChange={this.props.handleChange}
-          handleSubmit={this.props.handleSubmit}
-          handleKeyDown={this.props.handleKeyDown}
-        />
+        <SearchBar value={this.props.value} handleChange={this.props.handleChange} />
         <Results
           cards={this.props.cards}
           numShow={this.props.numShow}
