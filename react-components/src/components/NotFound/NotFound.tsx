@@ -3,24 +3,37 @@ import { NavLink } from 'react-router-dom';
 import './NotFound.css';
 import returnImg from '../../assets/icons/prev-arrow.svg';
 
-class NotFound extends React.Component {
+class NotFound extends React.Component<object, { classNames: string[]; error: number }> {
+  constructor(props: object) {
+    super(props);
+    this.state = {
+      classNames: [
+        'error__last',
+        'error__second',
+        'error__first',
+        'error__basic',
+        'error__first',
+        'error__second',
+        'error__last',
+      ],
+      error: 401,
+    };
+  }
   render() {
     return (
       <div className="wrapper">
-        <div className="error__wrapper">
-          <div className="last">401</div>
-          <div className="second">402</div>
-          <div className="first">403</div>
-          <div className="main__error">404</div>
-          <div className="first">405</div>
-          <div className="second">406</div>
-          <div className="last">407</div>
+        <div className="error">
+          {this.state.classNames.map((className, index) => (
+            <p className={className} key={this.state.error + index.toString()}>
+              {this.state.error + index}
+            </p>
+          ))}
         </div>
-        <div className="title">The page you were looking for could not be found</div>
+        <p className="title">The page you were looking for could not be found</p>
         <NavLink to="/">
           <div className="return-button">
             <img src={returnImg} alt="image" />
-            <div>RETURN TO MAIN</div>
+            <p>RETURN TO MAIN PAGE</p>
           </div>
         </NavLink>
       </div>
