@@ -30,6 +30,7 @@ class Dropdown extends React.Component<IDropdown, { cuisine: string[]; diet: str
       ],
     };
   }
+
   render() {
     return (
       <div className="cards__results">

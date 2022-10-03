@@ -8,7 +8,7 @@ class Header extends React.Component {
       <div className="header">
         <div className="header__wrapper">
           <NavLink className="header__title" to="/">
-            SPOONACULAR.
+            SPOONACULAR<span>.</span>
           </NavLink>
           <div className="header__nav">
             <NavLink

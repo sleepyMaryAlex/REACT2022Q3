@@ -17,6 +17,10 @@
     letter-spacing: 2px;
 }
 
+.header__title span {
+    color:rgb(0, 136, 255);
+}
+
 .header__nav {
     display: flex;
     flex-direction: row;

@@ -19,6 +19,7 @@ class NotFound extends React.Component<object, { classNames: string[]; error: nu
       error: 401,
     };
   }
+
   render() {
     return (
       <div className="wrapper">
