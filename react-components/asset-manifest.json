@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/sleepymaryalex-REACT2022Q3/react-components/static/css/main.2e942560.css",
+    "main.js": "/sleepymaryalex-REACT2022Q3/react-components/static/js/main.fc139bea.js",
+    "static/media/diet.png": "/sleepymaryalex-REACT2022Q3/react-components/static/media/diet.c28c1c868f22c7246fa7.png",
+    "static/media/ontology.svg": "/sleepymaryalex-REACT2022Q3/react-components/static/media/ontology.f3c6eb418f4ebd015cc3960c4f241d9b.svg",
+    "static/media/spoonacular.svg": "/sleepymaryalex-REACT2022Q3/react-components/static/media/spoonacular.eec8dea58ed314f7dab9aaea3ed4cec5.svg",
+    "static/media/icon.svg": "/sleepymaryalex-REACT2022Q3/react-components/static/media/icon.0300815547ab29ee9a9f8ee4e3852e77.svg",
+    "index.html": "/sleepymaryalex-REACT2022Q3/react-components/index.html",
+    "static/media/prev-arrow.svg": "/sleepymaryalex-REACT2022Q3/react-components/static/media/prev-arrow.ac63c7c4d2e44bfd03e9bc9511e2d9da.svg",
+    "main.2e942560.css.map": "/sleepymaryalex-REACT2022Q3/react-components/static/css/main.2e942560.css.map",
+    "main.fc139bea.js.map": "/sleepymaryalex-REACT2022Q3/react-components/static/js/main.fc139bea.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2e942560.css",
+    "static/js/main.fc139bea.js"
+  ]
+}
