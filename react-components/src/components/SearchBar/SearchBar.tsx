@@ -7,25 +7,21 @@ class SearchBar extends React.Component<ISearchBar> {
   constructor(props: ISearchBar) {
     super(props);
   }
+  
   render() {
     return (
       <div className="search">
         <div className="search__container">
           <p className="search__title">I WANT TO MAKE</p>
-          <img
-            className="search__image"
-            src={icon}
-            alt="icon"
-            onClick={() => this.props.handleSubmit()}
-          />
+          <img className="search__image" src={icon} alt="icon" />
           <input
             className="search__bar"
             type="text"
+            placeholder='...'
             value={this.props.value}
             autoFocus
             spellCheck="false"
             onChange={(e) => this.props.handleChange(e)}
-            onKeyDown={(e) => this.props.handleKeyDown(e)}
           />
         </div>
       </div>

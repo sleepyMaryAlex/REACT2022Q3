@@ -1,3 +1,11 @@
+export interface IState {
+  cards: [] | ICard[];
+  value: string;
+  numShow: number;
+  cuisine: string;
+  diet: string;
+}
+
 export interface ICard {
   id: number;
   title: string;
@@ -15,17 +23,13 @@ export interface IResult {
 export interface ISearchBar {
   value: string;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-  handleSubmit: () => Promise<void>;
 }
 
 export interface IMain {
   value: string;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-  handleSubmit: () => Promise<void>;
-  handleClickByCuisine: (event: React.ChangeEvent<HTMLSelectElement>) => Promise<void>;
-  handleClickByDiet: (event: React.ChangeEvent<HTMLSelectElement>) => Promise<void>;
+  handleClickByCuisine: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleClickByDiet: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   cards: [] | ICard[];
   numShow: number;
   cuisine: string;
@@ -35,8 +39,8 @@ export interface IMain {
 export interface IResults {
   cards: ICard[];
   numShow: number;
-  handleClickByCuisine: (event: React.ChangeEvent<HTMLSelectElement>) => Promise<void>;
-  handleClickByDiet: (event: React.ChangeEvent<HTMLSelectElement>) => Promise<void>;
+  handleClickByCuisine: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleClickByDiet: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   cuisine: string;
   diet: string;
 }
@@ -48,8 +52,12 @@ export interface ICards {
 
 export interface IDropdown {
   cards: [] | ICard[];
-  handleClickByCuisine: (event: React.ChangeEvent<HTMLSelectElement>) => Promise<void>;
-  handleClickByDiet: (event: React.ChangeEvent<HTMLSelectElement>) => Promise<void>;
+  handleClickByCuisine: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleClickByDiet: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   cuisine: string;
   diet: string;
+}
+
+export interface IWithGracefulUnmount {
+  mounted: boolean;
 }
