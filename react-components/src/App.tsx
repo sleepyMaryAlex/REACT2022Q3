@@ -4,7 +4,7 @@ import Header from 'components/Header/Header';
 import Main from 'components/Main/Main';
 import NotFound from 'components/NotFound/NotFound';
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { IState } from 'types/types';
 import withGracefulUnmount from 'withGracefulUnmount';
 import './App.css';
@@ -81,7 +81,7 @@ class App extends React.Component<object, IState> {
     const { cards, value, numShow } = this.state;
     return (
       <div className="app" onScroll={(e) => this.displayNextCards(e)}>
-        <BrowserRouter>
+        <HashRouter>
           <Header />
           <Routes>
             <Route
@@ -102,7 +102,7 @@ class App extends React.Component<object, IState> {
             <Route path="about" element={<AboutPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </div>
     );
   }
