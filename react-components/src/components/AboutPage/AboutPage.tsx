@@ -22,7 +22,7 @@ class AboutPage extends React.Component<object, { options: string[] }> {
       ],
     };
   }
-  
+
   render() {
     return (
       <div className="about-page">

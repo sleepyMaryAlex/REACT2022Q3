@@ -7,7 +7,7 @@ class SearchBar extends React.Component<ISearchBar> {
   constructor(props: ISearchBar) {
     super(props);
   }
-  
+
   render() {
     return (
       <div className="search">
@@ -17,7 +17,6 @@ class SearchBar extends React.Component<ISearchBar> {
           <input
             className="search__bar"
             type="text"
-            placeholder='...'
             value={this.props.value}
             autoFocus
             spellCheck="false"
