@@ -1,30 +1,30 @@
 .card {
-    width: 312px;
-    background-color: #ffffff;
-    border-bottom: 5px solid rgb(0, 136, 255);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-    transition: box-shadow 0.5s;
+  width: 312px;
+  background-color: #fff;
+  border-bottom: 5px solid rgb(0 136 255);
+  box-shadow: rgb(50 50 93 / 25%) 0 50px 100px -20px, rgb(0 0 0 / 30%) 0 30px 60px -30px;
+  transition: box-shadow 0.5s;
 }
 
 .card:hover {
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  box-shadow: rgb(38 57 77) 0 20px 30px -10px;
 }
 
 .card__title {
-    margin: 0 5px 10px 5px;
-    font-weight: 600;
+  margin: 0 5px 10px;
+  font-weight: 600;
 }
 
 .card img {
-    width: 312px;
+  width: 312px;
 }
 
 @media (max-width: 700px) {
-    .card {
-        width: 100%;
-    }
+  .card {
+    width: 100%;
+  }
 
-    .card img {
-        width: 100%;
-    }
+  .card img {
+    width: 100%;
+  }
 }
