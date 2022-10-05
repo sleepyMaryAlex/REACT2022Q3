@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import Results from './Results';
 import Loader from 'app/loader';
 
-test('', async () => {
+test('check if the result title has been rendered and if it has a class', async () => {
   const cards = await Loader.getCards('', 'all cuisines', 'all diets');
   const handleClickByCuisine = jest.fn();
   const handleClickByDiet = jest.fn();

@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import Main from './Main';
 import Loader from 'app/loader';
 
-test('', async () => {
+test('check if the search image has been rendered and if it has a class', async () => {
   const cards = await Loader.getCards('', 'all cuisines', 'all diets');
   const handleChange = jest.fn();
   const handleClickByCuisine = jest.fn();

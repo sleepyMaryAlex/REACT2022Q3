@@ -19,7 +19,7 @@ test('should display the correct number of options', async () => {
   expect(screen.getAllByRole('option').length).toBe(18);
 });
 
-test('chack how many times an event fires', async () => {
+test('check how many times an event fires', async () => {
   const handleClickByCuisine = jest.fn();
   const handleClickByDiet = jest.fn();
   const cards = await Loader.getCards('', 'all cuisines', 'all diets');
