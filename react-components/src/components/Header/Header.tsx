@@ -13,6 +13,12 @@ class Header extends React.Component {
           <div className="header__nav">
             <NavLink
               className={(navData) => (navData.isActive ? 'nav__item_active' : 'nav__item')}
+              to="/recipes"
+            >
+              RECIPES
+            </NavLink>
+            <NavLink
+              className={(navData) => (navData.isActive ? 'nav__item_active' : 'nav__item')}
               to="/about"
             >
               ABOUT US

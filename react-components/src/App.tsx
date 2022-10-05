@@ -3,6 +3,7 @@ import AboutPage from 'components/AboutPage/AboutPage';
 import Header from 'components/Header/Header';
 import Main from 'components/Main/Main';
 import NotFound from 'components/NotFound/NotFound';
+import Recipes from 'components/Recipes/Recipes';
 import React from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { IState } from 'types/types';
@@ -100,6 +101,7 @@ class App extends React.Component<object, IState> {
               }
             />
             <Route path="about" element={<AboutPage />} />
+            <Route path="recipes" element={<Recipes />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </HashRouter>
