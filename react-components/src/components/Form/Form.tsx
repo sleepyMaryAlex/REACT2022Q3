@@ -115,6 +115,18 @@ class Form extends React.Component<
     );
   }
 
+  clearForm() {
+    this.setState({
+      diet: [],
+      image: '',
+      title: '',
+      description: '',
+      cuisine: '',
+      favorite: false,
+      date: '',
+    });
+  }
+
   handleSubmit() {
     const { title, image, cuisine, diet, favorite, date, description } = this.state;
     this.setState({ canCheckMistakes: true, canSubmit: false });
@@ -136,6 +148,7 @@ class Form extends React.Component<
       };
       this.props.handleModal(true);
       this.props.addNewRecipe(card);
+      this.clearForm();
       this.setState({ canCheckMistakes: false });
     }
   }
