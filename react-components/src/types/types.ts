@@ -61,3 +61,21 @@ export interface IDropdown {
 export interface IWithGracefulUnmount {
   mounted: boolean;
 }
+
+export interface IRecipeCard {
+  image: string;
+  title: string;
+  cuisine: string;
+  diet: string[];
+  favorite: boolean;
+  date: string;
+}
+
+export interface IFormState {
+  diet: string[];
+  imageUrl: string;
+  title: string;
+  cuisine: string;
+  favorite: boolean;
+  date: string;
+}
