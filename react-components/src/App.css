@@ -23,7 +23,6 @@ select {
 
 input[type="text"] {
   outline: none;
-  background: transparent;
   border: none;
 }
 
