@@ -22,3 +22,9 @@
   box-shadow: 0 0 1px 3px rgb(0 136 255);
   outline: none;
 }
+
+@media (max-width: 540px) {
+  .form__dropdown {
+    width: 280px;
+  }
+}

@@ -3,7 +3,7 @@
   min-height: calc(100vh - 65px);
 }
 
-@media (max-width: 400px) {
+@media (max-width: 540px) {
   .recipes {
     min-height: calc(100vh - 100px);
   }

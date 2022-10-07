@@ -8,6 +8,7 @@
 
 .input-file {
   opacity: 0;
+  display: none;
   visibility: hidden;
   position: absolute;
 }
@@ -22,7 +23,7 @@
 
 .input-file__button {
   width: 100%;
-  max-width: 290px;
+  max-width: 280px;
   height: 60px;
   background: rgb(0 136 255);
   color: #fff;

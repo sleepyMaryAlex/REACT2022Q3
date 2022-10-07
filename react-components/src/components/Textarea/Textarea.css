@@ -4,7 +4,7 @@
 
 .form__textarea {
   width: 500px;
-  height: 150px;
+  height: 160px;
   padding: 10px;
   border-radius: 10px;
   outline: none;
@@ -32,4 +32,10 @@
 
 .textarea__message {
   margin-top: -6px;
+}
+
+@media (max-width: 540px) {
+  .form__textarea {
+    width: 280px;
+  }
 }

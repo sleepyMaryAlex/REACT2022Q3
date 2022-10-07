@@ -7,10 +7,6 @@
   border-radius: 5px;
 }
 
-.checkbox__container img {
-  width: 300px;
-}
-
 .checkbox__title {
   font-size: 20px;
   font-weight: 600;
@@ -20,6 +16,7 @@
 .checkbox:not(:checked),
 .checkbox:checked {
   opacity: 0;
+  display: none;
 }
 
 .checkbox__label {

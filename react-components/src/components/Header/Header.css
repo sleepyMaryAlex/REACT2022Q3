@@ -40,14 +40,13 @@
   margin-bottom: 7px;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 540px) {
   .header {
     height: 100px;
     background-color: #000;
   }
 
   .header__wrapper {
-    max-width: 1680px;
     display: flex;
     flex-direction: column;
     justify-content: center;
