@@ -65,17 +65,20 @@ export interface IWithGracefulUnmount {
 export interface IRecipeCard {
   image: string;
   title: string;
+  description: string;
   cuisine: string;
   diet: string[];
   favorite: boolean;
   date: string;
 }
 
-export interface IFormState {
-  diet: string[];
-  imageUrl: string;
-  title: string;
-  cuisine: string;
-  favorite: boolean;
-  date: string;
+export interface IFormState extends IRecipeCard {
+  showTitleMessage: boolean;
+  showImageMessage: boolean;
+  showDescriptionMessage: boolean;
+  showCuisineMessage: boolean;
+  showDietMessage: boolean;
+  showDateMessage: boolean;
+  canSubmit: boolean;
+  canCheckMistakes: boolean;
 }

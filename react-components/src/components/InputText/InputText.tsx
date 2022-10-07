@@ -1,9 +1,12 @@
 import React from 'react';
 import './InputText.css';
 
-class InputText extends React.Component<{ handleTitleChange: (title: string) => void }> {
+class InputText extends React.Component<{
+  handleTitleChange: (title: string) => void;
+  showTitleMessage: boolean;
+}> {
   textInputRef: React.RefObject<HTMLInputElement>;
-  constructor(props: { handleTitleChange: (title: string) => void }) {
+  constructor(props: { handleTitleChange: (title: string) => void; showTitleMessage: boolean }) {
     super(props);
     this.textInputRef = React.createRef();
   }
@@ -26,6 +29,9 @@ class InputText extends React.Component<{ handleTitleChange: (title: string) => 
           spellCheck={false}
           onChange={this.handleChange.bind(this)}
         />
+        <p className="form__message">
+          {this.props.showTitleMessage ? 'This field is required' : ''}
+        </p>
       </div>
     );
   }

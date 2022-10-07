@@ -7,7 +7,6 @@ import Form from 'components/Form/Form';
 class Recipes extends React.Component<object, { cards: IRecipeCard[] }> {
   constructor(props: object) {
     super(props);
-    this.addNewRecipe = this.addNewRecipe.bind(this);
     this.state = {
       cards: JSON.parse(localStorage.getItem('recipes') as string) || [],
     };
@@ -24,7 +23,7 @@ class Recipes extends React.Component<object, { cards: IRecipeCard[] }> {
   render() {
     return (
       <div className="recipes">
-        <Form addNewRecipe={this.addNewRecipe} />
+        <Form addNewRecipe={this.addNewRecipe.bind(this)} />
         <RecipeCards cards={this.state.cards} />
       </div>
     );

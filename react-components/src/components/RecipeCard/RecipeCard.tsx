@@ -8,7 +8,7 @@ class RecipeCard extends React.Component<{ card: IRecipeCard }> {
   }
 
   render() {
-    const { image, title, cuisine, diet, favorite, date } = this.props.card;
+    const { image, title, cuisine, diet, favorite, date, description } = this.props.card;
     return (
       <div className="recipe-card">
         <img src={image} alt="recipe" />
@@ -16,6 +16,10 @@ class RecipeCard extends React.Component<{ card: IRecipeCard }> {
           <p>
             <span>TITLE:</span>
             {title.toLowerCase()}
+          </p>
+          <p>
+            <span>HOW TO MAKE:</span>
+            {description.toLowerCase()}
           </p>
           <p>
             <span>CUISINE:</span>

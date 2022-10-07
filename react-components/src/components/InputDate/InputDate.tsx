@@ -1,9 +1,12 @@
 import React from 'react';
 import './InputDate.css';
 
-class InputDate extends React.Component<{ handleDateChange: (date: string) => void }> {
+class InputDate extends React.Component<{
+  handleDateChange: (date: string) => void;
+  showDateMessage: boolean;
+}> {
   dateRef: React.RefObject<HTMLInputElement>;
-  constructor(props: { handleDateChange: (date: string) => void }) {
+  constructor(props: { handleDateChange: (date: string) => void; showDateMessage: boolean }) {
     super(props);
     this.dateRef = React.createRef();
   }
@@ -26,6 +29,7 @@ class InputDate extends React.Component<{ handleDateChange: (date: string) => vo
           className="input-date"
           onChange={this.handleChange.bind(this)}
         />
+        <p className="form__message">{this.props.showDateMessage ? 'Please, select date' : ''}</p>
       </div>
     );
   }

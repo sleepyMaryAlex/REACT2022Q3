@@ -41,3 +41,15 @@
 .submit-button:hover {
   box-shadow: 0 0 4px #898989;
 }
+
+.submit-button_disabled {
+  cursor: auto;
+  background-color: #ffdddf;
+  color: rgb(72 72 72);
+}
+
+.form__message {
+  color: #ffc4c7;
+  text-align: center;
+  font-size: 18px;
+}

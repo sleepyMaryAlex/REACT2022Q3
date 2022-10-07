@@ -3,11 +3,11 @@ import './InputFile.css';
 import uploadImage from '../../assets/icons/upload.svg';
 
 class InputFile extends React.Component<
-  { handleFileChange: (imageUrl: string) => void },
+  { handleFileChange: (imageUrl: string) => void; showImageMessage: boolean },
   { fileName: string }
 > {
   fileInputRef: React.RefObject<HTMLInputElement>;
-  constructor(props: { handleFileChange: (imageUrl: string) => void }) {
+  constructor(props: { handleFileChange: (imageUrl: string) => void; showImageMessage: boolean }) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.fileInputRef = React.createRef();
@@ -43,6 +43,7 @@ class InputFile extends React.Component<
             {this.state.fileName ? this.state.fileName : 'UPLOAD IMAGE'}
           </span>
         </label>
+        <p className="form__message">{this.props.showImageMessage ? 'Please, upload image' : ''}</p>
       </div>
     );
   }

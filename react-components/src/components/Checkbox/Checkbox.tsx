@@ -4,11 +4,12 @@ import './Checkbox.css';
 class Checkbox extends React.Component<
   {
     handleDietChange: (diet: string[]) => void;
+    showDietMessage: boolean;
   },
   { checkedState: boolean[] }
 > {
   diet: string[];
-  constructor(props: { handleDietChange: (diet: string[]) => void }) {
+  constructor(props: { handleDietChange: (diet: string[]) => void; showDietMessage: boolean }) {
     super(props);
     this.diet = [
       'GLUTEN FREE',
@@ -61,6 +62,7 @@ class Checkbox extends React.Component<
             </div>
           );
         })}
+        <p className="form__message">{this.props.showDietMessage ? 'Please, select diet' : ''}</p>
       </div>
     );
   }
