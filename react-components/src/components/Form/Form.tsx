@@ -31,6 +31,12 @@ class Form extends React.Component<{ addNewRecipe: (card: IRecipeCard) => void }
     };
   }
 
+  checkIfItIsPossibleToSubmit() {
+    if (!this.state.canCheckMistakes || this.checkForm()) {
+      this.setState({ canSubmit: true });
+    }
+  }
+
   checkTitle(title: string) {
     if (title) {
       return true;
@@ -122,52 +128,33 @@ class Form extends React.Component<{ addNewRecipe: (card: IRecipeCard) => void }
   }
 
   handleFileChange(image: string) {
-    this.setState({ image, showImageMessage: false });
-    if (!this.state.canCheckMistakes || this.checkForm()) {
-      this.setState({ canSubmit: true });
-    }
+    this.setState({ image, showImageMessage: false }, () => this.checkIfItIsPossibleToSubmit());
   }
 
   handleTitleChange(title: string) {
-    this.setState({ title, showTitleMessage: false });
-    if (!this.state.canCheckMistakes || this.checkForm()) {
-      this.setState({ canSubmit: true });
-    }
+    this.setState({ title, showTitleMessage: false }, () => this.checkIfItIsPossibleToSubmit());
   }
 
   handleDescriptionChange(description: string) {
-    this.setState({ description, showDescriptionMessage: false });
-    if (!this.state.canCheckMistakes || this.checkForm()) {
-      this.setState({ canSubmit: true });
-    }
+    this.setState({ description, showDescriptionMessage: false }, () =>
+      this.checkIfItIsPossibleToSubmit()
+    );
   }
 
   handleCuisineChange(cuisine: string) {
-    this.setState({ cuisine, showCuisineMessage: false });
-    if (!this.state.canCheckMistakes || this.checkForm()) {
-      this.setState({ canSubmit: true });
-    }
+    this.setState({ cuisine, showCuisineMessage: false }, () => this.checkIfItIsPossibleToSubmit());
   }
 
   handleDietChange(diet: string[]) {
-    this.setState({ diet, showDietMessage: false });
-    if (!this.state.canCheckMistakes || this.checkForm()) {
-      this.setState({ canSubmit: true });
-    }
+    this.setState({ diet, showDietMessage: false }, () => this.checkIfItIsPossibleToSubmit());
   }
 
   handleSwitcherChange(favorite: boolean) {
-    this.setState({ favorite });
-    if (!this.state.canCheckMistakes || this.checkForm()) {
-      this.setState({ canSubmit: true });
-    }
+    this.setState({ favorite }, () => this.checkIfItIsPossibleToSubmit());
   }
 
   handleDateChange(date: string) {
-    this.setState({ date, showDateMessage: false });
-    if (!this.state.canCheckMistakes || this.checkForm()) {
-      this.setState({ canSubmit: true });
-    }
+    this.setState({ date, showDateMessage: false }, () => this.checkIfItIsPossibleToSubmit());
   }
 
   render() {
