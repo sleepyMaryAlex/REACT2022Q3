@@ -1,0 +1,20 @@
+.form__dropdown {
+  padding: 10px;
+  width: 500px;
+  height: 45px;
+  font-size: 16px;
+  box-shadow: 0 0 4px #b9b8b8;
+  border-radius: 10px;
+  appearance: none;
+  cursor: pointer;
+  transition: 0.3s box-shadow;
+}
+
+.form__dropdown:hover {
+  box-shadow: 0 0 4px #898989;
+}
+
+.form__dropdown:focus {
+  box-shadow: 0 0 1px 3px rgb(0 136 255);
+  outline: none;
+}
