@@ -4,11 +4,12 @@ import './Recipes.css';
 import { IRecipeCard } from 'types/types';
 import Form from 'components/Form/Form';
 
-class Recipes extends React.Component<object, { cards: IRecipeCard[] }> {
+class Recipes extends React.Component<object, { cards: IRecipeCard[]; isModalOpen: boolean }> {
   constructor(props: object) {
     super(props);
     this.state = {
       cards: JSON.parse(localStorage.getItem('recipes') as string) || [],
+      isModalOpen: false,
     };
   }
 
@@ -20,10 +21,18 @@ class Recipes extends React.Component<object, { cards: IRecipeCard[] }> {
     localStorage.setItem('recipes', JSON.stringify(recipes));
   }
 
+  handleModal(openModal: boolean) {
+    this.setState({ isModalOpen: openModal });
+  }
+
   render() {
     return (
-      <div className="recipes">
-        <Form addNewRecipe={this.addNewRecipe.bind(this)} />
+      <div className={`recipes${this.state.isModalOpen ? ' recipes__overlay' : ''}`}>
+        <Form
+          addNewRecipe={this.addNewRecipe.bind(this)}
+          isModalOpen={this.state.isModalOpen}
+          handleModal={this.handleModal.bind(this)}
+        />
         <RecipeCards cards={this.state.cards} />
       </div>
     );

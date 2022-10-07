@@ -2,6 +2,7 @@ import Checkbox from 'components/Checkbox/Checkbox';
 import InputDate from 'components/InputDate/InputDate';
 import InputFile from 'components/InputFile/InputFile';
 import InputText from 'components/InputText/InputText';
+import Modal from 'components/Modal/Modal';
 import SelectCuisine from 'components/SelectCuisine/SelectCuisine';
 import Switcher from 'components/Switcher/Switcher';
 import Textarea from 'components/Textarea/Textarea';
@@ -9,8 +10,19 @@ import React from 'react';
 import { IFormState, IRecipeCard } from 'types/types';
 import './Form.css';
 
-class Form extends React.Component<{ addNewRecipe: (card: IRecipeCard) => void }, IFormState> {
-  constructor(props: { addNewRecipe: (card: IRecipeCard) => void }) {
+class Form extends React.Component<
+  {
+    addNewRecipe: (card: IRecipeCard) => void;
+    isModalOpen: boolean;
+    handleModal: (openModal: boolean) => void;
+  },
+  IFormState
+> {
+  constructor(props: {
+    addNewRecipe: (card: IRecipeCard) => void;
+    isModalOpen: boolean;
+    handleModal: (openModal: boolean) => void;
+  }) {
     super(props);
     this.state = {
       diet: [],
@@ -122,6 +134,7 @@ class Form extends React.Component<{ addNewRecipe: (card: IRecipeCard) => void }
         diet,
         date,
       };
+      this.props.handleModal(true);
       this.props.addNewRecipe(card);
       this.setState({ canCheckMistakes: false });
     }
@@ -205,6 +218,7 @@ class Form extends React.Component<{ addNewRecipe: (card: IRecipeCard) => void }
             onClick={this.handleSubmit.bind(this)}
           />
         </div>
+        {this.props.isModalOpen ? <Modal handleModal={this.props.handleModal} /> : ''}
       </form>
     );
   }
