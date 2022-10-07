@@ -9,14 +9,16 @@ class Recipes extends React.Component<object, { cards: IRecipeCard[] }> {
     super(props);
     this.addNewRecipe = this.addNewRecipe.bind(this);
     this.state = {
-      cards: [],
+      cards: JSON.parse(localStorage.getItem('recipes') as string) || [],
     };
   }
 
   addNewRecipe(card: IRecipeCard) {
+    const recipes = [...this.state.cards, card];
     this.setState({
-      cards: [...this.state.cards, card],
+      cards: recipes,
     });
+    localStorage.setItem('recipes', JSON.stringify(recipes));
   }
 
   render() {
