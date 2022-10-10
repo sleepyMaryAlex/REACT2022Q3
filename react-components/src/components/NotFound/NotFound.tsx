@@ -3,30 +3,30 @@ import { NavLink } from 'react-router-dom';
 import './NotFound.css';
 import returnImg from '../../assets/icons/prev-arrow.svg';
 
-class NotFound extends React.Component<object, { classNames: string[]; error: number }> {
+class NotFound extends React.Component<object> {
+  classNames: string[];
+  error: number;
   constructor(props: object) {
     super(props);
-    this.state = {
-      classNames: [
-        'error__last',
-        'error__second',
-        'error__first',
-        'error__basic',
-        'error__first',
-        'error__second',
-        'error__last',
-      ],
-      error: 401,
-    };
+    this.classNames = [
+      'error__last',
+      'error__second',
+      'error__first',
+      'error__basic',
+      'error__first',
+      'error__second',
+      'error__last',
+    ];
+    this.error = 401;
   }
 
   render() {
     return (
       <div className="wrapper">
         <div className="error">
-          {this.state.classNames.map((className, index) => (
-            <p className={className} key={this.state.error + index.toString()}>
-              {this.state.error + index}
+          {this.classNames.map((className, index) => (
+            <p className={className} key={(this.error + index).toString()}>
+              {(this.error + index).toString()}
             </p>
           ))}
         </div>
