@@ -29,3 +29,17 @@
 .modal__close-button:hover {
   transform: scale(1.1);
 }
+
+@media (max-width: 490px) {
+  .modal {
+    position: fixed;
+    width: 280px;
+    height: 260px;
+    background-color: #fff;
+    top: calc(50vh - 130px);
+    left: calc(50vw - 140px);
+    z-index: 5;
+    font-size: 27px;
+    text-shadow: 3px 3px 8px #ffc4c7, -3px -3px 8px #ffc4c7;
+  }
+}
