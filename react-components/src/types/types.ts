@@ -6,6 +6,7 @@ export interface IState {
   diet: string;
 }
 
+  setCurrentPage: (isMainPage: boolean) => void;
 export interface ICard {
   id: number;
   title: string;

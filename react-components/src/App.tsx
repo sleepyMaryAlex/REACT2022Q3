@@ -22,6 +22,7 @@ class App extends React.Component<object, IState> {
       numShow: 30,
       cuisine: localStorage.getItem('cuisine') || 'all cuisines',
       diet: localStorage.getItem('diet') || 'all diets',
+      isMainPage: true,
     };
   }
 
@@ -64,10 +65,13 @@ class App extends React.Component<object, IState> {
     localStorage.setItem('diet', diet);
     this.updateState(value, cuisine, diet);
     this.setState({ diet: diet });
+  setCurrentPage(isMainPage: boolean) {
+    this.setState({ isMainPage });
   }
 
   displayNextCards(e: React.UIEvent<HTMLDivElement, UIEvent>) {
     if (
+      this.state.isMainPage &&
       Math.ceil(
         (e.target as HTMLDivElement).offsetHeight + (e.target as HTMLDivElement).scrollTop
       ) === (e.target as HTMLDivElement).scrollHeight
@@ -97,6 +101,7 @@ class App extends React.Component<object, IState> {
                   numShow={numShow}
                   cuisine={this.state.cuisine}
                   diet={this.state.diet}
+                  setCurrentPage={this.setCurrentPage.bind(this)}
                 />
               }
             />
