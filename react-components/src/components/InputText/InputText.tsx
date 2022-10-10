@@ -16,6 +16,17 @@ class InputText extends React.Component<{
     this.props.handleTitleChange(title);
   }
 
+  clearInputText() {
+    (this.textInputRef.current as HTMLInputElement).value = '';
+    this.props.handleTitleChange('');
+  }
+
+  componentDidUpdate(prevProps: IInputText) {
+    if (prevProps.canClearForm !== this.props.canClearForm) {
+      this.clearInputText();
+    }
+  }
+
   render() {
     return (
       <div className="form__text-field">

@@ -16,6 +16,17 @@ class InputDate extends React.Component<{
     this.props.handleDateChange(date);
   }
 
+  clearInputDate() {
+    (this.dateRef.current as HTMLInputElement).value = '';
+    this.props.handleDateChange('');
+  }
+
+  componentDidUpdate(prevProps: IInputDate) {
+    if (prevProps.canClearForm !== this.props.canClearForm) {
+      this.clearInputDate();
+    }
+  }
+
   render() {
     return (
       <div className="input-date__container">

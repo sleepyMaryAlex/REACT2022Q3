@@ -27,6 +27,18 @@ class InputFile extends React.Component<
     reader.readAsDataURL(file);
   }
 
+  clearInputFile() {
+    this.setState({ fileName: '' });
+    this.props.handleFileChange('');
+    (this.fileInputRef.current as HTMLInputElement).value = '';
+  }
+
+  componentDidUpdate(prevProps: IInputFile) {
+    if (prevProps.canClearForm !== this.props.canClearForm) {
+      this.clearInputFile();
+    }
+  }
+
   render() {
     return (
       <div className="form__file-field">

@@ -40,6 +40,21 @@ class Checkbox extends React.Component<
     this.props.handleDietChange(diet);
   }
 
+  clearCheckbox() {
+    // this.checkboxRef.map((ref) => ((ref.current as HTMLInputElement).checked = false));
+    // for (const ch of this.checkboxRef) {
+    //   console.log(ch.current);
+    // }
+    this.setState({ checkedState: new Array(this.diet.length).fill(false) });
+    this.props.handleDietChange([]);
+  }
+
+  componentDidUpdate(prevProps: ICheckbox) {
+    if (prevProps.canClearForm !== this.props.canClearForm) {
+      this.clearCheckbox();
+    }
+  }
+
   render() {
     return (
       <div className="checkbox__container">

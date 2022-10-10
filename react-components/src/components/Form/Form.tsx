@@ -150,6 +150,16 @@ class Form extends React.Component<
       this.props.addNewRecipe(card);
       this.clearForm();
       this.setState({ canCheckMistakes: false });
+      this.setState({ canClearForm: !this.state.canClearForm, canCheckMistakes: false });
+      setTimeout(() => this.setState({ canSubmit: false }));
+    } else {
+      this.checkTitle(title);
+      this.checkDate(date);
+      this.checkDescription(description);
+      this.checkImage(image);
+      this.checkDiet(diet);
+      this.checkCuisine(cuisine);
+      this.setState({ canCheckMistakes: true, canSubmit: false });
     }
   }
 
@@ -201,27 +211,37 @@ class Form extends React.Component<
           <InputText
             handleTitleChange={this.handleTitleChange.bind(this)}
             showTitleMessage={showTitleMessage}
+            canClearForm={this.state.canClearForm}
           />
           <InputFile
             handleFileChange={this.handleFileChange.bind(this)}
             showImageMessage={showImageMessage}
+            canClearForm={this.state.canClearForm}
           />
           <Textarea
             handleDescriptionChange={this.handleDescriptionChange.bind(this)}
             showDescriptionMessage={showDescriptionMessage}
+            canClearForm={this.state.canClearForm}
           />
           <SelectCuisine
             handleCuisineChange={this.handleCuisineChange.bind(this)}
             showCuisineMessage={showCuisineMessage}
+            canClearForm={this.state.canClearForm}
           />
           <Checkbox
             handleDietChange={this.handleDietChange.bind(this)}
             showDietMessage={showDietMessage}
+            canClearForm={this.state.canClearForm}
+          />
+          <Switcher
+            handleSwitcherChange={this.handleSwitcherChange.bind(this)}
+            canClearForm={this.state.canClearForm}
           />
           <Switcher handleSwitcherChange={this.handleSwitcherChange.bind(this)} />
           <InputDate
             handleDateChange={this.handleDateChange.bind(this)}
             showDateMessage={showDateMessage}
+            canClearForm={this.state.canClearForm}
           />
           <input
             type="button"
