@@ -14,17 +14,6 @@ class Textarea extends React.Component<ITextarea> {
     this.props.handleDescriptionChange(description);
   }
 
-  clearTextarea() {
-    (this.textareaRef.current as HTMLTextAreaElement).value = '';
-    this.props.handleDescriptionChange('');
-  }
-
-  componentDidUpdate(prevProps: ITextarea) {
-    if (prevProps.canClearForm !== this.props.canClearForm) {
-      this.clearTextarea();
-    }
-  }
-
   render() {
     return (
       <div className="form__textarea-field">

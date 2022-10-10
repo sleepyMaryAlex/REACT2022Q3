@@ -94,6 +94,7 @@ export interface IFormState extends IRecipeCard {
   canSubmit: boolean;
   canCheckMistakes: boolean;
   canClearForm: boolean;
+  fileName: string;
 }
 
 export interface IForm {
@@ -105,40 +106,34 @@ export interface IForm {
 export interface IInputText {
   handleTitleChange: (title: string) => void;
   showTitleMessage: boolean;
-  canClearForm: boolean;
 }
 
 export interface IInputFile {
-  handleFileChange: (imageUrl: string) => void;
+  handleFileChange: (imageUrl: string, fileName: string) => void;
   showImageMessage: boolean;
-  canClearForm: boolean;
+  fileName: string;
 }
 
 export interface ITextarea {
   handleDescriptionChange: (description: string) => void;
   showDescriptionMessage: boolean;
-  canClearForm: boolean;
 }
 
 export interface ISelectCuisine {
   handleCuisineChange: (cuisine: string) => void;
   showCuisineMessage: boolean;
-  canClearForm: boolean;
 }
 
 export interface ICheckbox {
   handleDietChange: (diet: string[]) => void;
   showDietMessage: boolean;
-  canClearForm: boolean;
 }
 
 export interface ISwitcher {
   handleSwitcherChange: (favorite: boolean) => void;
-  canClearForm: boolean;
 }
 
 export interface IInputDate {
   handleDateChange: (date: string) => void;
   showDateMessage: boolean;
-  canClearForm: boolean;
 }

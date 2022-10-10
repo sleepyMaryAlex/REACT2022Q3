@@ -14,17 +14,6 @@ class Switcher extends React.Component<ISwitcher> {
     this.props.handleSwitcherChange(favorite);
   }
 
-  clearSwitcher() {
-    (this.switcherRef.current as HTMLInputElement).checked = false;
-    this.props.handleSwitcherChange(false);
-  }
-
-  componentDidUpdate(prevProps: ISwitcher) {
-    if (prevProps.canClearForm !== this.props.canClearForm) {
-      this.clearSwitcher();
-    }
-  }
-
   render() {
     return (
       <div className="switcher__container">

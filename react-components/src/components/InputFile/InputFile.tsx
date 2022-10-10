@@ -9,9 +9,6 @@ class InputFile extends React.Component<IInputFile, { fileName: string }> {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.fileInputRef = React.createRef();
-    this.state = {
-      fileName: '',
-    };
   }
 
   handleChange(e: React.ChangeEvent) {
@@ -19,22 +16,9 @@ class InputFile extends React.Component<IInputFile, { fileName: string }> {
     const reader = new FileReader();
     const file = (target.files as FileList)[0];
     reader.onloadend = () => {
-      this.props.handleFileChange(reader.result as string);
-      this.setState({ fileName: file.name });
+      this.props.handleFileChange(reader.result as string, file.name);
     };
     reader.readAsDataURL(file);
-  }
-
-  clearInputFile() {
-    this.setState({ fileName: '' });
-    this.props.handleFileChange('');
-    (this.fileInputRef.current as HTMLInputElement).value = '';
-  }
-
-  componentDidUpdate(prevProps: IInputFile) {
-    if (prevProps.canClearForm !== this.props.canClearForm) {
-      this.clearInputFile();
-    }
   }
 
   render() {
@@ -50,7 +34,7 @@ class InputFile extends React.Component<IInputFile, { fileName: string }> {
         <label htmlFor="input-file" className="input-file__button">
           <img className="input-file__image" src={uploadImage} alt="upload" />
           <span className="input-file__text">
-            {this.state.fileName ? this.state.fileName : 'UPLOAD IMAGE'}
+            {this.props.fileName ? this.props.fileName : 'UPLOAD IMAGE'}
           </span>
         </label>
         <p className="form__message">{this.props.showImageMessage ? 'Please, upload image' : ''}</p>

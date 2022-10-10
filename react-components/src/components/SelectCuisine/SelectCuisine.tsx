@@ -26,17 +26,6 @@ class SelectCuisine extends React.Component<ISelectCuisine> {
     this.props.handleCuisineChange(cuisine);
   }
 
-  clearSelectCuisine() {
-    (this.selectRef.current as HTMLSelectElement).value = 'CUISINE';
-    this.props.handleCuisineChange('');
-  }
-
-  componentDidUpdate(prevProps: ISelectCuisine) {
-    if (prevProps.canClearForm !== this.props.canClearForm) {
-      this.clearSelectCuisine();
-    }
-  }
-
   render() {
     return (
       <div className="form__dropdown-field">
