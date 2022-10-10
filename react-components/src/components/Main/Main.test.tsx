@@ -17,20 +17,10 @@ test('check if the search image has been rendered and if it has a class', async 
       imageType: 'svg',
     },
   ];
-  const handleChange = jest.fn();
-  const handleClickByCuisine = jest.fn();
-  const handleClickByDiet = jest.fn();
+  const updateState = jest.fn();
+  const setCurrentPage = jest.fn();
   render(
-    <Main
-      value="cake"
-      handleChange={handleChange}
-      handleClickByCuisine={handleClickByCuisine}
-      handleClickByDiet={handleClickByDiet}
-      cards={cards}
-      numShow={100}
-      cuisine="all cuisines"
-      diet="all diets"
-    />
+    <Main numShow={30} cards={cards} updateState={updateState} setCurrentPage={setCurrentPage} />
   );
   expect(screen.getAllByRole('img')[0]).toHaveClass('search__image');
 });

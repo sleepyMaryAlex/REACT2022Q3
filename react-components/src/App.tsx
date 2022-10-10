@@ -6,65 +6,19 @@ import NotFound from 'components/NotFound/NotFound';
 import Recipes from 'components/Recipes/Recipes';
 import React from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
-import { IState } from 'types/types';
-import withGracefulUnmount from 'withGracefulUnmount';
+import { IAppState } from 'types/types';
 import './App.css';
 
-class App extends React.Component<object, IState> {
+class App extends React.Component<object, IAppState> {
   constructor(props: object) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClickByCuisine = this.handleClickByCuisine.bind(this);
-    this.handleClickByDiet = this.handleClickByDiet.bind(this);
     this.state = {
       cards: [],
-      value: localStorage.getItem('value') || '',
       numShow: 30,
-      cuisine: localStorage.getItem('cuisine') || 'all cuisines',
-      diet: localStorage.getItem('diet') || 'all diets',
       isMainPage: true,
     };
   }
 
-  async updateState(value: string, cuisine: string, diet: string) {
-    this.setState({
-      cards: await Loader.getCards(value, cuisine, diet),
-    });
-  }
-
-  async componentDidMount() {
-    const { value, cuisine, diet } = this.state;
-    this.updateState(value, cuisine, diet);
-  }
-
-  componentWillUnmount() {
-    localStorage.setItem('value', this.state.value);
-  }
-
-  handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const target = event.target as HTMLInputElement;
-    const { cuisine, diet } = this.state;
-    const value = target.value;
-    this.updateState(value, cuisine, diet);
-    this.setState({ value });
-  }
-
-  handleClickByCuisine(event: React.ChangeEvent<HTMLSelectElement>) {
-    const target = event.target as HTMLSelectElement;
-    const { value, diet } = this.state;
-    const cuisine = target.value;
-    localStorage.setItem('cuisine', cuisine);
-    this.updateState(value, cuisine, diet);
-    this.setState({ cuisine: cuisine });
-  }
-
-  handleClickByDiet(event: React.ChangeEvent<HTMLSelectElement>) {
-    const target = event.target as HTMLSelectElement;
-    const { value, cuisine } = this.state;
-    const diet = target.value;
-    localStorage.setItem('diet', diet);
-    this.updateState(value, cuisine, diet);
-    this.setState({ diet: diet });
   setCurrentPage(isMainPage: boolean) {
     this.setState({ isMainPage });
   }
@@ -82,8 +36,13 @@ class App extends React.Component<object, IState> {
     }
   }
 
+  async updateState(value: string, cuisine: string, diet: string) {
+    this.setState({
+      cards: await Loader.getCards(value, cuisine, diet),
+    });
+  }
+
   render() {
-    const { cards, value, numShow } = this.state;
     return (
       <div className="app" onScroll={(e) => this.displayNextCards(e)}>
         <HashRouter>
@@ -93,15 +52,10 @@ class App extends React.Component<object, IState> {
               index
               element={
                 <Main
-                  value={value}
-                  handleChange={this.handleChange}
-                  handleClickByCuisine={this.handleClickByCuisine}
-                  handleClickByDiet={this.handleClickByDiet}
-                  cards={cards}
-                  numShow={numShow}
-                  cuisine={this.state.cuisine}
-                  diet={this.state.diet}
+                  cards={this.state.cards}
+                  numShow={this.state.numShow}
                   setCurrentPage={this.setCurrentPage.bind(this)}
+                  updateState={this.updateState.bind(this)}
                 />
               }
             />
@@ -115,4 +69,4 @@ class App extends React.Component<object, IState> {
   }
 }
 
-export default withGracefulUnmount(App);
+export default App;
