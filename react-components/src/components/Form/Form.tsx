@@ -7,22 +7,11 @@ import SelectCuisine from 'components/SelectCuisine/SelectCuisine';
 import Switcher from 'components/Switcher/Switcher';
 import Textarea from 'components/Textarea/Textarea';
 import React from 'react';
-import { IFormState, IRecipeCard } from 'types/types';
+import { IForm, IFormState } from 'types/types';
 import './Form.css';
 
-class Form extends React.Component<
-  {
-    addNewRecipe: (card: IRecipeCard) => void;
-    isModalOpen: boolean;
-    handleModal: (openModal: boolean) => void;
-  },
-  IFormState
-> {
-  constructor(props: {
-    addNewRecipe: (card: IRecipeCard) => void;
-    isModalOpen: boolean;
-    handleModal: (openModal: boolean) => void;
-  }) {
+class Form extends React.Component<IForm, IFormState> {
+  constructor(props: IForm) {
     super(props);
     this.state = {
       diet: [],
@@ -40,6 +29,7 @@ class Form extends React.Component<
       showDateMessage: false,
       canSubmit: false,
       canCheckMistakes: false,
+      canClearForm: false,
     };
   }
 
@@ -115,27 +105,8 @@ class Form extends React.Component<
     );
   }
 
-  clearForm() {
-    this.setState({
-      diet: [],
-      image: '',
-      title: '',
-      description: '',
-      cuisine: '',
-      favorite: false,
-      date: '',
-    });
-  }
-
   handleSubmit() {
     const { title, image, cuisine, diet, favorite, date, description } = this.state;
-    this.setState({ canCheckMistakes: true, canSubmit: false });
-    this.checkTitle(title);
-    this.checkDate(date);
-    this.checkDescription(description);
-    this.checkImage(image);
-    this.checkDiet(diet);
-    this.checkCuisine(cuisine);
     if (this.checkForm()) {
       const card = {
         title,
@@ -148,8 +119,6 @@ class Form extends React.Component<
       };
       this.props.handleModal(true);
       this.props.addNewRecipe(card);
-      this.clearForm();
-      this.setState({ canCheckMistakes: false });
       this.setState({ canClearForm: !this.state.canClearForm, canCheckMistakes: false });
       setTimeout(() => this.setState({ canSubmit: false }));
     } else {
@@ -237,7 +206,6 @@ class Form extends React.Component<
             handleSwitcherChange={this.handleSwitcherChange.bind(this)}
             canClearForm={this.state.canClearForm}
           />
-          <Switcher handleSwitcherChange={this.handleSwitcherChange.bind(this)} />
           <InputDate
             handleDateChange={this.handleDateChange.bind(this)}
             showDateMessage={showDateMessage}

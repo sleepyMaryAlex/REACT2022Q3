@@ -1,16 +1,11 @@
 import React from 'react';
+import { ISelectCuisine } from 'types/types';
 import './SelectCuisine.css';
 
-class SelectCuisine extends React.Component<{
-  handleCuisineChange: (cuisine: string) => void;
-  showCuisineMessage: boolean;
-}> {
+class SelectCuisine extends React.Component<ISelectCuisine> {
   selectRef: React.RefObject<HTMLSelectElement>;
   cuisine: string[];
-  constructor(props: {
-    handleCuisineChange: (cuisine: string) => void;
-    showCuisineMessage: boolean;
-  }) {
+  constructor(props: ISelectCuisine) {
     super(props);
     this.selectRef = React.createRef();
     this.cuisine = [

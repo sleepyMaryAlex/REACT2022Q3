@@ -1,13 +1,11 @@
 import React from 'react';
 import './InputFile.css';
 import uploadImage from '../../assets/icons/upload.svg';
+import { IInputFile } from 'types/types';
 
-class InputFile extends React.Component<
-  { handleFileChange: (imageUrl: string) => void; showImageMessage: boolean },
-  { fileName: string }
-> {
+class InputFile extends React.Component<IInputFile, { fileName: string }> {
   fileInputRef: React.RefObject<HTMLInputElement>;
-  constructor(props: { handleFileChange: (imageUrl: string) => void; showImageMessage: boolean }) {
+  constructor(props: IInputFile) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.fileInputRef = React.createRef();
@@ -20,9 +18,9 @@ class InputFile extends React.Component<
     const target = e.target as HTMLInputElement;
     const reader = new FileReader();
     const file = (target.files as FileList)[0];
-    this.setState({ fileName: file.name });
     reader.onloadend = () => {
       this.props.handleFileChange(reader.result as string);
+      this.setState({ fileName: file.name });
     };
     reader.readAsDataURL(file);
   }

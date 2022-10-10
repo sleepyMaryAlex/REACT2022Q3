@@ -1,12 +1,10 @@
 import React from 'react';
+import { IInputDate } from 'types/types';
 import './InputDate.css';
 
-class InputDate extends React.Component<{
-  handleDateChange: (date: string) => void;
-  showDateMessage: boolean;
-}> {
+class InputDate extends React.Component<IInputDate> {
   dateRef: React.RefObject<HTMLInputElement>;
-  constructor(props: { handleDateChange: (date: string) => void; showDateMessage: boolean }) {
+  constructor(props: IInputDate) {
     super(props);
     this.dateRef = React.createRef();
   }

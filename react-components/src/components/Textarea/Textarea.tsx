@@ -1,15 +1,10 @@
 import React from 'react';
+import { ITextarea } from 'types/types';
 import './Textarea.css';
 
-class Textarea extends React.Component<{
-  handleDescriptionChange: (description: string) => void;
-  showDescriptionMessage: boolean;
-}> {
+class Textarea extends React.Component<ITextarea> {
   textareaRef: React.RefObject<HTMLTextAreaElement>;
-  constructor(props: {
-    handleDescriptionChange: (description: string) => void;
-    showDescriptionMessage: boolean;
-  }) {
+  constructor(props: ITextarea) {
     super(props);
     this.textareaRef = React.createRef();
   }

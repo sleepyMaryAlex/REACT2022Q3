@@ -1,9 +1,10 @@
 import React from 'react';
+import { ISwitcher } from 'types/types';
 import './Switcher.css';
 
-class Switcher extends React.Component<{ handleSwitcherChange: (favorite: boolean) => void }> {
+class Switcher extends React.Component<ISwitcher> {
   switcherRef: React.RefObject<HTMLInputElement>;
-  constructor(props: { handleSwitcherChange: (favorite: boolean) => void }) {
+  constructor(props: ISwitcher) {
     super(props);
     this.switcherRef = React.createRef();
   }

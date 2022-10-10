@@ -1,12 +1,10 @@
 import React from 'react';
+import { IInputText } from 'types/types';
 import './InputText.css';
 
-class InputText extends React.Component<{
-  handleTitleChange: (title: string) => void;
-  showTitleMessage: boolean;
-}> {
+class InputText extends React.Component<IInputText> {
   textInputRef: React.RefObject<HTMLInputElement>;
-  constructor(props: { handleTitleChange: (title: string) => void; showTitleMessage: boolean }) {
+  constructor(props: IInputText) {
     super(props);
     this.textInputRef = React.createRef();
   }
