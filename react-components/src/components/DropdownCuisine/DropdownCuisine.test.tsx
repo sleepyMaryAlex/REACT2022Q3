@@ -1,10 +1,9 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import Dropdown from './Dropdown';
+import DropdownCuisine from './DropdownCuisine';
 
 test('should display the correct number of options', async () => {
   const handleClickByCuisine = jest.fn();
-  const handleClickByDiet = jest.fn();
   const cards = [
     {
       id: 716429,
@@ -20,20 +19,17 @@ test('should display the correct number of options', async () => {
     },
   ];
   render(
-    <Dropdown
+    <DropdownCuisine
       cards={cards}
       handleClickByCuisine={handleClickByCuisine}
-      handleClickByDiet={handleClickByDiet}
       cuisine="all cuisines"
-      diet="all diets"
     />
   );
-  expect(screen.getAllByRole('option').length).toBe(18);
+  expect(screen.getAllByRole('option').length).toBe(9);
 });
 
 test('check how many times an event fires', async () => {
   const handleClickByCuisine = jest.fn();
-  const handleClickByDiet = jest.fn();
   const cards = [
     {
       id: 716429,
@@ -49,12 +45,10 @@ test('check how many times an event fires', async () => {
     },
   ];
   render(
-    <Dropdown
+    <DropdownCuisine
       cards={cards}
       handleClickByCuisine={handleClickByCuisine}
-      handleClickByDiet={handleClickByDiet}
       cuisine="all cuisines"
-      diet="all diets"
     />
   );
   const select = screen.getAllByRole('combobox');
