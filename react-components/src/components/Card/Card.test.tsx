@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Card from './Card';
 
-test('card should contain title', async () => {
+test('card should contain title', () => {
   const cards = [
     {
       id: 716429,

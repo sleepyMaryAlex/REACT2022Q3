@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import Cards from './Cards';
 
-test('count of cards must be the same as count of rendered cards', async () => {
+test('count of cards must be the same as count of rendered cards', () => {
   const cards = [
     {
       id: 716429,

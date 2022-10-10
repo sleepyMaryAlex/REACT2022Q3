@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Main from './Main';
 
-test('check if the search image has been rendered and if it has a class', async () => {
+test('check if the search image has been rendered and if it has a class', () => {
   const cards = [
     {
       id: 716429,

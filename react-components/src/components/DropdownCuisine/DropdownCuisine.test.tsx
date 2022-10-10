@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import DropdownCuisine from './DropdownCuisine';
 
-test('should display the correct number of options', async () => {
+test('should display the correct number of options', () => {
   const handleClickByCuisine = jest.fn();
   const cards = [
     {
@@ -28,7 +28,7 @@ test('should display the correct number of options', async () => {
   expect(screen.getAllByRole('option').length).toBe(9);
 });
 
-test('check how many times an event fires', async () => {
+test('check how many times an event fires', () => {
   const handleClickByCuisine = jest.fn();
   const cards = [
     {

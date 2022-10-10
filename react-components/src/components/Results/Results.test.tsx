@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Results from './Results';
 
-test('check if the result title has been rendered and if it has a class', async () => {
+test('check if the result title has been rendered and if it has a class', () => {
   const cards = [
     {
       id: 716429,
