@@ -22,6 +22,7 @@ class Form extends React.Component<IForm, IFormState> {
       cuisine: '',
       favorite: false,
       date: '',
+      fileName: '',
       showTitleMessage: false,
       showImageMessage: false,
       showDescriptionMessage: false,
@@ -37,6 +38,16 @@ class Form extends React.Component<IForm, IFormState> {
 
   resetForm() {
     this.formRef.current?.reset();
+    this.setState({
+      diet: [],
+      image: '',
+      title: '',
+      description: '',
+      cuisine: '',
+      favorite: false,
+      date: '',
+      fileName: '',
+    });
   }
 
   checkIfItIsPossibleToSubmit() {
@@ -125,9 +136,8 @@ class Form extends React.Component<IForm, IFormState> {
       };
       this.props.handleModal(true);
       this.props.addNewRecipe(card);
-      this.setState({ canClearForm: !this.state.canClearForm, canCheckMistakes: false });
-      setTimeout(() => this.setState({ canSubmit: false }));
       this.resetForm();
+      this.setState({ canCheckMistakes: false, canSubmit: false });
     } else {
       this.checkTitle(title);
       this.checkDate(date);
@@ -139,8 +149,10 @@ class Form extends React.Component<IForm, IFormState> {
     }
   }
 
-  handleFileChange(image: string) {
-    this.setState({ image, showImageMessage: false }, () => this.checkIfItIsPossibleToSubmit());
+  handleFileChange(image: string, fileName: string) {
+    this.setState({ image, fileName, showImageMessage: false }, () =>
+      this.checkIfItIsPossibleToSubmit()
+    );
   }
 
   handleTitleChange(title: string) {
@@ -187,36 +199,28 @@ class Form extends React.Component<IForm, IFormState> {
           <InputText
             handleTitleChange={this.handleTitleChange.bind(this)}
             showTitleMessage={showTitleMessage}
-            canClearForm={this.state.canClearForm}
           />
           <InputFile
             handleFileChange={this.handleFileChange.bind(this)}
             showImageMessage={showImageMessage}
-            canClearForm={this.state.canClearForm}
+            fileName={this.state.fileName}
           />
           <Textarea
             handleDescriptionChange={this.handleDescriptionChange.bind(this)}
             showDescriptionMessage={showDescriptionMessage}
-            canClearForm={this.state.canClearForm}
           />
           <SelectCuisine
             handleCuisineChange={this.handleCuisineChange.bind(this)}
             showCuisineMessage={showCuisineMessage}
-            canClearForm={this.state.canClearForm}
           />
           <Checkbox
             handleDietChange={this.handleDietChange.bind(this)}
             showDietMessage={showDietMessage}
-            canClearForm={this.state.canClearForm}
           />
-          <Switcher
-            handleSwitcherChange={this.handleSwitcherChange.bind(this)}
-            canClearForm={this.state.canClearForm}
-          />
+          <Switcher handleSwitcherChange={this.handleSwitcherChange.bind(this)} />
           <InputDate
             handleDateChange={this.handleDateChange.bind(this)}
             showDateMessage={showDateMessage}
-            canClearForm={this.state.canClearForm}
           />
           <input
             type="button"
