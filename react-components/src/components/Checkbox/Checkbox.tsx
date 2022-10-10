@@ -1,15 +1,11 @@
 import React from 'react';
+import { ICheckbox } from 'types/types';
 import './Checkbox.css';
 
-class Checkbox extends React.Component<
-  {
-    handleDietChange: (diet: string[]) => void;
-    showDietMessage: boolean;
-  },
-  { checkedState: boolean[] }
-> {
+class Checkbox extends React.Component<ICheckbox, { checkedState: boolean[] }> {
   diet: string[];
-  constructor(props: { handleDietChange: (diet: string[]) => void; showDietMessage: boolean }) {
+  checkboxRef: React.RefObject<HTMLInputElement>;
+  constructor(props: ICheckbox) {
     super(props);
     this.diet = [
       'GLUTEN FREE',
@@ -20,7 +16,9 @@ class Checkbox extends React.Component<
       'PALEO',
       'LOW FODMAP',
       'WHOLE30',
+      'OTHER',
     ];
+    this.checkboxRef = React.createRef();
     this.state = {
       checkedState: new Array(this.diet.length).fill(false),
     };
@@ -65,10 +63,10 @@ class Checkbox extends React.Component<
               <input
                 type="checkbox"
                 className="checkbox"
-                onChange={() => this.handleChange(index)}
+                onChange={this.handleChange.bind(this, index)}
                 id={value}
                 name="diet"
-                value={value}
+                //value={value}
               />
               <label className="checkbox__label" htmlFor={value}>
                 {value}

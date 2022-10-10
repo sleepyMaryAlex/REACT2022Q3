@@ -11,6 +11,7 @@ import { IForm, IFormState } from 'types/types';
 import './Form.css';
 
 class Form extends React.Component<IForm, IFormState> {
+  formRef: React.RefObject<HTMLFormElement>;
   constructor(props: IForm) {
     super(props);
     this.state = {
@@ -31,6 +32,11 @@ class Form extends React.Component<IForm, IFormState> {
       canCheckMistakes: false,
       canClearForm: false,
     };
+    this.formRef = React.createRef();
+  }
+
+  resetForm() {
+    this.formRef.current?.reset();
   }
 
   checkIfItIsPossibleToSubmit() {
@@ -121,6 +127,7 @@ class Form extends React.Component<IForm, IFormState> {
       this.props.addNewRecipe(card);
       this.setState({ canClearForm: !this.state.canClearForm, canCheckMistakes: false });
       setTimeout(() => this.setState({ canSubmit: false }));
+      this.resetForm();
     } else {
       this.checkTitle(title);
       this.checkDate(date);
@@ -172,7 +179,7 @@ class Form extends React.Component<IForm, IFormState> {
       showDateMessage,
     } = this.state;
     return (
-      <form className="form">
+      <form className="form" ref={this.formRef}>
         <div className="form__title">
           <h2>CREATE A RECIPE</h2>
         </div>
