@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/sleepymaryalex-REACT2022Q3/react-hooks/static/css/main.4275c27b.css",
+    "main.js": "/sleepymaryalex-REACT2022Q3/react-hooks/static/js/main.f841a893.js",
+    "static/media/rick-and-morty.png": "/sleepymaryalex-REACT2022Q3/react-hooks/static/media/rick-and-morty.ac5509cfbeccebd423c0.png",
+    "static/media/calendar.svg": "/sleepymaryalex-REACT2022Q3/react-hooks/static/media/calendar.220210f7028d09d5b26b.svg",
+    "static/media/icon.svg": "/sleepymaryalex-REACT2022Q3/react-hooks/static/media/icon.0300815547ab29ee9a9f8ee4e3852e77.svg",
+    "static/media/upload.svg": "/sleepymaryalex-REACT2022Q3/react-hooks/static/media/upload.81d47aa93b31b1952a673563517a1d7a.svg",
+    "index.html": "/sleepymaryalex-REACT2022Q3/react-hooks/index.html",
+    "static/media/close-button.svg": "/sleepymaryalex-REACT2022Q3/react-hooks/static/media/close-button.e302745f1ceb591b89558fcee9c7820b.svg",
+    "static/media/prev-arrow.svg": "/sleepymaryalex-REACT2022Q3/react-hooks/static/media/prev-arrow.ac63c7c4d2e44bfd03e9bc9511e2d9da.svg",
+    "main.4275c27b.css.map": "/sleepymaryalex-REACT2022Q3/react-hooks/static/css/main.4275c27b.css.map",
+    "main.f841a893.js.map": "/sleepymaryalex-REACT2022Q3/react-hooks/static/js/main.f841a893.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4275c27b.css",
+    "static/js/main.f841a893.js"
+  ]
+}

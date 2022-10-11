@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/sleepymaryalex-REACT2022Q3/react-forms/static/css/main.9de0c5f6.css",
+    "main.js": "/sleepymaryalex-REACT2022Q3/react-forms/static/js/main.4ba2eb85.js",
+    "static/media/background.jpg": "/sleepymaryalex-REACT2022Q3/react-forms/static/media/background.1f4bcb0ccf6a420218e8.jpg",
+    "static/media/diet.png": "/sleepymaryalex-REACT2022Q3/react-forms/static/media/diet.c28c1c868f22c7246fa7.png",
+    "static/media/ontology.svg": "/sleepymaryalex-REACT2022Q3/react-forms/static/media/ontology.f3c6eb418f4ebd015cc3960c4f241d9b.svg",
+    "static/media/spoonacular.svg": "/sleepymaryalex-REACT2022Q3/react-forms/static/media/spoonacular.eec8dea58ed314f7dab9aaea3ed4cec5.svg",
+    "static/media/calendar.svg": "/sleepymaryalex-REACT2022Q3/react-forms/static/media/calendar.220210f7028d09d5b26b.svg",
+    "static/media/icon.svg": "/sleepymaryalex-REACT2022Q3/react-forms/static/media/icon.0300815547ab29ee9a9f8ee4e3852e77.svg",
+    "static/media/upload.svg": "/sleepymaryalex-REACT2022Q3/react-forms/static/media/upload.81d47aa93b31b1952a673563517a1d7a.svg",
+    "index.html": "/sleepymaryalex-REACT2022Q3/react-forms/index.html",
+    "static/media/close-button.svg": "/sleepymaryalex-REACT2022Q3/react-forms/static/media/close-button.e302745f1ceb591b89558fcee9c7820b.svg",
+    "static/media/prev-arrow.svg": "/sleepymaryalex-REACT2022Q3/react-forms/static/media/prev-arrow.ac63c7c4d2e44bfd03e9bc9511e2d9da.svg",
+    "main.9de0c5f6.css.map": "/sleepymaryalex-REACT2022Q3/react-forms/static/css/main.9de0c5f6.css.map",
+    "main.4ba2eb85.js.map": "/sleepymaryalex-REACT2022Q3/react-forms/static/js/main.4ba2eb85.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9de0c5f6.css",
+    "static/js/main.4ba2eb85.js"
+  ]
+}
