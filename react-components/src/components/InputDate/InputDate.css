@@ -1,6 +1,7 @@
 .input-date__container {
   display: flex;
-  height: 117px;
+  height: 119px;
+  width: 182px;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
@@ -11,7 +12,9 @@
 }
 
 ::-webkit-datetime-edit {
-  padding: 15px;
+  padding: 10px;
+  background-color: #2d383f;
+  height: 25px;
 }
 
 ::-webkit-datetime-edit-text {
@@ -24,21 +27,26 @@
 }
 
 .input-date::-webkit-calendar-picker-indicator {
-  padding-right: 9px;
+  padding: 0 6px 0 5px;
   cursor: pointer;
   background-image: url("../../assets/icons/calendar.svg");
 }
 
 .input-date {
-  background-color: rgb(0 136 255);
   border-radius: 5px;
   border: none;
+  border-color: transparent;
   outline: none;
   color: #fff;
   font-size: 18px;
+  margin-top: 4px;
 }
 
 .input-date__label {
   font-size: 19px;
   font-weight: 600;
+}
+
+.form__message {
+  padding-bottom: 5px;
 }
