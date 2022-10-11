@@ -13,7 +13,7 @@
 
 ::-webkit-datetime-edit {
   padding: 10px;
-  background-color: #2d383f;
+  background-color: #fff;
   height: 25px;
 }
 
@@ -35,9 +35,8 @@
 .input-date {
   border-radius: 5px;
   border: none;
-  border-color: transparent;
   outline: none;
-  color: #fff;
+  color: #000;
   font-size: 18px;
   margin-top: 4px;
 }
