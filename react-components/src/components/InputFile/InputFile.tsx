@@ -21,6 +21,12 @@ class InputFile extends React.Component<IInputFile, { fileName: string }> {
     reader.readAsDataURL(file);
   }
 
+  editFileName(fileName: string) {
+    return fileName.length > 15
+      ? `${fileName.split('.')[0].slice(0, 10)}...${fileName.split('.')[1]}`
+      : fileName;
+  }
+
   render() {
     return (
       <div className="form__file-field">
@@ -34,7 +40,7 @@ class InputFile extends React.Component<IInputFile, { fileName: string }> {
         <label htmlFor="input-file" className="input-file__button">
           <img className="input-file__image" src={uploadImage} alt="upload" />
           <span className="input-file__text">
-            {this.props.fileName ? this.props.fileName : 'UPLOAD IMAGE'}
+            {this.props.fileName ? this.editFileName(this.props.fileName) : 'UPLOAD IMAGE'}
           </span>
         </label>
         <p className="form__message">{this.props.showImageMessage ? 'Please, upload image' : ''}</p>

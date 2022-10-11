@@ -127,6 +127,7 @@ export interface ISelectCuisine {
 export interface ICheckbox {
   handleDietChange: (diet: string[]) => void;
   showDietMessage: boolean;
+  canClearForm: boolean;
 }
 
 export interface ISwitcher {
@@ -136,4 +137,5 @@ export interface ISwitcher {
 export interface IInputDate {
   handleDateChange: (date: string) => void;
   showDateMessage: boolean;
+  canClearForm: boolean;
 }

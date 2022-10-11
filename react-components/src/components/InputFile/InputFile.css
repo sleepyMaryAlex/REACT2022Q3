@@ -1,5 +1,5 @@
 .form__file-field {
-  width: 100%;
+  width: 280px;
   height: 70px;
   position: relative;
   margin: 15px 0;
@@ -18,19 +18,18 @@
   height: 60px;
   width: 60px;
   padding: 15px;
-  margin-right: 50px;
   border-right: 1px solid #fff;
 }
 
 .input-file__button {
-  width: 100%;
-  max-width: 280px;
+  width: 280px;
   height: 60px;
   background: rgb(0 136 255);
   color: #fff;
   font-size: 20px;
   font-weight: 600;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
   align-items: center;
   border-radius: 3px;
   cursor: pointer;

@@ -137,7 +137,11 @@ class Form extends React.Component<IForm, IFormState> {
       this.props.handleModal(true);
       this.props.addNewRecipe(card);
       this.resetForm();
-      this.setState({ canCheckMistakes: false, canSubmit: false });
+      this.setState({
+        canCheckMistakes: false,
+        canSubmit: false,
+        canClearForm: !this.state.canClearForm,
+      });
     } else {
       this.checkTitle(title);
       this.checkDate(date);
@@ -189,6 +193,7 @@ class Form extends React.Component<IForm, IFormState> {
       showCuisineMessage,
       showDietMessage,
       showDateMessage,
+      canClearForm,
     } = this.state;
     return (
       <form className="form" ref={this.formRef}>
@@ -216,11 +221,13 @@ class Form extends React.Component<IForm, IFormState> {
           <Checkbox
             handleDietChange={this.handleDietChange.bind(this)}
             showDietMessage={showDietMessage}
+            canClearForm={canClearForm}
           />
           <Switcher handleSwitcherChange={this.handleSwitcherChange.bind(this)} />
           <InputDate
             handleDateChange={this.handleDateChange.bind(this)}
             showDateMessage={showDateMessage}
+            canClearForm={canClearForm}
           />
           <input
             type="button"
