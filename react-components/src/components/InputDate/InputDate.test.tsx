@@ -4,6 +4,8 @@ import InputDate from './InputDate';
 
 test('should contain label with text', () => {
   const handleDateChange = jest.fn();
-  render(<InputDate handleDateChange={handleDateChange} showDateMessage={true} />);
+  render(
+    <InputDate handleDateChange={handleDateChange} showDateMessage={true} canClearForm={false} />
+  );
   expect(screen.getByLabelText(/DATE OF CREATION/i)).toBeInTheDocument();
 });
