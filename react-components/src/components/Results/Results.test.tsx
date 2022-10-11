@@ -24,7 +24,6 @@ test('check if the result title has been rendered and if it has a class', () => 
       handleClickByCuisine={handleClickByCuisine}
       handleClickByDiet={handleClickByDiet}
       cards={cards}
-      numShow={30}
       cuisine="all cuisines"
       diet="all diets"
     />

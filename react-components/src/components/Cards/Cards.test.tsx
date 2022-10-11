@@ -17,6 +17,6 @@ test('count of cards must be the same as count of rendered cards', () => {
       imageType: 'svg',
     },
   ];
-  const { container } = render(<Cards cards={cards} numShow={30} />);
+  const { container } = render(<Cards cards={cards} />);
   expect(container.getElementsByClassName('card').length).toBe(cards.length);
 });

@@ -1,20 +1,8 @@
-export interface IAppState {
-  cards: ICard[];
-  numShow: number;
-  isMainPage: boolean;
-}
-
 export interface IMainState {
+  cards: ICard[];
   value: string;
   cuisine: string;
   diet: string;
-}
-
-export interface IMain {
-  numShow: number;
-  cards: ICard[];
-  setCurrentPage: (isMainPage: boolean) => void;
-  updateState: (value: string, cuisine: string, diet: string) => Promise<void>;
 }
 
 export interface ICard {
@@ -38,7 +26,6 @@ export interface ISearchBar {
 
 export interface IResults {
   cards: ICard[];
-  numShow: number;
   handleClickByCuisine: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   handleClickByDiet: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   cuisine: string;
@@ -47,7 +34,6 @@ export interface IResults {
 
 export interface ICards {
   cards: ICard[];
-  numShow: number;
 }
 
 export interface IDropdown {

@@ -30,7 +30,7 @@ class Results extends React.Component<IResults> {
             </div>
           </div>
         </div>
-        <Cards cards={this.props.cards} numShow={this.props.numShow} />
+        <Cards cards={this.props.cards} />
       </div>
     );
   }
