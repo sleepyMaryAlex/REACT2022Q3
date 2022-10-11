@@ -38,6 +38,12 @@ class Checkbox extends React.Component<ICheckbox, { checkedState: boolean[] }> {
     this.props.handleDietChange(diet);
   }
 
+  componentDidUpdate(prevProps: ICheckbox) {
+    if (prevProps.canClearForm !== this.props.canClearForm) {
+      this.setState({ checkedState: new Array(this.diet.length).fill(false) });
+    }
+  }
+
   render() {
     return (
       <div className="checkbox__container">
@@ -48,7 +54,7 @@ class Checkbox extends React.Component<ICheckbox, { checkedState: boolean[] }> {
               <input
                 type="checkbox"
                 className="checkbox"
-                onChange={this.handleChange.bind(this, index)}
+                onClick={this.handleChange.bind(this, index)}
                 id={value}
                 name="diet"
               />
