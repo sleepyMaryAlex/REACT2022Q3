@@ -3,7 +3,6 @@ import Results from 'components/Results/Results';
 import SearchBar from 'components/SearchBar/SearchBar';
 import React from 'react';
 import { IMainState } from 'types/types';
-import withGracefulUnmount from 'withGracefulUnmount';
 import './Main.css';
 
 class Main extends React.Component<object, IMainState> {
@@ -74,4 +73,4 @@ class Main extends React.Component<object, IMainState> {
   }
 }
 
-export default withGracefulUnmount(Main);
+export default Main;
