@@ -14,12 +14,12 @@
   background-color: #fff;
   width: 550px;
   height: 40px;
-  border-bottom: 5px solid rgb(0 136 255);
+  border-bottom: 5px solid #9386a4;
 }
 
 .search__title {
   font-size: 26px;
-  padding-left: 10px;
+  padding: 2px 0 0 10px;
   font-weight: 600;
 }
 
@@ -32,6 +32,7 @@
   font-size: 20px;
   padding: 0 5px;
   background: transparent;
+  font-family: inherit;
 }
 
 @media (max-width: 600px) {

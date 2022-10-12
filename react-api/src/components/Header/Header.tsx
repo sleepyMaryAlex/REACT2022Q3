@@ -8,7 +8,7 @@ class Header extends React.Component {
       <div className="header">
         <div className="header__wrapper">
           <NavLink className="header__title" to="/">
-            RICK AND MORTY<span>.</span>
+            Rick and Morty
           </NavLink>
         </div>
       </div>

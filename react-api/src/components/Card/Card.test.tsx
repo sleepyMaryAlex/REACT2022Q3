@@ -3,21 +3,32 @@ import { render, screen } from '@testing-library/react';
 import Card from './Card';
 
 test('card should contain title', () => {
-  const cards = [
+  const results = [
     {
-      id: 716429,
-      title: 'Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs',
-      image: '../../assets/images/diet.png',
-      imageType: 'png',
-    },
-    {
-      id: 715538,
-      title: 'Bruschetta Style Pork & Pasta',
-      image: '../../assets/icons/spoonacular.svg',
-      imageType: 'svg',
+      id: 1,
+      name: 'Rick Sanchez',
+      status: 'Alive',
+      species: 'Human',
+      type: '',
+      gender: 'Male',
+      origin: {
+        name: 'Earth',
+        url: 'https://rickandmortyapi.com/api/location/1',
+      },
+      location: {
+        name: 'Earth',
+        url: 'https://rickandmortyapi.com/api/location/20',
+      },
+      image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
+      episode: [
+        'https://rickandmortyapi.com/api/episode/1',
+        'https://rickandmortyapi.com/api/episode/2',
+      ],
+      url: 'https://rickandmortyapi.com/api/character/1',
+      created: '2017-11-04T18:48:46.250Z',
     },
   ];
-  render(<Card card={cards[0]} />);
-  const title = cards[0].title;
-  expect(screen.getByText(title, { exact: false })).toBeInTheDocument();
+  render(<Card card={results[0]} />);
+  const name = results[0].name;
+  expect(screen.getByText(name, { exact: false })).toBeInTheDocument();
 });

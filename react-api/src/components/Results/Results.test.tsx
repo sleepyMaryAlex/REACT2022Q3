@@ -3,30 +3,31 @@ import { render, screen } from '@testing-library/react';
 import Results from './Results';
 
 test('check if the result title has been rendered and if it has a class', () => {
-  const cards = [
+  const results = [
     {
-      id: 716429,
-      title: 'Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs',
-      image: '../../assets/images/diet.png',
-      imageType: 'png',
-    },
-    {
-      id: 715538,
-      title: 'Bruschetta Style Pork & Pasta',
-      image: '../../assets/icons/spoonacular.svg',
-      imageType: 'svg',
+      id: 1,
+      name: 'Rick Sanchez',
+      status: 'Alive',
+      species: 'Human',
+      type: '',
+      gender: 'Male',
+      origin: {
+        name: 'Earth',
+        url: 'https://rickandmortyapi.com/api/location/1',
+      },
+      location: {
+        name: 'Earth',
+        url: 'https://rickandmortyapi.com/api/location/20',
+      },
+      image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
+      episode: [
+        'https://rickandmortyapi.com/api/episode/1',
+        'https://rickandmortyapi.com/api/episode/2',
+      ],
+      url: 'https://rickandmortyapi.com/api/character/1',
+      created: '2017-11-04T18:48:46.250Z',
     },
   ];
-  const handleClickByCuisine = jest.fn();
-  const handleClickByDiet = jest.fn();
-  render(
-    <Results
-      handleClickByCuisine={handleClickByCuisine}
-      handleClickByDiet={handleClickByDiet}
-      cards={cards}
-      cuisine="all cuisines"
-      diet="all diets"
-    />
-  );
+  render(<Results results={results} count={1} currentPage={1} pages={1} />);
   expect(screen.getByText(/results/i)).toHaveClass('results__title');
 });

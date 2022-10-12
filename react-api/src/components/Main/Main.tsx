@@ -9,65 +9,47 @@ class Main extends React.Component<object, IMainState> {
   constructor(props: object) {
     super(props);
     this.state = {
-      cards: [],
-      value: localStorage.getItem('value') || '',
-      cuisine: localStorage.getItem('cuisine') || 'all cuisines',
-      diet: localStorage.getItem('diet') || 'all diets',
+      results: [],
+      pages: 0,
+      count: 0,
+      currentPage: Number(localStorage.getItem('currentPage')) || 1,
+      query: localStorage.getItem('query') || '',
     };
   }
 
-  async updateState(value: string, cuisine: string, diet: string) {
+  async updateState(page: number, query: string) {
+    const { results, info } = await Loader.getData(page, query);
     this.setState({
-      cards: await Loader.getCards(value, cuisine, diet),
+      results: results,
+      pages: info.pages,
+      count: info.count,
     });
   }
 
   async componentDidMount() {
-    const { value, cuisine, diet } = this.state;
-    this.updateState(value, cuisine, diet);
+    const { currentPage, query } = this.state;
+    this.updateState(currentPage, query);
   }
 
   componentWillUnmount() {
-    localStorage.setItem('value', this.state.value);
+    const { currentPage, query } = this.state;
+    localStorage.setItem('query', query);
+    localStorage.setItem('currentPage', currentPage.toString());
   }
 
   handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const target = event.target as HTMLInputElement;
-    const { cuisine, diet } = this.state;
-    const value = target.value;
-    this.updateState(value, cuisine, diet);
-    this.setState({ value });
-  }
-
-  handleClickByCuisine(event: React.ChangeEvent<HTMLSelectElement>) {
-    const target = event.target as HTMLSelectElement;
-    const { value, diet } = this.state;
-    const cuisine = target.value;
-    localStorage.setItem('cuisine', cuisine);
-    this.updateState(value, cuisine, diet);
-    this.setState({ cuisine: cuisine });
-  }
-
-  handleClickByDiet(event: React.ChangeEvent<HTMLSelectElement>) {
-    const target = event.target as HTMLSelectElement;
-    const { value, cuisine } = this.state;
-    const diet = target.value;
-    localStorage.setItem('diet', diet);
-    this.updateState(value, cuisine, diet);
-    this.setState({ diet: diet });
+    const query = target.value;
+    this.updateState(1, query);
+    this.setState({ query, currentPage: 1 });
   }
 
   render() {
+    const { query, results, count, currentPage, pages } = this.state;
     return (
       <div className="main">
-        <SearchBar value={this.state.value} handleChange={this.handleChange.bind(this)} />
-        <Results
-          cards={this.state.cards}
-          handleClickByCuisine={this.handleClickByCuisine.bind(this)}
-          handleClickByDiet={this.handleClickByDiet.bind(this)}
-          cuisine={this.state.cuisine}
-          diet={this.state.diet}
-        />
+        <SearchBar query={query} handleChange={this.handleChange.bind(this)} />
+        <Results results={results} count={count} currentPage={currentPage} pages={pages} />
       </div>
     );
   }

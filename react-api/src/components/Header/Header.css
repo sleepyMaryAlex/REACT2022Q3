@@ -1,5 +1,5 @@
 .header {
-  height: 65px;
+  height: 150px;
   background-color: #000;
 }
 
@@ -7,18 +7,16 @@
   max-width: 1680px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .header__title {
   color: #fff;
-  font-size: 40px;
+  font-family: "Paytone One", sans-serif;
+  font-size: 65px;
+  margin-top: 30px;
   font-weight: 700;
   letter-spacing: 2px;
-}
-
-.header__title span {
-  color: rgb(0 136 255);
 }
 
 @media (max-width: 540px) {

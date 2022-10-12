@@ -12,12 +12,12 @@ class SearchBar extends React.Component<ISearchBar> {
     return (
       <div className="search">
         <div className="search__container">
-          <p className="search__title">I WANT TO MAKE</p>
+          <p className="search__title">I want to find</p>
           <img className="search__image" src={icon} alt="icon" />
           <input
             className="search__bar"
             type="text"
-            value={this.props.value}
+            value={this.props.query}
             autoFocus
             spellCheck="false"
             onChange={(e) => this.props.handleChange(e)}

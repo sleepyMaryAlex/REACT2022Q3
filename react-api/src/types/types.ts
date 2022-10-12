@@ -1,127 +1,57 @@
-export interface IMainState {
-  cards: ICard[];
-  value: string;
-  cuisine: string;
-  diet: string;
-}
-
-export interface ICard {
-  id: number;
-  title: string;
-  image: string;
-  imageType: string;
-}
-
 export interface IResult {
-  offset: number;
-  number: number;
-  results: ICard[];
-  totalResults: number;
+  id: number;
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
+  origin: {
+    name: string;
+    url: string;
+  };
+  location: {
+    name: string;
+    url: string;
+  };
+  image: string;
+  episode: string[];
+  url: string;
+  created: string;
+}
+
+interface IInfo {
+  count: number;
+  pages: number;
+  next: string | null;
+  prev: string | null;
+}
+
+export interface IData {
+  info: IInfo;
+  results: IResult[];
+}
+
+export interface IMainState {
+  results: IResult[];
+  pages: number;
+  count: number;
+  currentPage: number;
+  query: string;
 }
 
 export interface ISearchBar {
-  value: string;
+  query: string;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface IResults {
-  cards: ICard[];
-  handleClickByCuisine: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  handleClickByDiet: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  cuisine: string;
-  diet: string;
+  results: IResult[];
+  count: number;
+  currentPage: number;
+  pages: number;
 }
 
 export interface ICards {
-  cards: ICard[];
-}
-
-export interface IDropdown {
-  cards: [] | ICard[];
-  handleClickByCuisine: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  handleClickByDiet: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  cuisine: string;
-  diet: string;
-}
-
-export interface IDropdownCuisine {
-  cards: [] | ICard[];
-  handleClickByCuisine: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  cuisine: string;
-}
-
-export interface IDropdownDiet {
-  cards: [] | ICard[];
-  handleClickByDiet: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  diet: string;
-}
-
-export interface IWithGracefulUnmount {
-  mounted: boolean;
-}
-
-export interface IRecipeCard {
-  image: string;
-  title: string;
-  description: string;
-  cuisine: string;
-  diet: string[];
-  favorite: boolean;
-  date: string;
-}
-
-export interface IFormState extends IRecipeCard {
-  showTitleMessage: boolean;
-  showImageMessage: boolean;
-  showDescriptionMessage: boolean;
-  showCuisineMessage: boolean;
-  showDietMessage: boolean;
-  showDateMessage: boolean;
-  canSubmit: boolean;
-  canCheckMistakes: boolean;
-  canClearForm: boolean;
-  fileName: string;
-}
-
-export interface IForm {
-  addNewRecipe: (card: IRecipeCard) => void;
-  isModalOpen: boolean;
-  handleModal: (openModal: boolean) => void;
-}
-
-export interface IInputText {
-  handleTitleChange: (title: string) => void;
-  showTitleMessage: boolean;
-}
-
-export interface IInputFile {
-  handleFileChange: (imageUrl: string, fileName: string) => void;
-  showImageMessage: boolean;
-  fileName: string;
-}
-
-export interface ITextarea {
-  handleDescriptionChange: (description: string) => void;
-  showDescriptionMessage: boolean;
-}
-
-export interface ISelectCuisine {
-  handleCuisineChange: (cuisine: string) => void;
-  showCuisineMessage: boolean;
-}
-
-export interface ICheckbox {
-  handleDietChange: (diet: string[]) => void;
-  showDietMessage: boolean;
-  canClearForm: boolean;
-}
-
-export interface ISwitcher {
-  handleSwitcherChange: (favorite: boolean) => void;
-}
-
-export interface IInputDate {
-  handleDateChange: (date: string) => void;
-  showDateMessage: boolean;
-  canClearForm: boolean;
+  results: IResult[];
+  count: number;
 }
