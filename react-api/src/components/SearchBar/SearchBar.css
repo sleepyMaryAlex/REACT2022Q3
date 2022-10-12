@@ -25,6 +25,7 @@
 
 .search__image {
   width: 20px;
+  cursor: pointer;
 }
 
 .search__bar {

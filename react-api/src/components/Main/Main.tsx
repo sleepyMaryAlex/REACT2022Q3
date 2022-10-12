@@ -32,23 +32,30 @@ class Main extends React.Component<object, IMainState> {
   }
 
   componentWillUnmount() {
-    const { currentPage, query } = this.state;
-    localStorage.setItem('query', query);
+    const { currentPage } = this.state;
     localStorage.setItem('currentPage', currentPage.toString());
   }
 
   handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const target = event.target as HTMLInputElement;
-    const query = target.value;
-    this.updateState(1, query);
-    this.setState({ query, currentPage: 1 });
+    this.setState({ query: target.value });
+  }
+
+  handleSubmit() {
+    this.setState({ currentPage: 1 });
+    this.updateState(1, this.state.query);
+    localStorage.setItem('query', this.state.query);
   }
 
   render() {
     const { query, results, count, currentPage, pages } = this.state;
     return (
       <div className="main">
-        <SearchBar query={query} handleChange={this.handleChange.bind(this)} />
+        <SearchBar
+          query={query}
+          handleSubmit={this.handleSubmit.bind(this)}
+          handleChange={this.handleChange.bind(this)}
+        />
         <Results results={results} count={count} currentPage={currentPage} pages={pages} />
       </div>
     );

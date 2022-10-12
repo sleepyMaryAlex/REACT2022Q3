@@ -42,6 +42,7 @@ export interface IMainState {
 export interface ISearchBar {
   query: string;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: () => void;
 }
 
 export interface IResults {
