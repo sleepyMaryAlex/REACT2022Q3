@@ -7,14 +7,7 @@ import React from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 
-class App extends React.Component<object> {
-  constructor(props: object) {
-    super(props);
-    this.state = {
-      cards: [],
-    };
-  }
-
+class App extends React.Component {
   render() {
     return (
       <div className="app">
