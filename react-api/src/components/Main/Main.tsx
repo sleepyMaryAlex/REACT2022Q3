@@ -1,12 +1,13 @@
 import Loader from 'app/loader';
+import Modal from 'components/Modal/Modal';
 import Results from 'components/Results/Results';
 import SearchBar from 'components/SearchBar/SearchBar';
 import React from 'react';
-import { IMainState } from 'types/types';
+import { IMain, IMainState } from 'types/types';
 import './Main.css';
 
-class Main extends React.Component<object, IMainState> {
-  constructor(props: object) {
+class Main extends React.Component<IMain, IMainState> {
+  constructor(props: IMain) {
     super(props);
     this.state = {
       results: [],
@@ -14,6 +15,7 @@ class Main extends React.Component<object, IMainState> {
       count: 0,
       currentPage: Number(localStorage.getItem('currentPage')) || 1,
       query: localStorage.getItem('query') || '',
+      index: 1,
     };
   }
 
@@ -47,8 +49,12 @@ class Main extends React.Component<object, IMainState> {
     localStorage.setItem('query', this.state.query);
   }
 
+  setIndex(index: number) {
+    this.setState({ index: index });
+  }
+
   render() {
-    const { query, results, count, currentPage, pages } = this.state;
+    const { query, results, count, currentPage, pages, index: index } = this.state;
     return (
       <div className="main">
         <SearchBar
@@ -56,7 +62,19 @@ class Main extends React.Component<object, IMainState> {
           handleSubmit={this.handleSubmit.bind(this)}
           handleChange={this.handleChange.bind(this)}
         />
-        <Results results={results} count={count} currentPage={currentPage} pages={pages} />
+        <Results
+          results={results}
+          count={count}
+          currentPage={currentPage}
+          pages={pages}
+          setOpenModal={this.props.setOpenModal}
+          setIndex={this.setIndex.bind(this)}
+        />
+        {this.props.openModal ? (
+          <Modal setOpenModal={this.props.setOpenModal} card={results[index]} />
+        ) : (
+          ''
+        )}
       </div>
     );
   }

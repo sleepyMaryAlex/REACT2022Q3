@@ -3,6 +3,8 @@ import { render, screen } from '@testing-library/react';
 import Results from './Results';
 
 test('check if the result title has been rendered and if it has a class', () => {
+  const setOpenModal = jest.fn();
+  const setIndex = jest.fn();
   const results = [
     {
       id: 1,
@@ -28,6 +30,15 @@ test('check if the result title has been rendered and if it has a class', () => 
       created: '2017-11-04T18:48:46.250Z',
     },
   ];
-  render(<Results results={results} count={1} currentPage={1} pages={1} />);
+  render(
+    <Results
+      results={results}
+      count={1}
+      currentPage={1}
+      pages={1}
+      setOpenModal={setOpenModal}
+      setIndex={setIndex}
+    />
+  );
   expect(screen.getByText(/results/i)).toHaveClass('results__title');
 });

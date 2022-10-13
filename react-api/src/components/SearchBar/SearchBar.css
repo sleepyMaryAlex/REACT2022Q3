@@ -12,6 +12,7 @@
   flex-direction: row;
   justify-content: space-between;
   background-color: #fff;
+  border-radius: 10px;
   width: 550px;
   height: 40px;
   border-bottom: 5px solid #9386a4;

@@ -37,6 +37,12 @@ export interface IMainState {
   count: number;
   currentPage: number;
   query: string;
+  index: number;
+}
+
+export interface IMain {
+  openModal: boolean;
+  setOpenModal: (openModal: boolean) => void;
 }
 
 export interface ISearchBar {
@@ -50,9 +56,25 @@ export interface IResults {
   count: number;
   currentPage: number;
   pages: number;
+  setOpenModal: (openModal: boolean) => void;
+  setIndex: (index: number) => void;
 }
 
 export interface ICards {
   results: IResult[];
   count: number;
+  setOpenModal: (openModal: boolean) => void;
+  setIndex: (index: number) => void;
+}
+
+export interface ICard {
+  card: IResult;
+  setOpenModal: (openModal: boolean) => void;
+  setIndex: (index: number) => void;
+  index: number;
+}
+
+export interface IModal {
+  card: IResult;
+  setOpenModal: (openModal: boolean) => void;
 }

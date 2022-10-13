@@ -3,6 +3,8 @@ import { render } from '@testing-library/react';
 import Cards from './Cards';
 
 test('count of cards must be the same as count of rendered cards', () => {
+  const setOpenModal = jest.fn();
+  const setIndex = jest.fn();
   const results = [
     {
       id: 1,
@@ -28,6 +30,8 @@ test('count of cards must be the same as count of rendered cards', () => {
       created: '2017-11-04T18:48:46.250Z',
     },
   ];
-  const { container } = render(<Cards results={results} count={1} />);
+  const { container } = render(
+    <Cards setOpenModal={setOpenModal} results={results} count={1} setIndex={setIndex} />
+  );
   expect(container.getElementsByClassName('card').length).toBe(results.length);
 });

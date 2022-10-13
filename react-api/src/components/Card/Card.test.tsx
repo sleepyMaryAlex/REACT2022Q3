@@ -3,6 +3,8 @@ import { render, screen } from '@testing-library/react';
 import Card from './Card';
 
 test('card should contain title', () => {
+  const setOpenModal = jest.fn();
+  const setIndex = jest.fn();
   const results = [
     {
       id: 1,
@@ -28,7 +30,7 @@ test('card should contain title', () => {
       created: '2017-11-04T18:48:46.250Z',
     },
   ];
-  render(<Card card={results[0]} />);
+  render(<Card card={results[0]} setOpenModal={setOpenModal} setIndex={setIndex} index={0} />);
   const name = results[0].name;
   expect(screen.getByText(name, { exact: false })).toBeInTheDocument();
 });

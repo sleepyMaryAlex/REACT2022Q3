@@ -5,7 +5,7 @@ import './Results.css';
 
 class Results extends React.Component<IResults> {
   render() {
-    const { count, pages, currentPage, results } = this.props;
+    const { count, pages, currentPage, results, setOpenModal, setIndex } = this.props;
     return (
       <div className="results">
         <div className="results__container">
@@ -16,7 +16,7 @@ class Results extends React.Component<IResults> {
             </p>
           </div>
         </div>
-        <Cards results={results} count={count} />
+        <Cards results={results} count={count} setOpenModal={setOpenModal} setIndex={setIndex} />
       </div>
     );
   }
