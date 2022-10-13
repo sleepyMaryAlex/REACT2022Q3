@@ -6,6 +6,16 @@
   background-color: #202329;
 }
 
+.main__container {
+  width: 100%;
+}
+
+.main__message {
+  color: #fff;
+  font-size: 30px;
+  margin: 20px;
+}
+
 @media (max-width: 540px) {
   .main {
     min-height: calc(100vh - 100px);

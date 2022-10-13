@@ -18,22 +18,35 @@ class Main extends React.Component<IMain, IMainState> {
       query: localStorage.getItem('query') || '',
       index: 1,
       isFetching: true,
+      nothingFound: false,
     };
   }
 
   async updateState(page: number, query: string) {
-    const { results, info } = await Loader.getData(page, query);
-    this.setState({
-      results: results,
-      pages: info.pages,
-      count: info.count,
-    });
+    const data = await Loader.getData(page, query);
+    if (data) {
+      const { results, info } = data;
+      this.setState({
+        results: results,
+        pages: info.pages,
+        count: info.count,
+        nothingFound: false,
+        isFetching: false,
+      });
+    } else {
+      this.setState({
+        results: [],
+        pages: 0,
+        count: 0,
+        nothingFound: true,
+        isFetching: false,
+      });
+    }
   }
 
   async componentDidMount() {
     const { currentPage, query } = this.state;
     this.updateState(currentPage, query);
-    setTimeout(() => this.setState({ isFetching: false }), 1000);
   }
 
   componentWillUnmount() {
@@ -47,7 +60,7 @@ class Main extends React.Component<IMain, IMainState> {
   }
 
   handleSubmit() {
-    this.setState({ currentPage: 1 });
+    this.setState({ currentPage: 1, isFetching: true });
     this.updateState(1, this.state.query);
     localStorage.setItem('query', this.state.query);
   }
@@ -57,31 +70,38 @@ class Main extends React.Component<IMain, IMainState> {
   }
 
   render() {
-    const { query, results, count, currentPage, pages, index: index, isFetching } = this.state;
-    return !isFetching && results.length !== 0 ? (
+    const { query, results, count, currentPage, pages, index, isFetching, nothingFound } =
+      this.state;
+    return isFetching ? (
+      <div className="main">
+        <Progress />
+      </div>
+    ) : (
       <div className="main">
         <SearchBar
           query={query}
           handleSubmit={this.handleSubmit.bind(this)}
           handleChange={this.handleChange.bind(this)}
         />
-        <Results
-          results={results}
-          count={count}
-          currentPage={currentPage}
-          pages={pages}
-          setOpenModal={this.props.setOpenModal}
-          setIndex={this.setIndex.bind(this)}
-        />
-        {this.props.openModal ? (
-          <Modal setOpenModal={this.props.setOpenModal} card={results[index]} />
+        {nothingFound ? (
+          <p className="main__message">Sorry, character not found</p>
         ) : (
-          ''
+          <div className="main__container">
+            <Results
+              results={results}
+              count={count}
+              currentPage={currentPage}
+              pages={pages}
+              setOpenModal={this.props.setOpenModal}
+              setIndex={this.setIndex.bind(this)}
+            />
+            {this.props.openModal ? (
+              <Modal setOpenModal={this.props.setOpenModal} card={results[index]} />
+            ) : (
+              ''
+            )}
+          </div>
         )}
-      </div>
-    ) : (
-      <div className="main">
-        <Progress />
       </div>
     );
   }

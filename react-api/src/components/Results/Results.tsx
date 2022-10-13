@@ -16,7 +16,7 @@ class Results extends React.Component<IResults> {
             </p>
           </div>
         </div>
-        <Cards results={results} count={count} setOpenModal={setOpenModal} setIndex={setIndex} />
+        <Cards results={results} setOpenModal={setOpenModal} setIndex={setIndex} />
       </div>
     );
   }

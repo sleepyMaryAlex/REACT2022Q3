@@ -8,19 +8,15 @@ class Cards extends React.Component<ICards> {
     const { setOpenModal, setIndex } = this.props;
     return (
       <div className="cards">
-        {this.props.count ? (
-          this.props.results.map((card: IResult, index) => (
-            <Card
-              setOpenModal={setOpenModal}
-              card={card}
-              key={card.id.toString()}
-              setIndex={setIndex}
-              index={index}
-            />
-          ))
-        ) : (
-          <p className="result__message">SORRY, NOTHING FOUND</p>
-        )}
+        {this.props.results.map((card: IResult, index) => (
+          <Card
+            setOpenModal={setOpenModal}
+            card={card}
+            key={card.id.toString()}
+            setIndex={setIndex}
+            index={index}
+          />
+        ))}
       </div>
     );
   }

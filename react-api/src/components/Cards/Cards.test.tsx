@@ -31,7 +31,7 @@ test('count of cards must be the same as count of rendered cards', () => {
     },
   ];
   const { container } = render(
-    <Cards setOpenModal={setOpenModal} results={results} count={1} setIndex={setIndex} />
+    <Cards setOpenModal={setOpenModal} results={results} setIndex={setIndex} />
   );
   expect(container.getElementsByClassName('card').length).toBe(results.length);
 });

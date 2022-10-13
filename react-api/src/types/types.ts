@@ -39,6 +39,7 @@ export interface IMainState {
   query: string;
   index: number;
   isFetching: boolean;
+  nothingFound: boolean;
 }
 
 export interface IMain {
@@ -63,7 +64,6 @@ export interface IResults {
 
 export interface ICards {
   results: IResult[];
-  count: number;
   setOpenModal: (openModal: boolean) => void;
   setIndex: (index: number) => void;
 }
