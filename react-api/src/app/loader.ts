@@ -8,12 +8,6 @@ class Loader {
     const data = await response.json();
     return data;
   }
-
-  // public static async getSingleCharacter(id: number): Promise<IResult> {
-  //   const response = await fetch(`${baseUrl}/character/${id.toString()}`);
-  //   const character = await response.json();
-  //   return character;
-  // }
 }
 
 export default Loader;

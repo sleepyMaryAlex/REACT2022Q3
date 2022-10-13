@@ -1,5 +1,6 @@
 import Loader from 'app/loader';
 import Modal from 'components/Modal/Modal';
+import Progress from 'components/Progress/Progress';
 import Results from 'components/Results/Results';
 import SearchBar from 'components/SearchBar/SearchBar';
 import React from 'react';
@@ -16,6 +17,7 @@ class Main extends React.Component<IMain, IMainState> {
       currentPage: Number(localStorage.getItem('currentPage')) || 1,
       query: localStorage.getItem('query') || '',
       index: 1,
+      isFetching: true,
     };
   }
 
@@ -31,6 +33,7 @@ class Main extends React.Component<IMain, IMainState> {
   async componentDidMount() {
     const { currentPage, query } = this.state;
     this.updateState(currentPage, query);
+    setTimeout(() => this.setState({ isFetching: false }), 1000);
   }
 
   componentWillUnmount() {
@@ -54,8 +57,8 @@ class Main extends React.Component<IMain, IMainState> {
   }
 
   render() {
-    const { query, results, count, currentPage, pages, index: index } = this.state;
-    return (
+    const { query, results, count, currentPage, pages, index: index, isFetching } = this.state;
+    return !isFetching && results.length !== 0 ? (
       <div className="main">
         <SearchBar
           query={query}
@@ -75,6 +78,10 @@ class Main extends React.Component<IMain, IMainState> {
         ) : (
           ''
         )}
+      </div>
+    ) : (
+      <div className="main">
+        <Progress />
       </div>
     );
   }

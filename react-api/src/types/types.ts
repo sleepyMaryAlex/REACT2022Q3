@@ -38,6 +38,7 @@ export interface IMainState {
   currentPage: number;
   query: string;
   index: number;
+  isFetching: boolean;
 }
 
 export interface IMain {
