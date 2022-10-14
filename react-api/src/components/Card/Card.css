@@ -42,7 +42,7 @@
 }
 
 .card__container,
-.card__wrapper {
+.card__info {
   margin-bottom: 16px;
 }
 
@@ -50,7 +50,7 @@
   margin: 0 3px;
 }
 
-.card__wrapper {
+.card__info {
   font-weight: 600;
   letter-spacing: 1px;
   display: flex;

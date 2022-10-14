@@ -1,4 +1,4 @@
-.wrapper {
+.not-found__wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +6,7 @@
   height: calc(100vh - 150px);
 }
 
-.return-button {
+.not-found__return-button {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -21,24 +21,24 @@
   margin: 60px 0 0;
 }
 
-.return-button img {
+.not-found__return-button img {
   transition: ease-in-out 0.5s;
   margin: 0 10px 0 0;
 }
 
-.return-button:hover img {
+.not-found__return-button:hover img {
   transform: translateX(-12px);
 }
 
-.return-button p {
+.not-found__return-button p {
   margin-top: -2px;
 }
 
-.title {
+.not-found__title {
   font-size: 20px;
 }
 
-.error {
+.not-found__error {
   overflow: hidden;
   display: flex;
   width: 100%;
@@ -46,7 +46,7 @@
   font-size: 85px;
 }
 
-.error p {
+.not-found__error p {
   margin: 15px 25px;
   display: flex;
   align-items: center;

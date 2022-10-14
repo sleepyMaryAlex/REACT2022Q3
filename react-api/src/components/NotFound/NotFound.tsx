@@ -22,19 +22,19 @@ class NotFound extends React.Component<object> {
 
   render() {
     return (
-      <div className="wrapper">
-        <div className="error">
+      <div className="not-found__wrapper">
+        <div className="not-found__error">
           {this.classNames.map((className, index) => (
             <p className={className} key={(this.error + index).toString()}>
               {(this.error + index).toString()}
             </p>
           ))}
         </div>
-        <p className="title">The page you were looking for could not be found</p>
+        <p className="not-found__title">The page you were looking for could not be found</p>
         <NavLink to="/">
-          <div className="return-button">
+          <div className="not-found__return-button">
             <img src={returnImg} alt="image" />
-            <p>RETURN TO MAIN PAGE</p>
+            <p>Return to main page</p>
           </div>
         </NavLink>
       </div>
