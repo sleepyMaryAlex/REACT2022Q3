@@ -75,3 +75,19 @@
 .circle__red {
   background-color: #d63d2e;
 }
+
+@media (max-width: 655px) {
+  .card {
+    width: 280px;
+    height: min-content;
+    flex-direction: column;
+  }
+
+  .card img {
+    width: 280px;
+  }
+
+  .card__name {
+    margin-bottom: 10px;
+  }
+}

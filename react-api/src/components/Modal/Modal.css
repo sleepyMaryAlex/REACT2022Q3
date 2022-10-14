@@ -11,7 +11,7 @@
   border-radius: 10px;
   overflow: hidden;
   box-shadow: #3c3e44 0 20px 30px -10px;
-  transition: all 0.5s;
+  transition: box-shadow 0.5s;
 }
 
 .modal:hover {
@@ -76,11 +76,26 @@
   background-color: #fddedb;
 }
 
-@media (max-width: 490px) {
+@media (max-width: 840px) {
+  .modal {
+    width: 400px;
+    height: min-content;
+    top: calc(50vh - 400px);
+    left: calc(50vw - 200px);
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 440px) {
   .modal {
     width: 280px;
-    height: 260px;
-    top: calc(50vh - 130px);
+    height: min-content;
+    top: calc(50vh - 200px);
     left: calc(50vw - 140px);
+    flex-direction: column;
+  }
+
+  .modal__image {
+    display: none;
   }
 }
