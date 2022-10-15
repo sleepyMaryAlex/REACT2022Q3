@@ -1,6 +1,6 @@
 import React from 'react';
 import './Modal.css';
-import closeButton from '../../assets/icons/close-button.svg';
+import closeButton from '../../assets/close-button.svg';
 import { IModal } from 'types/types';
 import Common from 'app/common';
 

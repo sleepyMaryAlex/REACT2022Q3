@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './NotFound.css';
-import returnImg from '../../assets/icons/prev-arrow.svg';
+import returnImg from '../../assets/prev-arrow.svg';
 
 class NotFound extends React.Component<object> {
   classNames: string[];

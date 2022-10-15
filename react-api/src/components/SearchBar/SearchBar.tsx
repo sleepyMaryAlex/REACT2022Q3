@@ -1,6 +1,6 @@
 import React from 'react';
 import './SearchBar.css';
-import icon from '../../assets/icons/icon.svg';
+import icon from '../../assets/icon.svg';
 import { ISearchBar } from 'types/types';
 
 class SearchBar extends React.Component<ISearchBar> {
