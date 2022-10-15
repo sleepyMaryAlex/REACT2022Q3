@@ -35,9 +35,6 @@ class Main extends React.Component<IMain, IMainState> {
       });
     } else {
       this.setState({
-        results: [],
-        pages: 0,
-        count: 0,
         nothingFound: true,
         isFetching: false,
       });
@@ -66,12 +63,34 @@ class Main extends React.Component<IMain, IMainState> {
   }
 
   setIndex(index: number) {
-    this.setState({ index: index });
+    this.setState({ index });
   }
 
   render() {
     const { query, results, count, currentPage, pages, index, isFetching, nothingFound } =
       this.state;
+
+    let content;
+    if (nothingFound) {
+      content = <p className="main__message">Sorry, character not found</p>;
+    } else {
+      content = (
+        <div className="main__container">
+          <Results
+            results={results}
+            count={count}
+            currentPage={currentPage}
+            pages={pages}
+            setOpenModal={this.props.setOpenModal}
+            setIndex={this.setIndex.bind(this)}
+          />
+          {this.props.openModal && (
+            <Modal setOpenModal={this.props.setOpenModal} card={results[index]} />
+          )}
+        </div>
+      );
+    }
+
     return isFetching ? (
       <div className="main">
         <Progress />
@@ -83,25 +102,7 @@ class Main extends React.Component<IMain, IMainState> {
           handleSubmit={this.handleSubmit.bind(this)}
           handleChange={this.handleChange.bind(this)}
         />
-        {nothingFound ? (
-          <p className="main__message">Sorry, character not found</p>
-        ) : (
-          <div className="main__container">
-            <Results
-              results={results}
-              count={count}
-              currentPage={currentPage}
-              pages={pages}
-              setOpenModal={this.props.setOpenModal}
-              setIndex={this.setIndex.bind(this)}
-            />
-            {this.props.openModal ? (
-              <Modal setOpenModal={this.props.setOpenModal} card={results[index]} />
-            ) : (
-              ''
-            )}
-          </div>
-        )}
+        {content}
       </div>
     );
   }
