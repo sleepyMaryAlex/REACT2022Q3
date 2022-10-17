@@ -4,7 +4,7 @@ import './Progress.css';
 class Progress extends React.Component {
   render() {
     return (
-      <div className="container">
+      <div className="circles">
         <div className="circles-wrapper">
           <div className="circle circle-lg">
             <div className="circle circle-md">

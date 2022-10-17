@@ -1,10 +1,15 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
-test('should contain value from local storage in search input', () => {
-  const testString = 'cake';
-  localStorage.setItem('value', testString);
-  render(<App />);
-  expect(screen.getByDisplayValue(testString)).toBeInTheDocument();
+test('test app container click', () => {
+  const handleClick = jest.fn();
+  const openModal = true;
+  const { container } = render(
+    <div className={`app${openModal ? ' app__overlay' : ''}`} onClick={handleClick}></div>
+  );
+  const appContainer = container.firstChild as Element;
+  userEvent.click(appContainer);
+  expect(handleClick).toHaveBeenCalledTimes(1);
+  expect(container).not.toHaveClass('app__overlay');
 });

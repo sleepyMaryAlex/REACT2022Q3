@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import NotFound from './NotFound';
 import { HashRouter } from 'react-router-dom';
 
-test('render error in not found component', () => {
+test('render error in notFound component', () => {
   const { getByText } = render(
     <HashRouter>
       <NotFound />

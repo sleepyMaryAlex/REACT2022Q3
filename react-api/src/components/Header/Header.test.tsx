@@ -9,5 +9,5 @@ test('render header title', () => {
       <Header />
     </HashRouter>
   );
-  expect(getByText(/spoonacular/i)).toBeInTheDocument();
+  expect(getByText(/rick and morty/i)).toBeInTheDocument();
 });
