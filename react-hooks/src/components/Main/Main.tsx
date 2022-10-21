@@ -38,7 +38,7 @@ function Main(props: IMain) {
     return () => {
       localStorage.setItem('currentPage', currentPage.toString());
     };
-  });
+  }, [currentPage]);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const target = event.target as HTMLInputElement;
