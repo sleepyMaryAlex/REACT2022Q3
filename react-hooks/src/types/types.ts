@@ -31,17 +31,6 @@ export interface IData {
   results: IResult[];
 }
 
-export interface IMainState {
-  results: IResult[];
-  pages: number;
-  count: number;
-  currentPage: number;
-  query: string;
-  index: number;
-  isFetching: boolean;
-  nothingFound: boolean;
-}
-
 export interface IMain {
   openModal: boolean;
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -58,24 +47,24 @@ export interface IResults {
   count: number;
   currentPage: number;
   pages: number;
-  setOpenModal: (openModal: boolean) => void;
-  setIndex: (index: number) => void;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface ICards {
   results: IResult[];
-  setOpenModal: (openModal: boolean) => void;
-  setIndex: (index: number) => void;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface ICard {
   card: IResult;
-  setOpenModal: (openModal: boolean) => void;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
   setIndex: (index: number) => void;
   index: number;
 }
 
 export interface IModal {
   card: IResult;
-  setOpenModal: (openModal: boolean) => void;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
 }

@@ -6,7 +6,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 
 function App() {
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     const target = event.target as HTMLDivElement;
