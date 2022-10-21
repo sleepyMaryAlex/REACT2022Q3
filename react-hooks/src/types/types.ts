@@ -44,7 +44,7 @@ export interface IMainState {
 
 export interface IMain {
   openModal: boolean;
-  setOpenModal: (openModal: boolean) => void;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface ISearchBar {
