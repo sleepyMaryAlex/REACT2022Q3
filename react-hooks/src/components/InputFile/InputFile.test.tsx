@@ -7,8 +7,8 @@ test('should contain image with alt attribute', () => {
   const setFileName = jest.fn();
   render(
     <InputFile
-      image='https://rickandmortyapi.com/api/character/361'
-      fileName='rickandmorty.png'
+      image="https://rickandmortyapi.com/api/character/361"
+      fileName="rickandmorty.png"
       setImage={setImage}
       setFileName={setFileName}
       displayErrorMessage={false}

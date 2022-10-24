@@ -4,6 +4,6 @@ import InputText from './InputText';
 
 test('should display message', () => {
   const setName = jest.fn();
-  render(<InputText name='' setName={setName} displayErrorMessage={true} />);
+  render(<InputText name="" setName={setName} displayErrorMessage={true} />);
   expect(screen.getByText(/This field is required/i)).toBeInTheDocument();
 });
