@@ -1,4 +1,4 @@
-import Loader from 'app/loader';
+import { getData } from 'app/loader';
 import Modal from 'components/Modal/Modal';
 import Progress from 'components/Progress/Progress';
 import Results from 'components/Results/Results';
@@ -15,12 +15,12 @@ function Main(props: IMain) {
     Number(localStorage.getItem('currentPage')) || 1
   );
   const [query, setQuery] = useState<string>(localStorage.getItem('query') || '');
-  const [index, setIndex] = useState<number>(1);
+  const [index, setIndex] = useState<number>(0);
   const [isFetching, setIsFetching] = useState<boolean>(true);
   const [nothingFound, setNothingFound] = useState<boolean>(false);
 
   async function updateState(page: number, query: string) {
-    const data = await Loader.getData(page, query);
+    const data = await getData(page, query);
     if (data) {
       const { results, info } = data;
       setResults(results);
@@ -40,12 +40,12 @@ function Main(props: IMain) {
     };
   }, [currentPage]);
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
     const target = event.target as HTMLInputElement;
     setQuery(target.value);
   }
 
-  function handleSubmit() {
+  function onSubmit() {
     setCurrentPage(1);
     setIsFetching(true);
     updateState(1, query);
@@ -77,7 +77,7 @@ function Main(props: IMain) {
     </div>
   ) : (
     <div className="main">
-      <SearchBar query={query} handleSubmit={handleSubmit} handleChange={handleChange} />
+      <SearchBar query={query} onSubmit={onSubmit} onChange={onChange} />
       {content}
     </div>
   );

@@ -1,13 +1,13 @@
 import React from 'react';
 import './Modal.css';
-import closeButton from '../../assets/close-button.svg';
+import closeButton from '../../assets/icons/close-button.svg';
 import { IModal } from 'types/types';
-import Common from 'app/common';
+import { capitalizeString, setColor } from 'app/common';
 
 function Modal(props: IModal) {
   const { image, name, status, gender, species, type, origin, location, created } = props.card;
   return (
-    <div className={`modal modal__${Common.setColor(status)}`}>
+    <div className={`modal modal__${setColor(status)}`}>
       <img
         className="modal__close-button"
         src={closeButton}
@@ -22,19 +22,19 @@ function Modal(props: IModal) {
         <div className="modal__wrapper">
           <p>
             <span>Gender: </span>
-            {Common.capitalizeString(gender)}
+            {capitalizeString(gender)}
           </p>
           <p>
             <span>Status: </span>
-            {Common.capitalizeString(status)}
+            {capitalizeString(status)}
           </p>
           <p>
             <span>Species: </span>
-            {Common.capitalizeString(species)}
+            {capitalizeString(species)}
           </p>
           <p>
             <span>Type: </span>
-            {type ? Common.capitalizeString(type) : 'Unknown'}
+            {type ? capitalizeString(type) : 'Unknown'}
           </p>
           <p>
             <span>Created: </span>
@@ -50,11 +50,11 @@ function Modal(props: IModal) {
         <div className="modal__wrapper">
           <div className="modal__container">
             <p className="modal__caption">First seen in:</p>
-            <p>{Common.capitalizeString(origin.name)}</p>
+            <p>{capitalizeString(origin.name)}</p>
           </div>
           <div className="modal__container">
             <p className="modal__caption">Last known location:</p>
-            <p>{Common.capitalizeString(location.name)}</p>
+            <p>{capitalizeString(location.name)}</p>
           </div>
         </div>
       </div>
