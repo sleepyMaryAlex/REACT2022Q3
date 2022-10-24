@@ -1,18 +1,26 @@
-class Common {
-  static capitalizeString(string: string) {
-    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-  }
+export function capitalizeString(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
 
-  static setColor(status: string) {
-    switch (this.capitalizeString(status)) {
-      case 'Alive':
-        return 'green';
-      case 'Dead':
-        return 'red';
-      default:
-        return 'purple';
-    }
+export function setColor(status: string) {
+  switch (capitalizeString(status)) {
+    case 'Alive':
+      return 'green';
+    case 'Dead':
+      return 'red';
+    default:
+      return 'purple';
   }
 }
 
-export default Common;
+export const speciesValues = [
+  'Human',
+  'Humanoid',
+  'Cronenberg',
+  'Alien',
+  'Poopybutthole',
+  'Animal',
+  'Robot',
+  'Mythological creature',
+  'Unknown',
+];
