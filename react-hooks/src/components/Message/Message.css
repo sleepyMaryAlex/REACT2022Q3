@@ -1,0 +1,45 @@
+.message {
+  position: fixed;
+  width: 450px;
+  height: 200px;
+  background-color: #fff;
+  top: calc(50vh - 100px);
+  left: calc(50vw - 225px);
+  z-index: 5;
+  font-size: 30px;
+  text-shadow: 3px 3px 8px #ffc4c7, -3px -3px 8px #ffc4c7;
+}
+
+.message__message {
+  text-align: center;
+  margin: 10px;
+  margin-top: 25px;
+}
+
+.message__close-button {
+  width: 20px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  margin: 5px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.message__close-button:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 490px) {
+  .message {
+    position: fixed;
+    width: 280px;
+    height: 260px;
+    background-color: #fff;
+    top: calc(50vh - 130px);
+    left: calc(50vw - 140px);
+    z-index: 5;
+    font-size: 27px;
+    text-shadow: 3px 3px 8px #ffc4c7, -3px -3px 8px #ffc4c7;
+  }
+}
