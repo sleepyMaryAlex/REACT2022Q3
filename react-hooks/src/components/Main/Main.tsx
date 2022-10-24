@@ -40,11 +40,6 @@ function Main(props: IMain) {
     };
   }, [currentPage]);
 
-  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const target = event.target as HTMLInputElement;
-    setQuery(target.value);
-  }
-
   function onSubmit() {
     setCurrentPage(1);
     setIsFetching(true);
@@ -77,7 +72,7 @@ function Main(props: IMain) {
     </div>
   ) : (
     <div className="main">
-      <SearchBar query={query} onSubmit={onSubmit} onChange={onChange} />
+      <SearchBar query={query} onSubmit={onSubmit} setQuery={setQuery} />
       {content}
     </div>
   );

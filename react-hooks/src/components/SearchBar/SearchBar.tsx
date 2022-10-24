@@ -4,7 +4,8 @@ import icon from '../../assets/icon.svg';
 import { ISearchBar } from 'types/types';
 
 function SearchBar(props: ISearchBar) {
-  const { handleChange, handleSubmit, query } = props;
+  const { setQuery, onSubmit, query } = props;
+
   return (
     <div className="search">
       <form className="search__container" onSubmit={handleSubmit}>
@@ -16,7 +17,7 @@ function SearchBar(props: ISearchBar) {
           value={query}
           autoFocus
           spellCheck="false"
-          onChange={handleChange}
+          onChange={(e) => setQuery(e.target.value)}
         />
       </form>
     </div>

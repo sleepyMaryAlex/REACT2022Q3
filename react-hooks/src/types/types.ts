@@ -38,7 +38,7 @@ export interface IMain {
 
 export interface ISearchBar {
   query: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  setQuery: React.Dispatch<React.SetStateAction<string>>;
   onSubmit: () => void;
 }
 
