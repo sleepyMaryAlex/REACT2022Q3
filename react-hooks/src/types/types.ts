@@ -38,8 +38,8 @@ export interface IMain {
 
 export interface ISearchBar {
   query: string;
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: () => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onSubmit: () => void;
 }
 
 export interface IResults {
@@ -67,4 +67,62 @@ export interface ICard {
 export interface IModal {
   card: IResult;
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface ICharacterCard {
+  name: string;
+  image: string;
+  date: string;
+  status: string;
+  gender: string;
+  species: string[];
+}
+
+export interface IForm {
+  addCharacter: (card: ICharacterCard) => void;
+  displayMessage: boolean;
+  setDisplayMessage: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface IInputText {
+  setName: React.Dispatch<React.SetStateAction<string>>;
+  displayErrorMessage: boolean;
+  name: string;
+}
+
+export interface IInputFile {
+  setImage: React.Dispatch<React.SetStateAction<string>>;
+  setFileName: React.Dispatch<React.SetStateAction<string>>;
+  displayErrorMessage: boolean;
+  image: string;
+  fileName: string;
+}
+
+export interface ISelect {
+  setStatus: React.Dispatch<React.SetStateAction<string>>;
+  status: string;
+  displayErrorMessage: boolean;
+}
+
+export interface ICheckbox {
+  setSpecies: React.Dispatch<React.SetStateAction<string[]>>;
+  species: string[];
+  displayErrorMessage: boolean;
+  checkedState: boolean[];
+  setCheckedState: React.Dispatch<React.SetStateAction<boolean[]>>;
+}
+
+export interface ISwitcher {
+  gender: string;
+  setGender: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface IInputDate {
+  setDate: React.Dispatch<React.SetStateAction<string>>;
+  date: string;
+  displayErrorMessage: boolean;
+}
+
+export interface IMessage {
+  setDisplayMessage: React.Dispatch<React.SetStateAction<boolean>>;
 }
