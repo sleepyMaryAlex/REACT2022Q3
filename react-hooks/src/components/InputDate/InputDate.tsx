@@ -12,6 +12,7 @@ function InputDate(props: IInputDate) {
       </label>
       <input
         type="date"
+        id="date"
         value={date}
         className="input-date"
         onChange={(e) => setDate(e.target.value)}
