@@ -25,6 +25,8 @@ function Form(props: IForm) {
   const [displayErrorMessage, setDisplayErrorMessage] = useState<boolean>(false);
   const [canCheckMistakes, setCanCheckMistakes] = useState<boolean>(false);
 
+  const firstUpdate = useRef(true);
+
   function resetForm() {
     setName('');
     setImage('');
@@ -50,9 +52,10 @@ function Form(props: IForm) {
       props.setDisplayMessage(true);
       props.addCharacter(card);
       resetForm();
-      setCanCheckMistakes(false);
-      setCanSubmit(false);
       setDisplayErrorMessage(false);
+      setCanSubmit(false);
+      setCanCheckMistakes(false);
+      firstUpdate.current = true;
     } else {
       setDisplayErrorMessage(true);
       setCanCheckMistakes(true);
@@ -60,7 +63,6 @@ function Form(props: IForm) {
     }
   }
 
-  const firstUpdate = useRef(true);
   useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
