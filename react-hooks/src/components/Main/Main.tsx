@@ -40,7 +40,7 @@ function Main(props: IMain) {
     };
   }, [currentPage]);
 
-  function onSubmit() {
+  function onSubmit(query: string) {
     setCurrentPage(1);
     setIsFetching(true);
     updateState(1, query);
