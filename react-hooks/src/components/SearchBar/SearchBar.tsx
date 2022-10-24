@@ -8,9 +8,9 @@ function SearchBar(props: ISearchBar) {
 
   return (
     <div className="search">
-      <form className="search__container" onSubmit={handleSubmit}>
+      <form className="search__container" onSubmit={onSubmit}>
         <p className="search__title">I want to find</p>
-        <img className="search__image" src={icon} alt="icon" onClick={handleSubmit} />
+        <img className="search__image" src={icon} alt="icon" onClick={onSubmit} />
         <input
           className="search__bar"
           type="text"
