@@ -6,22 +6,41 @@
 .header__wrapper {
   max-width: 1680px;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header__title {
   color: #fff;
   font-family: "Paytone One", sans-serif;
   font-size: 65px;
-  margin-top: 30px;
+  margin-top: 10px;
   font-weight: 700;
   letter-spacing: 2px;
+}
+
+.header__nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+  font-size: 20px;
+}
+
+.nav__item,
+.nav__item_active {
+  color: #fff;
+  margin-top: 10px;
+}
+
+.nav__item_active {
+  border-bottom: 2px solid rgb(0 136 255);
+  margin-bottom: 7px;
 }
 
 @media (max-width: 570px) {
   .header__title {
     font-size: 35px;
-    margin-top: 50px;
+    margin-top: 30px;
   }
 }

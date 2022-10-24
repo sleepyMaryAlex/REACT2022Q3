@@ -9,6 +9,20 @@ function Header() {
         <NavLink className="header__title" to="/">
           Rick and Morty
         </NavLink>
+        <div className="header__nav">
+          <NavLink
+            className={(navData) => (navData.isActive ? 'nav__item_active' : 'nav__item')}
+            to="/characters"
+          >
+            Characters
+          </NavLink>
+          <NavLink
+            className={(navData) => (navData.isActive ? 'nav__item_active' : 'nav__item')}
+            to="/about"
+          >
+            About us
+          </NavLink>
+        </div>
       </div>
     </div>
   );
