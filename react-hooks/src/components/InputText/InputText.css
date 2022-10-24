@@ -1,0 +1,33 @@
+.form__text-field {
+  height: 60px;
+}
+
+.form__input-text {
+  width: 500px;
+  box-shadow: 0 0 4px #b9b8b8;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  transition: 0.3s box-shadow;
+}
+
+.form__input-text:hover {
+  box-shadow: 0 0 4px #898989;
+}
+
+.form__input-text:focus {
+  box-shadow: 0 0 1px 3px rgb(0 136 255);
+  outline: none;
+}
+
+.form__input-text::placeholder {
+  color: inherit;
+}
+
+@media (max-width: 540px) {
+  .form__input-text {
+    width: 280px;
+  }
+}

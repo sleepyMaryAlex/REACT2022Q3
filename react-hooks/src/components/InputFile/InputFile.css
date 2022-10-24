@@ -1,0 +1,36 @@
+.form__file-field {
+  width: 280px;
+  height: 70px;
+  position: relative;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.input-file {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+.input-file__image {
+  height: 60px;
+  width: 60px;
+  padding: 15px;
+  border-right: 1px solid #fff;
+}
+
+.input-file__button {
+  width: 280px;
+  height: 60px;
+  background: rgb(0 136 255);
+  color: #fff;
+  font-size: 20px;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: center;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 0 auto;
+}
