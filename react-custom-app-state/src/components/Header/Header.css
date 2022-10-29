@@ -1,6 +1,7 @@
 .header {
   height: 150px;
   background-color: #000;
+  position: relative;
 }
 
 .header__wrapper {
@@ -38,9 +39,19 @@
   margin-bottom: 7px;
 }
 
-@media (max-width: 570px) {
+@media (max-width: 700px) {
+  .nav__item:nth-child(2) {
+    position: absolute;
+    bottom: 20px;
+  }
+
+  .nav__item_active:nth-child(2) {
+    position: absolute;
+    bottom: 11px;
+  }
+
   .header__title {
     font-size: 35px;
-    margin-top: 30px;
+    margin-top: 10px;
   }
 }

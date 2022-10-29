@@ -1,7 +1,6 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import Header from './Header';
-import { HashRouter } from 'react-router-dom';
+import { render, screen } from '@testing-library/react';
+import AboutCharacter from './AboutCharacter';
 
 const results = [
   {
@@ -29,11 +28,7 @@ const results = [
   },
 ];
 
-test('render header title', () => {
-  const { getByText } = render(
-    <HashRouter>
-      <Header results={results} index={null} />
-    </HashRouter>
-  );
-  expect(getByText(/rick and morty/i)).toBeInTheDocument();
+test('should contain image with alt attribute', () => {
+  render(<AboutCharacter results={results} index={null} />);
+  expect(screen.getByAltText(/image/i)).toBeInTheDocument();
 });

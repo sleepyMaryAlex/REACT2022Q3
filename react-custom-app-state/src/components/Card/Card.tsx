@@ -1,12 +1,15 @@
 import { capitalizeString, setColor } from 'app/common';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ICard } from 'types/types';
 import './Card.css';
 
 function Card(props: ICard) {
+  const navigate = useNavigate();
+
   function handleClick(index: number) {
     props.dispatch({ type: 'SET_INDEX', payload: index });
-    // props.setOpenModal(true);
+    navigate('/details');
   }
 
   const { name, image, status, species, location, origin } = props.card;

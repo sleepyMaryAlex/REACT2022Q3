@@ -58,9 +58,14 @@ export interface ICard {
   index: number;
 }
 
-export interface IModal {
-  card: IResult;
-  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+export interface IAboutCharacter {
+  results: IResult[];
+  index: number | null;
+}
+
+export interface IHeader {
+  results: IResult[];
+  index: number | null;
 }
 
 export interface ICharacterCard {
@@ -126,7 +131,7 @@ export interface IAppState {
   count: number;
   currentPage: number;
   query: string;
-  index: number;
+  index: number | null;
   isFetching: boolean;
   nothingFound: boolean;
 }

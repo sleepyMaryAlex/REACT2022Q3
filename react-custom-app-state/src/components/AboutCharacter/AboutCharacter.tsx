@@ -1,0 +1,86 @@
+import React, { useState } from 'react';
+import './AboutCharacter.css';
+import { IAboutCharacter } from 'types/types';
+import { capitalizeString, setColor } from 'app/common';
+import { useNavigate } from 'react-router-dom';
+import returnImg from '../../assets/icons/prev-arrow.svg';
+
+function AboutCharacter(props: IAboutCharacter) {
+  const { index, results } = props;
+  const navigate = useNavigate();
+
+  const [counter, setCounter] = useState(3);
+
+  React.useEffect(() => {
+    if (index === null) {
+      counter > 0 ? setTimeout(() => setCounter(counter - 1), 1000) : navigate('/');
+    }
+  }, [counter]);
+
+  if (index !== null) {
+    const { image, name, status, gender, species, type, origin, location, created } =
+      results[index as number];
+    return (
+      <div className={`about-character about-character__${setColor(status)}`}>
+        <img src={image} alt="image" className="about-character__image" />
+        <div className="about-character__content">
+          <h3>{name}</h3>
+          <div className="about-character__wrapper">
+            <p>
+              <span>Gender: </span>
+              {capitalizeString(gender)}
+            </p>
+            <p>
+              <span>Status: </span>
+              {capitalizeString(status)}
+            </p>
+            <p>
+              <span>Species: </span>
+              {capitalizeString(species)}
+            </p>
+            <p>
+              <span>Type: </span>
+              {type ? capitalizeString(type) : 'Unknown'}
+            </p>
+            <p>
+              <span>Created: </span>
+              {created
+                ? new Date(created).toLocaleString('en-US', {
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric',
+                  })
+                : 'Unknown'}
+            </p>
+          </div>
+          <div className="about-character__wrapper">
+            <div className="about-character__container">
+              <p className="about-character__caption">First seen in:</p>
+              <p>{capitalizeString(origin.name)}</p>
+            </div>
+            <div className="about-character__container">
+              <p className="about-character__caption">Last known location:</p>
+              <p>{capitalizeString(location.name)}</p>
+            </div>
+          </div>
+        </div>
+        <div className="not-found__return-button" onClick={() => navigate('/')}>
+          <img src={returnImg} alt="image" />
+          <p>Return to main page</p>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="about-character about-character__red">
+        <p className="about-character__message">
+          Sorry, you have not selected a character yet. Click on the card on the main page to
+          choose.
+        </p>
+        <p className="about-character__counter">{counter}</p>
+      </div>
+    );
+  }
+}
+
+export default AboutCharacter;

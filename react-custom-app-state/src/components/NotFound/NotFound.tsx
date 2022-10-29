@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './NotFound.css';
 import returnImg from '../../assets/icons/prev-arrow.svg';
 
@@ -14,6 +14,7 @@ function NotFound() {
     'error__last',
   ];
   const error = 401;
+  const navigate = useNavigate();
 
   return (
     <div className="not-found__wrapper">
@@ -25,12 +26,10 @@ function NotFound() {
         ))}
       </div>
       <p className="not-found__title">The page you were looking for could not be found</p>
-      <NavLink to="/">
-        <div className="not-found__return-button">
-          <img src={returnImg} alt="image" />
-          <p>Return to main page</p>
-        </div>
-      </NavLink>
+      <div className="not-found__return-button" onClick={() => navigate('/')}>
+        <img src={returnImg} alt="image" />
+        <p>Return to main page</p>
+      </div>
     </div>
   );
 }

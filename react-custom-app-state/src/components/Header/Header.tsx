@@ -1,8 +1,11 @@
 import React from 'react';
 import './Header.css';
 import { NavLink } from 'react-router-dom';
+import { IHeader } from 'types/types';
 
-function Header() {
+function Header(props: IHeader) {
+  const { index, results } = props;
+
   return (
     <div className="header">
       <div className="header__wrapper">
@@ -15,6 +18,14 @@ function Header() {
             to="/characters"
           >
             Characters
+          </NavLink>
+          <NavLink
+            className={(navData) => (navData.isActive ? 'nav__item_active' : 'nav__item')}
+            to="/details"
+          >
+            {`About character ${
+              index !== null ? `(${results[index as number].name.slice(0, 10)}...)` : ''
+            }`}
           </NavLink>
           <NavLink
             className={(navData) => (navData.isActive ? 'nav__item_active' : 'nav__item')}
