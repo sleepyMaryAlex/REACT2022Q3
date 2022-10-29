@@ -4,18 +4,18 @@ import { IResults } from 'types/types';
 import './Results.css';
 
 function Results(props: IResults) {
-  const { count, pages, currentPage, results, setOpenModal, setIndex } = props;
+  const { state, dispatch } = props;
   return (
     <div className="results">
       <div className="results__container">
         <div className="cards__results">
-          <p className="results__title">{count} results</p>
+          <p className="results__title">{state.count} results</p>
           <p className="results__title">
-            page {currentPage}/{pages}
+            page {state.currentPage}/{Math.ceil(state.count / 20)}
           </p>
         </div>
       </div>
-      <Cards results={results} setOpenModal={setOpenModal} setIndex={setIndex} />
+      <Cards results={state.results} dispatch={dispatch} />
     </div>
   );
 }

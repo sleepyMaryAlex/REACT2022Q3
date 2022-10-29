@@ -32,35 +32,29 @@ export interface IData {
 }
 
 export interface IMain {
-  openModal: boolean;
-  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  state: IAppState;
+  dispatch: React.Dispatch<IAction>;
 }
 
 export interface ISearchBar {
   query: string;
-  setQuery: React.Dispatch<React.SetStateAction<string>>;
+  dispatch: React.Dispatch<IAction>;
   onSubmit: (query: string) => void;
 }
 
 export interface IResults {
-  results: IResult[];
-  count: number;
-  currentPage: number;
-  pages: number;
-  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
-  setIndex: React.Dispatch<React.SetStateAction<number>>;
+  state: IAppState;
+  dispatch: React.Dispatch<IAction>;
 }
 
 export interface ICards {
   results: IResult[];
-  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
-  setIndex: React.Dispatch<React.SetStateAction<number>>;
+  dispatch: React.Dispatch<IAction>;
 }
 
 export interface ICard {
   card: IResult;
-  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
-  setIndex: (index: number) => void;
+  dispatch: React.Dispatch<IAction>;
   index: number;
 }
 
@@ -125,4 +119,19 @@ export interface IInputDate {
 
 export interface IMessage {
   setDisplayMessage: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface IAppState {
+  results: IResult[];
+  count: number;
+  currentPage: number;
+  query: string;
+  index: number;
+  isFetching: boolean;
+  nothingFound: boolean;
+}
+
+export interface IAction {
+  type: string;
+  payload?: IResult[] | string | number | boolean;
 }

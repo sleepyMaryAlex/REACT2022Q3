@@ -29,9 +29,8 @@ const results = [
 ];
 
 test('card should contain name', () => {
-  const setOpenModal = jest.fn();
-  const setIndex = jest.fn();
-  render(<Card card={results[0]} setOpenModal={setOpenModal} setIndex={setIndex} index={0} />);
+  const dispatch = jest.fn();
+  render(<Card card={results[0]} dispatch={dispatch} index={1} />);
   const name = results[0].name;
   expect(screen.getByText(name, { exact: false })).toBeInTheDocument();
 });

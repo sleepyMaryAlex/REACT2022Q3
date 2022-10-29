@@ -29,10 +29,7 @@ const results = [
 ];
 
 test('count of cards must be the same as count of rendered cards', () => {
-  const setOpenModal = jest.fn();
-  const setIndex = jest.fn();
-  const { container } = render(
-    <Cards setOpenModal={setOpenModal} results={results} setIndex={setIndex} />
-  );
+  const dispatch = jest.fn();
+  const { container } = render(<Cards dispatch={dispatch} results={results} />);
   expect(container.getElementsByClassName('card').length).toBe(results.length);
 });

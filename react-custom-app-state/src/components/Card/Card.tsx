@@ -5,8 +5,8 @@ import './Card.css';
 
 function Card(props: ICard) {
   function handleClick(index: number) {
-    props.setIndex(index);
-    props.setOpenModal(true);
+    props.dispatch({ type: 'SET_INDEX', payload: index });
+    // props.setOpenModal(true);
   }
 
   const { name, image, status, species, location, origin } = props.card;

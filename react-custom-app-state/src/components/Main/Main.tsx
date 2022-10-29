@@ -1,78 +1,60 @@
 import { getData } from 'app/loader';
-import Modal from 'components/Modal/Modal';
 import Progress from 'components/Progress/Progress';
 import Results from 'components/Results/Results';
 import SearchBar from 'components/SearchBar/SearchBar';
-import React, { useEffect, useState } from 'react';
-import { IMain, IResult } from 'types/types';
+import React, { useEffect } from 'react';
+import { IMain } from 'types/types';
 import './Main.css';
 
 function Main(props: IMain) {
-  const [results, setResults] = useState<IResult[]>([]);
-  const [pages, setPages] = useState<number>(0);
-  const [count, setCount] = useState<number>(0);
-  const [currentPage, setCurrentPage] = useState<number>(
-    Number(localStorage.getItem('currentPage')) || 1
-  );
-  const [query, setQuery] = useState<string>(localStorage.getItem('query') || '');
-  const [index, setIndex] = useState<number>(0);
-  const [isFetching, setIsFetching] = useState<boolean>(true);
-  const [nothingFound, setNothingFound] = useState<boolean>(false);
+  const { state, dispatch } = props;
 
   async function updateState(page: number, query: string) {
     const data = await getData(page, query);
     if (data) {
       const { results, info } = data;
-      setResults(results);
-      setPages(info.pages);
-      setCount(info.count);
-      setNothingFound(false);
+      dispatch({ type: 'SET_RESULTS', payload: results });
+      dispatch({ type: 'SET_COUNT', payload: info.count });
+      dispatch({ type: 'SET_NOTHING_FOUND', payload: false });
     } else {
-      setNothingFound(true);
+      dispatch({ type: 'SET_NOTHING_FOUND', payload: true });
     }
-    setIsFetching(false);
+    dispatch({ type: 'SET_FETCHING', payload: false });
   }
 
   useEffect(() => {
+    const { currentPage, query } = state;
     updateState(currentPage, query);
     return () => {
       localStorage.setItem('currentPage', currentPage.toString());
     };
-  }, [currentPage]);
+  }, [state.currentPage]);
 
   function onSubmit(query: string) {
-    setCurrentPage(1);
-    setIsFetching(true);
+    dispatch({ type: 'SET_FIRST_PAGE' });
+    dispatch({ type: 'SET_FETCHING', payload: true });
     updateState(1, query);
     localStorage.setItem('query', query);
   }
 
   let content;
-  if (nothingFound) {
+  if (state.nothingFound) {
     content = <p className="main__message">Sorry, character not found</p>;
   } else {
     content = (
       <div className="main__container">
-        <Results
-          results={results}
-          count={count}
-          currentPage={currentPage}
-          pages={pages}
-          setOpenModal={props.setOpenModal}
-          setIndex={setIndex}
-        />
-        {props.openModal && <Modal setOpenModal={props.setOpenModal} card={results[index]} />}
+        <Results state={state} dispatch={dispatch} />
       </div>
     );
   }
 
-  return isFetching ? (
+  return state.isFetching ? (
     <div className="main">
       <Progress />
     </div>
   ) : (
     <div className="main">
-      <SearchBar query={query} onSubmit={onSubmit} setQuery={setQuery} />
+      <SearchBar query={state.query} onSubmit={onSubmit} dispatch={dispatch} />
       {content}
     </div>
   );

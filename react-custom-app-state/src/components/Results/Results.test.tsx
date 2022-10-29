@@ -28,18 +28,18 @@ const results = [
   },
 ];
 
+const state = {
+  results: results,
+  count: 1,
+  currentPage: 1,
+  query: '',
+  index: 0,
+  isFetching: false,
+  nothingFound: false,
+};
+
 test('check if the result title has been rendered and if it has a class', () => {
-  const setOpenModal = jest.fn();
-  const setIndex = jest.fn();
-  render(
-    <Results
-      results={results}
-      count={1}
-      currentPage={1}
-      pages={1}
-      setOpenModal={setOpenModal}
-      setIndex={setIndex}
-    />
-  );
+  const dispatch = jest.fn();
+  render(<Results state={state} dispatch={dispatch} />);
   expect(screen.getByText(/results/i)).toHaveClass('results__title');
 });

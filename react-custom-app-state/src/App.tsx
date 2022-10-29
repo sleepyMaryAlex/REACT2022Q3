@@ -1,28 +1,33 @@
+import reducer from 'app/reducer';
 import About from 'components/About/About';
 import Characters from 'components/Characters/Characters';
 import Header from 'components/Header/Header';
 import Main from 'components/Main/Main';
 import NotFound from 'components/NotFound/NotFound';
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
+import { IAppState } from 'types/types';
 import './App.css';
 
-function App() {
-  const [openModal, setOpenModal] = useState<boolean>(false);
+const initialState: IAppState = {
+  results: [],
+  count: 0,
+  currentPage: Number(localStorage.getItem('currentPage')) || 1,
+  query: localStorage.getItem('query') || '',
+  index: 0,
+  isFetching: true,
+  nothingFound: false,
+};
 
-  function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-    const target = event.target as HTMLDivElement;
-    if (openModal && target.classList.contains('app__overlay')) {
-      setOpenModal(false);
-    }
-  }
+function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <div className={`app${openModal ? ' app__overlay' : ''}`} onClick={handleClick}>
+    <div className="app">
       <HashRouter>
         <Header />
         <Routes>
-          <Route index element={<Main openModal={openModal} setOpenModal={setOpenModal} />} />
+          <Route index element={<Main state={state} dispatch={dispatch} />} />
           <Route path="about" element={<About />} />
           <Route path="characters" element={<Characters />} />
           <Route path="*" element={<NotFound />} />

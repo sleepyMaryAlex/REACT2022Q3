@@ -5,7 +5,7 @@ import { ISearchBar } from 'types/types';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 function SearchBar(props: ISearchBar) {
-  const { setQuery, query } = props;
+  const { dispatch, query } = props;
   const {
     register,
     handleSubmit,
@@ -13,7 +13,7 @@ function SearchBar(props: ISearchBar) {
   } = useForm<{ query: string }>({ mode: 'onChange', defaultValues: { query } });
 
   const onSubmit: SubmitHandler<{ query: string }> = (data) => {
-    setQuery(data.query);
+    dispatch({ type: 'SET_QUERY', payload: data.query });
     props.onSubmit(data.query);
   };
 
