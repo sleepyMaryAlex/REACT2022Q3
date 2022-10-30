@@ -1,3 +1,4 @@
+import { Pagination } from '@mui/material';
 import { getData } from 'app/loader';
 import Progress from 'components/Progress/Progress';
 import Results from 'components/Results/Results';
@@ -25,16 +26,20 @@ function Main(props: IMain) {
   useEffect(() => {
     const { currentPage, query } = state;
     updateState(currentPage, query);
-    return () => {
-      localStorage.setItem('currentPage', currentPage.toString());
-    };
-  }, [state.currentPage]);
+  }, []);
 
   function onSubmit(query: string) {
-    dispatch({ type: 'SET_FIRST_PAGE' });
+    dispatch({ type: 'SET_PAGE', payload: 1 });
     dispatch({ type: 'SET_FETCHING', payload: true });
     updateState(1, query);
     localStorage.setItem('query', query);
+  }
+
+  function handlePageChange(event: React.ChangeEvent<unknown>, page: number) {
+    dispatch({ type: 'SET_PAGE', payload: page });
+    dispatch({ type: 'SET_FETCHING', payload: true });
+    updateState(page, state.query);
+    localStorage.setItem('currentPage', page.toString());
   }
 
   let content;
@@ -44,6 +49,15 @@ function Main(props: IMain) {
     content = (
       <div className="main__container">
         <Results state={state} dispatch={dispatch} />
+        <Pagination
+          className="main__pagination"
+          count={Math.ceil(state.count / 20)}
+          page={state.currentPage}
+          variant="outlined"
+          color="primary"
+          onChange={handlePageChange}
+          size="small"
+        />
       </div>
     );
   }
