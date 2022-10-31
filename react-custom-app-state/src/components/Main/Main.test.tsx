@@ -33,6 +33,7 @@ const state = {
   count: 1,
   currentPage: 1,
   query: '',
+  sorting: '',
   index: 0,
   isFetching: false,
   nothingFound: false,

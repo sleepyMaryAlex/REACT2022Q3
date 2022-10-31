@@ -10,6 +10,8 @@ function reducer(state: IAppState, action: IAction) {
       return { ...state, currentPage: action.payload as number };
     case 'SET_QUERY':
       return { ...state, query: action.payload as string };
+    case 'SET_SORTING':
+      return { ...state, sorting: action.payload as string };
     case 'SET_INDEX':
       return { ...state, index: action.payload as number | null };
     case 'SET_FETCHING':

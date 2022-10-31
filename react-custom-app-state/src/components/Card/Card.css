@@ -64,8 +64,8 @@
   margin: 3px 7px 3px 0;
 }
 
-.circle__purple {
-  background-color: #9386a4;
+.circle__blue {
+  background-color: rgb(0 136 255);
 }
 
 .circle__green {

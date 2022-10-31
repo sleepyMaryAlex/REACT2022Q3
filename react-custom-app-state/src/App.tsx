@@ -16,6 +16,7 @@ const initialState: IAppState = {
   currentPage: Number(localStorage.getItem('currentPage')) || 1,
   query: localStorage.getItem('query') || '',
   index: null,
+  sorting: localStorage.getItem('sorting') || 'byDefault',
   isFetching: true,
   nothingFound: false,
 };

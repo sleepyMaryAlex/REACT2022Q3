@@ -134,6 +134,7 @@ export interface IAppState {
   currentPage: number;
   query: string;
   index: number | null;
+  sorting: string;
   isFetching: boolean;
   nothingFound: boolean;
 }

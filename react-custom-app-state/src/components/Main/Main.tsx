@@ -1,4 +1,4 @@
-import { Pagination } from '@mui/material';
+import { sort } from 'app/common';
 import { getData } from 'app/loader';
 import Progress from 'components/Progress/Progress';
 import Results from 'components/Results/Results';
@@ -14,7 +14,9 @@ function Main(props: IMain) {
     const data = await getData(page, query);
     if (data) {
       const { results, info } = data;
-      dispatch({ type: 'SET_RESULTS', payload: results });
+      const initialResults = [...results];
+      const sortedResults = sort(initialResults, state.sorting);
+      dispatch({ type: 'SET_RESULTS', payload: sortedResults });
       dispatch({ type: 'SET_COUNT', payload: info.count });
       dispatch({ type: 'SET_NOTHING_FOUND', payload: false });
     } else {

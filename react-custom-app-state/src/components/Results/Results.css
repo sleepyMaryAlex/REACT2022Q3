@@ -26,14 +26,21 @@
   justify-content: space-between;
 }
 
-.results__pagination {
+.results__wrapper {
   background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pagination {
   padding: 20px;
-  width: 292px;
-  margin-left: calc(50% - 146px);
+}
+
+.sorting {
+  width: 130px;
+  height: 40px;
+  margin-top: 7px;
 }
 
 @media (max-width: 600px) {
@@ -46,5 +53,11 @@
 
   .results__title {
     font-size: 30px;
+  }
+}
+
+@media (max-width: 450px) {
+  .results__wrapper {
+    flex-direction: column;
   }
 }

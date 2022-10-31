@@ -15,7 +15,7 @@
   border-radius: 10px;
   width: 550px;
   height: 40px;
-  border-bottom: 5px solid #9386a4;
+  border-bottom: 5px solid rgb(0 136 255);
 }
 
 .search__title {

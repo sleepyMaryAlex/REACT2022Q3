@@ -55,8 +55,8 @@
   width: 600px;
 }
 
-.about-character__purple {
-  background-color: #e9dcfa;
+.about-character__blue {
+  background-color: rgb(224 241 255);
 }
 
 .about-character__green {
