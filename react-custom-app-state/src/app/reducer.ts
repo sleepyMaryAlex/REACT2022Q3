@@ -11,7 +11,7 @@ function reducer(state: IAppState, action: IAction) {
     case 'SET_QUERY':
       return { ...state, query: action.payload as string };
     case 'SET_INDEX':
-      return { ...state, index: action.payload as number };
+      return { ...state, index: action.payload as number | null };
     case 'SET_FETCHING':
       return { ...state, isFetching: action.payload as boolean };
     case 'SET_NOTHING_FOUND':

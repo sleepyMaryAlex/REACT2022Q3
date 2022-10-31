@@ -62,6 +62,7 @@ export interface ICard {
 export interface IAboutCharacter {
   results: IResult[];
   index: number | null;
+  dispatch: React.Dispatch<IAction>;
 }
 
 export interface IHeader {
@@ -139,5 +140,5 @@ export interface IAppState {
 
 export interface IAction {
   type: string;
-  payload?: IResult[] | string | number | boolean;
+  payload?: IResult[] | string | number | boolean | null;
 }

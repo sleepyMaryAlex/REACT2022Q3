@@ -29,6 +29,7 @@ const results = [
 ];
 
 test('should contain image with alt attribute', () => {
-  render(<AboutCharacter results={results} index={null} />);
+  const dispatch = jest.fn();
+  render(<AboutCharacter results={results} index={null} dispatch={dispatch} />);
   expect(screen.getByAltText(/image/i)).toBeInTheDocument();
 });

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './AboutCharacter.css';
 import { IAboutCharacter } from 'types/types';
 import { capitalizeString, setColor } from 'app/common';
@@ -6,26 +6,32 @@ import { useNavigate } from 'react-router-dom';
 import returnImg from '../../assets/icons/prev-arrow.svg';
 
 function AboutCharacter(props: IAboutCharacter) {
-  const { index, results } = props;
+  const { index, results, dispatch } = props;
   const navigate = useNavigate();
 
   const [counter, setCounter] = useState(3);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (index === null) {
       counter > 0 ? setTimeout(() => setCounter(counter - 1), 1000) : navigate('/');
     }
   }, [counter]);
+
+  useEffect(() => {
+    return () => {
+      dispatch({ type: 'SET_INDEX', payload: null });
+    };
+  }, []);
 
   if (index !== null) {
     const { image, name, status, gender, species, type, origin, location, created } =
       results[index as number];
     return (
       <div className={`about-character about-character__${setColor(status)}`}>
-        <img src={image} alt="image" className="about-character__image" />
-        <div className="about-character__content">
-          <h3>{name}</h3>
-          <div className="about-character__wrapper">
+        <div className="about-character__wrapper">
+          <img src={image} alt="image" className="about-character__image" />
+          <div className="about-character__content">
+            <h3>{name}</h3>
             <p>
               <span>Gender: </span>
               {capitalizeString(gender)}
@@ -52,8 +58,6 @@ function AboutCharacter(props: IAboutCharacter) {
                   })
                 : 'Unknown'}
             </p>
-          </div>
-          <div className="about-character__wrapper">
             <div className="about-character__container">
               <p className="about-character__caption">First seen in:</p>
               <p>{capitalizeString(origin.name)}</p>

@@ -1,7 +1,7 @@
 {
-  "name": "react-hooks",
+  "name": "react-custom-app-state",
   "version": "0.1.0",
-  "homepage": "https://rolling-scopes-school.github.io/sleepymaryalex-REACT2022Q3/react-hooks/",
+  "homepage": "https://rolling-scopes-school.github.io/sleepymaryalex-REACT2022Q3/react-custom-app-state/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",

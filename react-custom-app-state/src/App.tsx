@@ -33,7 +33,9 @@ function App() {
           <Route path="characters" element={<Characters />} />
           <Route
             path="details"
-            element={<AboutCharacter results={state.results} index={state.index} />}
+            element={
+              <AboutCharacter results={state.results} index={state.index} dispatch={dispatch} />
+            }
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
