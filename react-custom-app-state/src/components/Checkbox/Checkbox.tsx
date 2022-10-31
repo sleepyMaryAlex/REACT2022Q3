@@ -10,7 +10,6 @@ function Checkbox(props: ICheckbox) {
     const updatedCheckedState = checkedState.map((value, index) =>
       index === position ? !value : value
     );
-    console.log(updatedCheckedState);
     dispatch({ type: 'SET_CHECKED_STATE', payload: updatedCheckedState });
     const selectedSpecies: string[] = updatedCheckedState.reduce((previous, current, index) => {
       if (current) {

@@ -34,14 +34,12 @@ function Main(props: IMain) {
     dispatch({ type: 'SET_PAGE', payload: 1 });
     dispatch({ type: 'SET_FETCHING', payload: true });
     updateState(1, query);
-    localStorage.setItem('query', query);
   }
 
   function handlePageChange(event: React.ChangeEvent<unknown>, page: number) {
     dispatch({ type: 'SET_PAGE', payload: page });
     dispatch({ type: 'SET_FETCHING', payload: true });
     updateState(page, state.query);
-    localStorage.setItem('currentPage', page.toString());
   }
 
   let content;

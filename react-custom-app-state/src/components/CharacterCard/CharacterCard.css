@@ -3,7 +3,7 @@
   background-color: #3c3e44;
   border-radius: 10px;
   color: #fff;
-  border-bottom: 5px solid #9386a4;
+  border-bottom: 5px solid rgb(0 136 255);
   box-shadow: rgb(50 50 93 / 25%) 0 50px 100px -20px, rgb(0 0 0 / 30%) 0 30px 60px -30px;
   transition: box-shadow 0.5s;
   overflow: hidden;
@@ -23,7 +23,7 @@
 }
 
 .character-card__content span {
-  color: #9386a4;
+  color: rgb(0 136 255);
   margin-right: 5px;
 }
 

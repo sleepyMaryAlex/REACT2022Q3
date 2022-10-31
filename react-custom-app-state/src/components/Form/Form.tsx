@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { IForm, IFormState } from 'types/types';
 import './Form.css';
 import InputText from 'components/InputText/InputText';
@@ -12,18 +12,22 @@ import { speciesValues } from 'app/common';
 import formReducer from 'app/formReducer';
 
 function Form(props: IForm) {
+  let data;
+  if (localStorage.getItem('formData')) {
+    data = JSON.parse(localStorage.getItem('formData') as string);
+  }
   const initialState: IFormState = {
-    name: '',
-    image: '',
-    fileName: '',
-    status: 'Status',
-    species: [],
-    checkedState: new Array(speciesValues.length).fill(false),
-    gender: 'Male',
-    date: '',
-    canSubmit: false,
-    displayErrorMessage: false,
-    canCheckMistakes: false,
+    name: data?.name || '',
+    image: data?.image || '',
+    fileName: data?.fileName || '',
+    status: data?.status || 'Status',
+    species: data?.species || [],
+    checkedState: data?.checkedState || new Array(speciesValues.length).fill(false),
+    gender: data?.gender || 'Male',
+    date: data?.date || '',
+    canSubmit: data?.canSubmit || false,
+    displayErrorMessage: data?.displayErrorMessage || false,
+    canCheckMistakes: data?.canCheckMistakes || false,
   };
 
   const [state, dispatch] = useReducer(formReducer, initialState);
@@ -40,8 +44,6 @@ function Form(props: IForm) {
     canSubmit,
     fileName,
   } = state;
-
-  const firstUpdate = useRef(true);
 
   function resetForm() {
     dispatch({ type: 'SET_NAME', payload: '' });
@@ -69,9 +71,7 @@ function Form(props: IForm) {
       props.addCharacter(card);
       resetForm();
       dispatch({ type: 'SET_DISPLAY_ERROR_MESSAGE', payload: false });
-      dispatch({ type: 'SET_CAN_SUBMIT', payload: false });
       dispatch({ type: 'SET_CAN_CHECK_MISTAKES', payload: false });
-      firstUpdate.current = true;
     } else {
       dispatch({ type: 'SET_DISPLAY_ERROR_MESSAGE', payload: true });
       dispatch({ type: 'SET_CAN_SUBMIT', payload: false });
@@ -80,16 +80,36 @@ function Form(props: IForm) {
   }
 
   useEffect(() => {
-    if (firstUpdate.current) {
-      firstUpdate.current = false;
-      return;
-    }
+    const formData = {
+      name,
+      image,
+      fileName,
+      status,
+      species,
+      gender,
+      date,
+      checkedState,
+      canCheckMistakes,
+      canSubmit,
+      displayErrorMessage,
+    };
+    localStorage.setItem('formData', JSON.stringify(formData));
     if (name && date && image && status !== 'Status' && species.length !== 0) {
-      dispatch({ type: 'SET_CAN_CHECK_MISTAKES', payload: false });
       dispatch({ type: 'SET_CAN_SUBMIT', payload: true });
     }
     if (!canCheckMistakes) {
-      dispatch({ type: 'SET_CAN_SUBMIT', payload: true });
+      if (
+        !name &&
+        !date &&
+        !image &&
+        status === 'Status' &&
+        species.length === 0 &&
+        gender === 'Male'
+      ) {
+        dispatch({ type: 'SET_CAN_SUBMIT', payload: false });
+      } else {
+        dispatch({ type: 'SET_CAN_SUBMIT', payload: true });
+      }
     }
   }, [name, image, status, species, gender, date]);
 

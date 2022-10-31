@@ -6,7 +6,7 @@ import {
   Select,
   SelectChangeEvent,
 } from '@mui/material';
-import { sort, sortBy } from 'app/common';
+import { sort } from 'app/common';
 import Cards from 'components/Cards/Cards';
 import React from 'react';
 import { IResults } from 'types/types';
@@ -18,7 +18,6 @@ function Results(props: IResults) {
   function handleSortingChange(event: SelectChangeEvent<string>) {
     const value = event.target.value;
     dispatch({ type: 'SET_SORTING', payload: value });
-    localStorage.setItem('sorting', value);
     const results = [...state.results];
     const sortedResults = sort(results, value);
     dispatch({ type: 'SET_RESULTS', payload: sortedResults });

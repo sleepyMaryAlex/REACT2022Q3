@@ -5,26 +5,35 @@ import Characters from 'components/Characters/Characters';
 import Header from 'components/Header/Header';
 import Main from 'components/Main/Main';
 import NotFound from 'components/NotFound/NotFound';
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useEffect, useReducer } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { IAppState } from 'types/types';
 import './App.css';
 
-const initialState: IAppState = {
-  results: [],
-  count: 0,
-  currentPage: Number(localStorage.getItem('currentPage')) || 1,
-  query: localStorage.getItem('query') || '',
-  index: null,
-  sorting: localStorage.getItem('sorting') || 'byDefault',
-  isFetching: true,
-  nothingFound: false,
-};
-
-export const QueryContext = createContext(initialState.query);
+export const QueryContext = createContext('');
 
 function App() {
+  let data;
+  if (localStorage.getItem('appData')) {
+    data = JSON.parse(localStorage.getItem('appData') as string);
+  }
+  const initialState: IAppState = {
+    results: [],
+    count: 0,
+    currentPage: data?.currentPage || 1,
+    query: data?.query || '',
+    index: null,
+    sorting: data?.sorting || 'byDefault',
+    isFetching: true,
+    nothingFound: false,
+  };
   const [state, dispatch] = useReducer(appReducer, initialState);
+  const { currentPage, query, sorting } = state;
+
+  useEffect(() => {
+    const appData = { currentPage, query, sorting };
+    localStorage.setItem('appData', JSON.stringify(appData));
+  }, [currentPage, query, sorting]);
 
   return (
     <div className="app">
