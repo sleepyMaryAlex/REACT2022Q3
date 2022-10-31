@@ -4,11 +4,15 @@ import './Select.css';
 
 function Select(props: ISelect) {
   const statuses = ['Alive', 'Dead', 'Unknown'];
-  const { setStatus, displayErrorMessage, status } = props;
+  const { dispatch, displayErrorMessage, status } = props;
 
   return (
     <div className="form__dropdown-field">
-      <select className="form__dropdown" value={status} onChange={(e) => setStatus(e.target.value)}>
+      <select
+        className="form__dropdown"
+        value={status}
+        onChange={(e) => dispatch({ type: 'SET_STATUS', payload: e.target.value })}
+      >
         <option disabled>Status</option>
         {statuses.map((value) => (
           <option key={value}>{value}</option>

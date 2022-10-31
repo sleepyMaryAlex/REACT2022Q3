@@ -33,36 +33,36 @@ export interface IData {
 
 export interface IMain {
   state: IAppState;
-  dispatch: React.Dispatch<IAction>;
+  dispatch: React.Dispatch<IAppAction>;
 }
 
 export interface ISearchBar {
   query: string;
-  dispatch: React.Dispatch<IAction>;
+  dispatch: React.Dispatch<IAppAction>;
   onSubmit: (query: string) => void;
 }
 
 export interface IResults {
   state: IAppState;
-  dispatch: React.Dispatch<IAction>;
+  dispatch: React.Dispatch<IAppAction>;
   handlePageChange: (event: React.ChangeEvent<unknown>, page: number) => void;
 }
 
 export interface ICards {
   results: IResult[];
-  dispatch: React.Dispatch<IAction>;
+  dispatch: React.Dispatch<IAppAction>;
 }
 
 export interface ICard {
   card: IResult;
-  dispatch: React.Dispatch<IAction>;
+  dispatch: React.Dispatch<IAppAction>;
   index: number;
 }
 
 export interface IAboutCharacter {
   results: IResult[];
   index: number | null;
-  dispatch: React.Dispatch<IAction>;
+  dispatch: React.Dispatch<IAppAction>;
 }
 
 export interface IHeader {
@@ -86,40 +86,38 @@ export interface IForm {
 }
 
 export interface IInputText {
-  setName: React.Dispatch<React.SetStateAction<string>>;
+  dispatch: React.Dispatch<IFormAction>;
   displayErrorMessage: boolean;
   name: string;
 }
 
 export interface IInputFile {
-  setImage: React.Dispatch<React.SetStateAction<string>>;
-  setFileName: React.Dispatch<React.SetStateAction<string>>;
+  dispatch: React.Dispatch<IFormAction>;
   displayErrorMessage: boolean;
   image: string;
   fileName: string;
 }
 
 export interface ISelect {
-  setStatus: React.Dispatch<React.SetStateAction<string>>;
+  dispatch: React.Dispatch<IFormAction>;
   status: string;
   displayErrorMessage: boolean;
 }
 
 export interface ICheckbox {
-  setSpecies: React.Dispatch<React.SetStateAction<string[]>>;
+  dispatch: React.Dispatch<IFormAction>;
   species: string[];
   displayErrorMessage: boolean;
   checkedState: boolean[];
-  setCheckedState: React.Dispatch<React.SetStateAction<boolean[]>>;
 }
 
 export interface ISwitcher {
   gender: string;
-  setGender: React.Dispatch<React.SetStateAction<string>>;
+  dispatch: React.Dispatch<IFormAction>;
 }
 
 export interface IInputDate {
-  setDate: React.Dispatch<React.SetStateAction<string>>;
+  dispatch: React.Dispatch<IFormAction>;
   date: string;
   displayErrorMessage: boolean;
 }
@@ -139,7 +137,26 @@ export interface IAppState {
   nothingFound: boolean;
 }
 
-export interface IAction {
+export interface IFormState {
+  name: string;
+  image: string;
+  fileName: string;
+  status: string;
+  species: string[];
+  checkedState: boolean[];
+  gender: string;
+  date: string;
+  canSubmit: boolean;
+  displayErrorMessage: boolean;
+  canCheckMistakes: boolean;
+}
+
+export interface IAppAction {
   type: string;
   payload?: IResult[] | string | number | boolean | null;
+}
+
+export interface IFormAction {
+  type: string;
+  payload?: string | boolean | null | string[] | boolean[];
 }

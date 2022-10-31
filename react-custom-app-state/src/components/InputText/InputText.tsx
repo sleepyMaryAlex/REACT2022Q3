@@ -3,7 +3,7 @@ import { IInputText } from 'types/types';
 import './InputText.css';
 
 function InputText(props: IInputText) {
-  const { name, setName, displayErrorMessage } = props;
+  const { name, dispatch, displayErrorMessage } = props;
 
   return (
     <div className="form__text-field">
@@ -14,7 +14,7 @@ function InputText(props: IInputText) {
         autoFocus
         spellCheck={false}
         value={name}
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e) => dispatch({ type: 'SET_NAME', payload: e.target.value })}
       />
       <p className="form__message">
         {displayErrorMessage && !name ? 'This field is required' : ''}

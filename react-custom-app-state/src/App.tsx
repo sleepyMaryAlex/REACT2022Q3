@@ -1,4 +1,4 @@
-import reducer from 'app/reducer';
+import appReducer from 'app/appReducer';
 import About from 'components/About/About';
 import AboutCharacter from 'components/AboutCharacter/AboutCharacter';
 import Characters from 'components/Characters/Characters';
@@ -22,7 +22,7 @@ const initialState: IAppState = {
 };
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(appReducer, initialState);
 
   return (
     <div className="app">

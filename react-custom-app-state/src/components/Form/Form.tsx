@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { IForm } from 'types/types';
+import React, { useEffect, useReducer, useRef } from 'react';
+import { IForm, IFormState } from 'types/types';
 import './Form.css';
 import InputText from 'components/InputText/InputText';
 import InputFile from 'components/InputFile/InputFile';
@@ -9,33 +9,49 @@ import Switcher from 'components/Switcher/Switcher';
 import InputDate from 'components/InputDate/InputDate';
 import Message from 'components/Message/Message';
 import { speciesValues } from 'app/common';
+import formReducer from 'app/formReducer';
 
 function Form(props: IForm) {
-  const [name, setName] = useState<string>('');
-  const [image, setImage] = useState<string>('');
-  const [fileName, setFileName] = useState<string>('');
-  const [status, setStatus] = useState<string>('Status');
-  const [species, setSpecies] = useState<string[]>([]);
-  const [checkedState, setCheckedState] = useState<boolean[]>(
-    new Array(speciesValues.length).fill(false)
-  );
-  const [gender, setGender] = useState<string>('Male');
-  const [date, setDate] = useState<string>('');
-  const [canSubmit, setCanSubmit] = useState<boolean>(false);
-  const [displayErrorMessage, setDisplayErrorMessage] = useState<boolean>(false);
-  const [canCheckMistakes, setCanCheckMistakes] = useState<boolean>(false);
+  const initialState: IFormState = {
+    name: '',
+    image: '',
+    fileName: '',
+    status: 'Status',
+    species: [],
+    checkedState: new Array(speciesValues.length).fill(false),
+    gender: 'Male',
+    date: '',
+    canSubmit: false,
+    displayErrorMessage: false,
+    canCheckMistakes: false,
+  };
+
+  const [state, dispatch] = useReducer(formReducer, initialState);
+  const {
+    name,
+    image,
+    status,
+    species,
+    checkedState,
+    gender,
+    date,
+    canCheckMistakes,
+    displayErrorMessage,
+    canSubmit,
+    fileName,
+  } = state;
 
   const firstUpdate = useRef(true);
 
   function resetForm() {
-    setName('');
-    setImage('');
-    setFileName('');
-    setStatus('Status');
-    setCheckedState(new Array(speciesValues.length).fill(false));
-    setSpecies([]);
-    setGender('Male');
-    setDate('');
+    dispatch({ type: 'SET_NAME', payload: '' });
+    dispatch({ type: 'SET_IMAGE', payload: '' });
+    dispatch({ type: 'SET_FILE_NAME', payload: '' });
+    dispatch({ type: 'SET_STATUS', payload: 'Status' });
+    dispatch({ type: 'SET_SPECIES', payload: [] });
+    dispatch({ type: 'SET_CHECKED_STATE', payload: new Array(speciesValues.length).fill(false) });
+    dispatch({ type: 'SET_GENDER', payload: 'Male' });
+    dispatch({ type: 'SET_DATE', payload: '' });
   }
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -52,14 +68,14 @@ function Form(props: IForm) {
       props.setDisplayMessage(true);
       props.addCharacter(card);
       resetForm();
-      setDisplayErrorMessage(false);
-      setCanSubmit(false);
-      setCanCheckMistakes(false);
+      dispatch({ type: 'SET_DISPLAY_ERROR_MESSAGE', payload: false });
+      dispatch({ type: 'SET_CAN_SUBMIT', payload: false });
+      dispatch({ type: 'SET_CAN_CHECK_MISTAKES', payload: false });
       firstUpdate.current = true;
     } else {
-      setDisplayErrorMessage(true);
-      setCanCheckMistakes(true);
-      setCanSubmit(false);
+      dispatch({ type: 'SET_DISPLAY_ERROR_MESSAGE', payload: true });
+      dispatch({ type: 'SET_CAN_SUBMIT', payload: false });
+      dispatch({ type: 'SET_CAN_CHECK_MISTAKES', payload: true });
     }
   }
 
@@ -69,11 +85,11 @@ function Form(props: IForm) {
       return;
     }
     if (name && date && image && status !== 'Status' && species.length !== 0) {
-      setCanCheckMistakes(false);
-      setCanSubmit(true);
+      dispatch({ type: 'SET_CAN_CHECK_MISTAKES', payload: false });
+      dispatch({ type: 'SET_CAN_SUBMIT', payload: true });
     }
     if (!canCheckMistakes) {
-      setCanSubmit(true);
+      dispatch({ type: 'SET_CAN_SUBMIT', payload: true });
     }
   }, [name, image, status, species, gender, date]);
 
@@ -83,24 +99,22 @@ function Form(props: IForm) {
         <h2>Create a character</h2>
       </div>
       <div className="form__container">
-        <InputText name={name} setName={setName} displayErrorMessage={displayErrorMessage} />
+        <InputText name={name} dispatch={dispatch} displayErrorMessage={displayErrorMessage} />
         <InputFile
           image={image}
           fileName={fileName}
-          setImage={setImage}
-          setFileName={setFileName}
+          dispatch={dispatch}
           displayErrorMessage={displayErrorMessage}
         />
-        <Select setStatus={setStatus} status={status} displayErrorMessage={displayErrorMessage} />
+        <Select dispatch={dispatch} status={status} displayErrorMessage={displayErrorMessage} />
         <Checkbox
           species={species}
-          setSpecies={setSpecies}
+          dispatch={dispatch}
           displayErrorMessage={displayErrorMessage}
           checkedState={checkedState}
-          setCheckedState={setCheckedState}
         />
-        <Switcher gender={gender} setGender={setGender} />
-        <InputDate setDate={setDate} date={date} displayErrorMessage={displayErrorMessage} />
+        <Switcher gender={gender} dispatch={dispatch} />
+        <InputDate dispatch={dispatch} date={date} displayErrorMessage={displayErrorMessage} />
         <input
           type="submit"
           value="Create a character"

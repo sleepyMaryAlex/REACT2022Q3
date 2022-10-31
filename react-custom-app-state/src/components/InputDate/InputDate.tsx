@@ -3,7 +3,7 @@ import { IInputDate } from 'types/types';
 import './InputDate.css';
 
 function InputDate(props: IInputDate) {
-  const { setDate, date, displayErrorMessage } = props;
+  const { dispatch, date, displayErrorMessage } = props;
 
   return (
     <div className="input-date__container">
@@ -15,7 +15,7 @@ function InputDate(props: IInputDate) {
         id="date"
         value={date}
         className="input-date"
-        onChange={(e) => setDate(e.target.value)}
+        onChange={(e) => dispatch({ type: 'SET_DATE', payload: e.target.value })}
       />
       <p className="form__message">{displayErrorMessage && !date ? 'Please, select date' : ''}</p>
     </div>

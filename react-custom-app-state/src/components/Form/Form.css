@@ -9,6 +9,7 @@
 
 .form {
   background-size: cover;
+  background-color: #2d383f;
 }
 
 .form__container {
@@ -20,37 +21,29 @@
   padding: 10px 0 30px;
 }
 
-.form__container > * {
-  margin: 20px 0;
-}
-
 .submit-button {
   width: 200px;
   height: 50px;
-  background-color: #9386a4;
+  background-color: #f3b2ac;
   border: none;
   cursor: pointer;
   outline: none;
-  box-shadow: 0 0 4px #b9b8b8;
-  transition: 0.3s box-shadow;
+  transition: 0.3s background-color;
   border-radius: 5px;
   font-family: inherit;
   font-size: 18px;
   font-weight: 600;
-}
-
-.submit-button:hover {
-  box-shadow: 0 0 4px #898989;
+  margin-top: 20px;
 }
 
 .submit-button_disabled {
   cursor: auto;
-  background-color: #cebde3;
+  background-color: #f1e9e9;
   color: rgb(72 72 72);
 }
 
 .form__message {
-  color: #9386a4;
+  color: #fddedb;
   text-align: center;
   font-size: 18px;
   margin-top: 3px;

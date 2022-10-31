@@ -1,6 +1,6 @@
-import { IAction, IResult, IAppState } from 'types/types';
+import { IAppAction, IResult, IAppState } from 'types/types';
 
-function reducer(state: IAppState, action: IAction) {
+function appReducer(state: IAppState, action: IAppAction) {
   switch (action.type) {
     case 'SET_RESULTS':
       return { ...state, results: action.payload as IResult[] };
@@ -23,4 +23,4 @@ function reducer(state: IAppState, action: IAction) {
   }
 }
 
-export default reducer;
+export default appReducer;

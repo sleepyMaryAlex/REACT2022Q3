@@ -4,7 +4,7 @@ import './InputFile.css';
 import uploadImage from '../../assets/icons/upload.svg';
 
 function InputFile(props: IInputFile) {
-  const { fileName, image, displayErrorMessage, setImage, setFileName } = props;
+  const { fileName, image, displayErrorMessage, dispatch } = props;
 
   function editFileName(fileName: string) {
     return fileName.length > 15
@@ -17,8 +17,8 @@ function InputFile(props: IInputFile) {
     const reader = new FileReader();
     const file = (target.files as FileList)[0];
     reader.onloadend = () => {
-      setImage(reader.result as string);
-      setFileName(file.name);
+      dispatch({ type: 'SET_IMAGE', payload: reader.result as string });
+      dispatch({ type: 'SET_FILE_NAME', payload: file.name });
     };
     reader.readAsDataURL(file);
   }

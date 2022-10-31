@@ -18,7 +18,7 @@ function Card(props: ICard) {
       <div className="card" onClick={() => handleClick(props.index)}>
         <img src={image} alt="image" />
         <div className="card__content">
-          <h3 className="card__name">{name.length > 20 ? `${name.slice(0, 20)}...` : name}</h3>
+          <h3 className="card__name">{name.length > 18 ? `${name.slice(0, 18)}...` : name}</h3>
           <div className="card__info">
             <div className={`card__circle circle__${setColor(status)}`}></div>
             <span>{capitalizeString(status)}</span>

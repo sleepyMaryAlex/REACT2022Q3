@@ -4,20 +4,21 @@ import { ICheckbox } from 'types/types';
 import './Checkbox.css';
 
 function Checkbox(props: ICheckbox) {
-  const { species, setSpecies, displayErrorMessage, checkedState, setCheckedState } = props;
+  const { species, dispatch, displayErrorMessage, checkedState } = props;
 
   function handleChange(position: number) {
     const updatedCheckedState = checkedState.map((value, index) =>
       index === position ? !value : value
     );
-    setCheckedState(updatedCheckedState);
+    console.log(updatedCheckedState);
+    dispatch({ type: 'SET_CHECKED_STATE', payload: updatedCheckedState });
     const selectedSpecies: string[] = updatedCheckedState.reduce((previous, current, index) => {
       if (current) {
         return previous.concat(speciesValues[index]);
       }
       return previous;
     }, [] as string[]);
-    setSpecies(selectedSpecies);
+    dispatch({ type: 'SET_SPECIES', payload: selectedSpecies });
   }
 
   return (
