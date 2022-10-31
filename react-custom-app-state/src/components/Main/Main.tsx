@@ -61,7 +61,7 @@ function Main(props: IMain) {
     </div>
   ) : (
     <div className="main">
-      <SearchBar query={state.query} onSubmit={onSubmit} dispatch={dispatch} />
+      <SearchBar onSubmit={onSubmit} dispatch={dispatch} />
       {content}
     </div>
   );

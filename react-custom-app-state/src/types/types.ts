@@ -37,7 +37,6 @@ export interface IMain {
 }
 
 export interface ISearchBar {
-  query: string;
   dispatch: React.Dispatch<IAppAction>;
   onSubmit: (query: string) => void;
 }

@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './SearchBar.css';
 import icon from '../../assets/icons/icon.svg';
 import { ISearchBar } from 'types/types';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { QueryContext } from 'App';
 
 function SearchBar(props: ISearchBar) {
-  const { dispatch, query } = props;
+  const { dispatch } = props;
+
+  const query = useContext(QueryContext);
+
   const {
     register,
     handleSubmit,
