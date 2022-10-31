@@ -2,6 +2,12 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import AboutCharacter from './AboutCharacter';
 
+const mockedUsedNavigate = jest.fn();
+jest.mock('react-router-dom', () => ({
+   ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUsedNavigate,
+}));
+
 const results = [
   {
     id: 1,
@@ -30,6 +36,6 @@ const results = [
 
 test('should contain image with alt attribute', () => {
   const dispatch = jest.fn();
-  render(<AboutCharacter results={results} index={null} dispatch={dispatch} />);
-  expect(screen.getByAltText(/image/i)).toBeInTheDocument();
+  render(<AboutCharacter results={results} index={0} dispatch={dispatch} />);
+  expect(screen.getAllByAltText(/image/i)[0]).toBeInTheDocument();
 });
