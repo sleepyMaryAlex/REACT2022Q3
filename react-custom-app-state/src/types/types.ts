@@ -45,6 +45,7 @@ export interface ISearchBar {
 export interface IResults {
   state: IAppState;
   dispatch: React.Dispatch<IAction>;
+  handlePageChange: (event: React.ChangeEvent<unknown>, page: number) => void;
 }
 
 export interface ICards {

@@ -26,6 +26,16 @@
   justify-content: space-between;
 }
 
+.results__pagination {
+  background-color: #f0f0f0;
+}
+
+.pagination {
+  padding: 20px;
+  width: 292px;
+  margin-left: calc(50% - 146px);
+}
+
 @media (max-width: 600px) {
   .cards__results {
     width: 280px;

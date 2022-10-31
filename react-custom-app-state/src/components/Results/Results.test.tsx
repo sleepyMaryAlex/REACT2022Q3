@@ -40,6 +40,7 @@ const state = {
 
 test('check if the result title has been rendered and if it has a class', () => {
   const dispatch = jest.fn();
-  render(<Results state={state} dispatch={dispatch} />);
+  const handlePageChange = jest.fn();
+  render(<Results state={state} dispatch={dispatch} handlePageChange={handlePageChange} />);
   expect(screen.getByText(/results/i)).toHaveClass('results__title');
 });

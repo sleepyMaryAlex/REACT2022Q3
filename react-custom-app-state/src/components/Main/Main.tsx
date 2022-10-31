@@ -48,16 +48,7 @@ function Main(props: IMain) {
   } else {
     content = (
       <div className="main__container">
-        <Results state={state} dispatch={dispatch} />
-        <Pagination
-          className="main__pagination"
-          count={Math.ceil(state.count / 20)}
-          page={state.currentPage}
-          variant="outlined"
-          color="primary"
-          onChange={handlePageChange}
-          size="small"
-        />
+        <Results state={state} dispatch={dispatch} handlePageChange={handlePageChange} />
       </div>
     );
   }
