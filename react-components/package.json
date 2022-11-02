@@ -1,7 +1,7 @@
 {
-  "name": "react-custom-app-state",
+  "name": "react-redux",
   "version": "0.1.0",
-  "homepage": "https://rolling-scopes-school.github.io/sleepymaryalex-REACT2022Q3/react-custom-app-state/",
+  "homepage": "https://rolling-scopes-school.github.io/sleepymaryalex-REACT2022Q3/react-redux/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
