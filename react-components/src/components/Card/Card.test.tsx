@@ -18,6 +18,6 @@ test('card should contain title', () => {
     },
   ];
   render(<Card card={cards[0]} />);
-  const title = cards[0].title;
+  const { title } = cards[0];
   expect(screen.getByText(title, { exact: false })).toBeInTheDocument();
 });

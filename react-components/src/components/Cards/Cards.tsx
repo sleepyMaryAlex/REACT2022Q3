@@ -8,7 +8,7 @@ class Cards extends React.Component<ICards> {
     return (
       <div className="cards">
         {this.props.cards.length ? (
-          this.props.cards.map((card: ICard) => <Card card={card} key={card.id.toString()} />)
+          this.props.cards.map((card: ICard) => <Card card={card} key={card.id} />)
         ) : (
           <p className="result__message">SORRY, NOTHING FOUND</p>
         )}

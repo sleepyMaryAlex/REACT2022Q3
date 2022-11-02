@@ -54,7 +54,7 @@ class Checkbox extends React.Component<ICheckbox, { checkedState: boolean[] }> {
               <input
                 type="checkbox"
                 className="checkbox"
-                onClick={this.handleChange.bind(this, index)}
+                onClick={() => this.handleChange(index)}
                 id={value}
                 name="diet"
               />
