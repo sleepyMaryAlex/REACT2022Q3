@@ -8,14 +8,17 @@ test('', async () => {
   const handleChange = jest.fn();
   const handleClickByCuisine = jest.fn();
   const handleClickByDiet = jest.fn();
-  render(<Main value='cake'
-  handleChange={handleChange}
-  handleClickByCuisine={handleClickByCuisine}
-  handleClickByDiet={handleClickByDiet}
-  cards={cards}
-  numShow={100}
-  cuisine='all cuisines'
-  diet='all diets'
-  />);
+  render(
+    <Main
+      value="cake"
+      handleChange={handleChange}
+      handleClickByCuisine={handleClickByCuisine}
+      handleClickByDiet={handleClickByDiet}
+      cards={cards}
+      numShow={100}
+      cuisine="all cuisines"
+      diet="all diets"
+    />
+  );
   expect(screen.getAllByRole('img')[0]).toHaveClass('search__image');
 });

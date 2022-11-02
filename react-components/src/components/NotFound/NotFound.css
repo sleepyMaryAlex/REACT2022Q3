@@ -1,77 +1,77 @@
 .wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: calc(100vh - 65px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: calc(100vh - 65px);
 }
-  
+
 .return-button {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 10px 30px;
-    background-color: #000000;
-    color: #F0F0F0;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px;
-    margin: 70px 0 0 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: #000;
+  color: #f0f0f0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 70px 0 0;
 }
-  
+
 .return-button img {
-    transition: ease-in-out 0.5s;
-    margin: 0 10px 0 0;
+  transition: ease-in-out 0.5s;
+  margin: 0 10px 0 0;
 }
 
 .return-button:hover img {
-    transform: translateX(-12px);
+  transform: translateX(-12px);
 }
 
 .return-button p {
-    margin-top: -3px;
+  margin-top: -3px;
 }
-  
+
 .title {
-    font-size: 20px;
+  font-size: 20px;
 }
-  
+
 .error {
-    overflow: hidden;
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    font-size: 85px;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  font-size: 85px;
 }
-  
+
 .error p {
-    margin: 5px 25px;
-    display: flex;
-    align-items: center;
+  margin: 5px 25px;
+  display: flex;
+  align-items: center;
 }
-  
+
 .error__first {
-    filter: blur(1.5px);
-    font-size: 60px;
+  filter: blur(1.5px);
+  font-size: 60px;
 }
-  
+
 .error__second {
-    filter: blur(3px);
-    font-size: 50px;
+  filter: blur(3px);
+  font-size: 50px;
 }
-  
+
 .error__last {
-    filter: blur(4.5px);
-    font-size: 42px;
+  filter: blur(4.5px);
+  font-size: 42px;
 }
-  
+
 .error__basic {
-    text-shadow: 3px 2px 2px #313131be;
+  text-shadow: 3px 2px 2px #313131be;
 }
 
 @media (max-width: 470px) {
-    .title {
-      max-width: 300px;
-      text-align: center;
-    }
+  .title {
+    max-width: 300px;
+    text-align: center;
+  }
 }
