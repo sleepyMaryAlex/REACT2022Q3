@@ -2,33 +2,33 @@ import React from 'react';
 import { IDropdown } from 'types/types';
 import './Dropdown.css';
 
-class Dropdown extends React.Component<IDropdown, { cuisine: string[]; diet: string[] }> {
+class Dropdown extends React.Component<IDropdown> {
+  cuisine: string[];
+  diet: string[];
   constructor(props: IDropdown) {
     super(props);
-    this.state = {
-      cuisine: [
-        'ALL CUISINES',
-        'AFRICAN',
-        'AMERICAN',
-        'BRITISH',
-        'CHINESE',
-        'GERMAN',
-        'ITALIAN',
-        'JAPANESE',
-        'NORDIC',
-      ],
-      diet: [
-        'ALL DIETS',
-        'GLUTEN FREE',
-        'KETOGENIC',
-        'VEGETARIAN',
-        'PRIMAL',
-        'VEGAN',
-        'PALEO',
-        'LOW FODMAP',
-        'WHOLE30',
-      ],
-    };
+    this.cuisine = [
+      'ALL CUISINES',
+      'AFRICAN',
+      'AMERICAN',
+      'BRITISH',
+      'CHINESE',
+      'GERMAN',
+      'ITALIAN',
+      'JAPANESE',
+      'NORDIC',
+    ];
+    this.diet = [
+      'ALL DIETS',
+      'GLUTEN FREE',
+      'KETOGENIC',
+      'VEGETARIAN',
+      'PRIMAL',
+      'VEGAN',
+      'PALEO',
+      'LOW FODMAP',
+      'WHOLE30',
+    ];
   }
 
   render() {
@@ -41,7 +41,7 @@ class Dropdown extends React.Component<IDropdown, { cuisine: string[]; diet: str
             value={this.props.cuisine}
             onChange={(event) => this.props.handleClickByCuisine(event)}
           >
-            {this.state.cuisine.map((value) => (
+            {this.cuisine.map((value) => (
               <option value={value.toLowerCase()} key={value}>
                 {value}
               </option>
@@ -52,7 +52,7 @@ class Dropdown extends React.Component<IDropdown, { cuisine: string[]; diet: str
             value={this.props.diet}
             onChange={(event) => this.props.handleClickByDiet(event)}
           >
-            {this.state.diet.map((value) => (
+            {this.diet.map((value) => (
               <option value={value.toLowerCase()} key={value}>
                 {value}
               </option>

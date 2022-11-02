@@ -5,10 +5,6 @@ import { IResults } from 'types/types';
 import './Results.css';
 
 class Results extends React.Component<IResults> {
-  constructor(props: IResults) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="results">

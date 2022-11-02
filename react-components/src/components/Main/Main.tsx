@@ -5,10 +5,6 @@ import { IMain } from 'types/types';
 import './Main.css';
 
 class Main extends React.Component<IMain> {
-  constructor(props: IMain) {
-    super(props);
-  }
-
   componentWillUnmount() {
     localStorage.setItem('value', this.props.value);
   }

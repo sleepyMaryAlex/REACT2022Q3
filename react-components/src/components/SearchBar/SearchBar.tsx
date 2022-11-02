@@ -4,10 +4,6 @@ import icon from '../../assets/icons/icon.svg';
 import { ISearchBar } from 'types/types';
 
 class SearchBar extends React.Component<ISearchBar> {
-  constructor(props: ISearchBar) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="search">
