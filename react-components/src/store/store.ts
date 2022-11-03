@@ -10,6 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import formSlice from './formSlice';
 import mainSlice from './mainSlice';
 
 const mainPersistConfig = {
@@ -34,6 +35,7 @@ const formPersistConfig = {
     'displayErrorMessage',
     'canCheckMistakes',
     'characters',
+    'displayMessage',
   ],
 };
 
