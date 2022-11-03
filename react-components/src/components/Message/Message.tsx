@@ -1,9 +1,12 @@
 import React from 'react';
 import './Message.css';
 import closeButton from '../../assets/icons/close-button.svg';
-import { IMessage } from 'types/types';
+import { useAppDispatch } from 'hooks/hooks';
+import { setDisplayMessage } from 'store/formSlice';
 
-function Message(props: IMessage) {
+function Message() {
+  const dispatch = useAppDispatch();
+
   return (
     <div className="message">
       <img
@@ -11,7 +14,7 @@ function Message(props: IMessage) {
         src={closeButton}
         alt="close"
         onClick={() => {
-          props.setDisplayMessage(false);
+          dispatch(setDisplayMessage(false));
         }}
       />
       <p className="message__message">CONGRATULATIONS!!!</p>

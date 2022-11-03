@@ -1,9 +1,13 @@
+import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import React from 'react';
-import { ISwitcher } from 'types/types';
+import { selectGender, setGender } from 'store/formSlice';
 import './Switcher.css';
 
-function Switcher(props: ISwitcher) {
-  const { gender, dispatch } = props;
+function Switcher() {
+  const gender = useAppSelector(selectGender);
+
+  const dispatch = useAppDispatch();
+
   return (
     <div className="switcher__container">
       <input
@@ -11,9 +15,7 @@ function Switcher(props: ISwitcher) {
         className="switcher"
         id="switcher"
         checked={gender === 'Male' ? false : true}
-        onChange={() =>
-          dispatch({ type: 'SET_GENDER', payload: gender === 'Male' ? 'Female' : 'Male' })
-        }
+        onChange={() => dispatch(setGender(gender === 'Male' ? 'Female' : 'Male'))}
       />
       <label className="switcher__label" htmlFor="switcher">
         {gender}

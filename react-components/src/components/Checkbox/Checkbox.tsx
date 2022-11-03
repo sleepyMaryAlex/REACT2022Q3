@@ -1,23 +1,32 @@
-import { speciesValues } from 'app/common';
+import { speciesValues } from 'app/utils';
+import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import React from 'react';
-import { ICheckbox } from 'types/types';
+import {
+  selectCheckedState,
+  selectDisplayErrorMessage,
+  selectSpecies,
+  setSpecies,
+} from 'store/formSlice';
 import './Checkbox.css';
 
-function Checkbox(props: ICheckbox) {
-  const { species, dispatch, displayErrorMessage, checkedState } = props;
+function Checkbox() {
+  const species = useAppSelector(selectSpecies);
+  const checkedState = useAppSelector(selectCheckedState);
+  const displayErrorMessage = useAppSelector(selectDisplayErrorMessage);
+
+  const dispatch = useAppDispatch();
 
   function handleChange(position: number) {
     const updatedCheckedState = checkedState.map((value, index) =>
       index === position ? !value : value
     );
-    dispatch({ type: 'SET_CHECKED_STATE', payload: updatedCheckedState });
     const selectedSpecies: string[] = updatedCheckedState.reduce((previous, current, index) => {
       if (current) {
         return previous.concat(speciesValues[index]);
       }
       return previous;
     }, [] as string[]);
-    dispatch({ type: 'SET_SPECIES', payload: selectedSpecies });
+    dispatch(setSpecies({ species: selectedSpecies, checkedState: updatedCheckedState }));
   }
 
   return (

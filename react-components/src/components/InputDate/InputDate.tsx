@@ -1,9 +1,13 @@
+import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import React from 'react';
-import { IInputDate } from 'types/types';
+import { selectDate, selectDisplayErrorMessage, setDate } from 'store/formSlice';
 import './InputDate.css';
 
-function InputDate(props: IInputDate) {
-  const { dispatch, date, displayErrorMessage } = props;
+function InputDate() {
+  const date = useAppSelector(selectDate);
+  const displayErrorMessage = useAppSelector(selectDisplayErrorMessage);
+
+  const dispatch = useAppDispatch();
 
   return (
     <div className="input-date__container">
@@ -15,7 +19,7 @@ function InputDate(props: IInputDate) {
         id="date"
         value={date}
         className="input-date"
-        onChange={(e) => dispatch({ type: 'SET_DATE', payload: e.target.value })}
+        onChange={(e) => dispatch(setDate(e.target.value))}
       />
       <p className="form__message">{displayErrorMessage && !date ? 'Please, select date' : ''}</p>
     </div>

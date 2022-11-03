@@ -1,4 +1,4 @@
-import { capitalizeString, setColor } from 'app/common';
+import { capitalizeString, setColor } from 'app/utils';
 import { useAppDispatch } from 'hooks/hooks';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';

@@ -1,4 +1,4 @@
-import { capitalizeString } from 'app/common';
+import { capitalizeString } from 'app/utils';
 import React from 'react';
 import { ICharacterCard } from 'types/types';
 import './CharacterCard.css';

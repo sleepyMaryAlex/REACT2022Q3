@@ -1,9 +1,13 @@
+import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import React from 'react';
-import { IInputText } from 'types/types';
+import { selectDisplayErrorMessage, selectName, setName } from 'store/formSlice';
 import './InputText.css';
 
-function InputText(props: IInputText) {
-  const { name, dispatch, displayErrorMessage } = props;
+function InputText() {
+  const name = useAppSelector(selectName);
+  const displayErrorMessage = useAppSelector(selectDisplayErrorMessage);
+
+  const dispatch = useAppDispatch();
 
   return (
     <div className="form__text-field">
@@ -14,7 +18,7 @@ function InputText(props: IInputText) {
         autoFocus
         spellCheck={false}
         value={name}
-        onChange={(e) => dispatch({ type: 'SET_NAME', payload: e.target.value })}
+        onChange={(e) => dispatch(setName(e.target.value))}
       />
       <p className="form__message">
         {displayErrorMessage && !name ? 'This field is required' : ''}

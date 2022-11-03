@@ -1,10 +1,15 @@
 import React from 'react';
-import { IInputFile } from 'types/types';
 import './InputFile.css';
 import uploadImage from '../../assets/icons/upload.svg';
+import { useAppDispatch, useAppSelector } from 'hooks/hooks';
+import { selectDisplayErrorMessage, selectFileName, selectImage, setImage } from 'store/formSlice';
 
-function InputFile(props: IInputFile) {
-  const { fileName, image, displayErrorMessage, dispatch } = props;
+function InputFile() {
+  const image = useAppSelector(selectImage);
+  const fileName = useAppSelector(selectFileName);
+  const displayErrorMessage = useAppSelector(selectDisplayErrorMessage);
+
+  const dispatch = useAppDispatch();
 
   function editFileName(fileName: string) {
     return fileName.length > 15
@@ -17,8 +22,7 @@ function InputFile(props: IInputFile) {
     const reader = new FileReader();
     const file = (target.files as FileList)[0];
     reader.onloadend = () => {
-      dispatch({ type: 'SET_IMAGE', payload: reader.result as string });
-      dispatch({ type: 'SET_FILE_NAME', payload: file.name });
+      dispatch(setImage({ image: reader.result as string, fileName: file.name }));
     };
     reader.readAsDataURL(file);
   }

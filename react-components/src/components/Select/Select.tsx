@@ -1,17 +1,21 @@
+import { statuses } from 'app/utils';
+import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import React from 'react';
-import { ISelect } from 'types/types';
+import { selectDisplayErrorMessage, selectStatus, setStatus } from 'store/formSlice';
 import './Select.css';
 
-function Select(props: ISelect) {
-  const statuses = ['Alive', 'Dead', 'Unknown'];
-  const { dispatch, displayErrorMessage, status } = props;
+function Select() {
+  const status = useAppSelector(selectStatus);
+  const displayErrorMessage = useAppSelector(selectDisplayErrorMessage);
+
+  const dispatch = useAppDispatch();
 
   return (
     <div className="form__dropdown-field">
       <select
         className="form__dropdown"
         value={status}
-        onChange={(e) => dispatch({ type: 'SET_STATUS', payload: e.target.value })}
+        onChange={(e) => dispatch(setStatus(e.target.value))}
       >
         <option disabled>Status</option>
         {statuses.map((value) => (

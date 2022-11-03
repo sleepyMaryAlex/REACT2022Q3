@@ -1,29 +1,17 @@
 import CharactersCards from 'components/CharactersCards/CharactersCards';
 import Form from 'components/Form/Form';
-import React, { useState } from 'react';
-import { ICharacterCard } from 'types/types';
+import { useAppSelector } from 'hooks/hooks';
+import React from 'react';
+import { selectDisplayMessage } from 'store/formSlice';
 import './Characters.css';
 
 function Characters() {
-  const [displayMessage, setDisplayMessage] = useState<boolean>(false);
-  const [cards, setCards] = useState(
-    JSON.parse(localStorage.getItem('characters') as string) || []
-  );
-
-  function addCharacter(card: ICharacterCard) {
-    const characters = [...cards, card];
-    setCards(characters);
-    localStorage.setItem('characters', JSON.stringify(characters));
-  }
+  const displayMessage = useAppSelector(selectDisplayMessage);
 
   return (
     <div className={`characters${displayMessage ? ' characters__overlay' : ''}`}>
-      <Form
-        addCharacter={addCharacter}
-        displayMessage={displayMessage}
-        setDisplayMessage={setDisplayMessage}
-      />
-      <CharactersCards cards={cards} />
+      <Form />
+      <CharactersCards />
     </div>
   );
 }

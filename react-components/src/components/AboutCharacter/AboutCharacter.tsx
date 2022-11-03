@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './AboutCharacter.css';
-import { capitalizeString, setColor } from 'app/common';
+import { capitalizeString, setColor } from 'app/utils';
 import { useNavigate } from 'react-router-dom';
 import returnImg from '../../assets/icons/prev-arrow.svg';
 import { selectIndex, selectResults, setIndex } from 'store/mainSlice';
