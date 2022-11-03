@@ -1,9 +1,14 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import InputText from './InputText';
+import store from 'store/store';
+import { Provider } from 'react-redux';
 
-test('should display message', () => {
-  const dispatch = jest.fn();
-  render(<InputText name="" dispatch={dispatch} displayErrorMessage={true} />);
-  expect(screen.getByText(/This field is required/i)).toBeInTheDocument();
+test('should find placeholder', () => {
+  render(
+    <Provider store={store}>
+      <InputText />
+    </Provider>
+  );
+  expect(screen.getByPlaceholderText(/Name/i)).toBeInTheDocument();
 });

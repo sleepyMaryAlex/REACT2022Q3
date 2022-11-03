@@ -1,11 +1,14 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Select from './Select';
+import { Provider } from 'react-redux';
+import store from 'store/store';
 
-test('check how many times an event fires', () => {
-  const dispatch = jest.fn();
-  render(<Select dispatch={dispatch} status="Alive" displayErrorMessage={false} />);
-  const combobox = screen.getByRole('combobox');
-  fireEvent.change(combobox);
-  expect(dispatch).toHaveBeenCalledTimes(1);
+test('check is there are comboboxes', () => {
+  render(
+    <Provider store={store}>
+      <Select />
+    </Provider>
+  );
+  expect(screen.getAllByRole('combobox').length).toBe(1);
 });

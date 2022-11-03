@@ -1,16 +1,14 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import InputFile from './InputFile';
+import { Provider } from 'react-redux';
+import store from 'store/store';
 
 test('should contain image with alt attribute', () => {
-  const dispatch = jest.fn();
   render(
-    <InputFile
-      image="https://rickandmortyapi.com/api/character/361"
-      fileName="rickandmorty.png"
-      dispatch={dispatch}
-      displayErrorMessage={false}
-    />
+    <Provider store={store}>
+      <InputFile />
+    </Provider>
   );
   expect(screen.getByRole('img')).toHaveAttribute('alt');
 });
