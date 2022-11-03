@@ -45,53 +45,6 @@ export interface ICharacterCard {
   species: string[];
 }
 
-export interface IForm {
-  addCharacter: (card: ICharacterCard) => void;
-  displayMessage: boolean;
-  setDisplayMessage: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export interface IInputText {
-  dispatch: React.Dispatch<IFormAction>;
-  displayErrorMessage: boolean;
-  name: string;
-}
-
-export interface IInputFile {
-  dispatch: React.Dispatch<IFormAction>;
-  displayErrorMessage: boolean;
-  image: string;
-  fileName: string;
-}
-
-export interface ISelect {
-  dispatch: React.Dispatch<IFormAction>;
-  status: string;
-  displayErrorMessage: boolean;
-}
-
-export interface ICheckbox {
-  dispatch: React.Dispatch<IFormAction>;
-  species: string[];
-  displayErrorMessage: boolean;
-  checkedState: boolean[];
-}
-
-export interface ISwitcher {
-  gender: string;
-  dispatch: React.Dispatch<IFormAction>;
-}
-
-export interface IInputDate {
-  dispatch: React.Dispatch<IFormAction>;
-  date: string;
-  displayErrorMessage: boolean;
-}
-
-export interface IMessage {
-  setDisplayMessage: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 export interface IMainState {
   results: IResult[];
   count: number;
@@ -115,9 +68,6 @@ export interface IFormState {
   canSubmit: boolean;
   displayErrorMessage: boolean;
   canCheckMistakes: boolean;
-}
-
-export interface IFormAction {
-  type: string;
-  payload?: string | boolean | null | string[] | boolean[];
+  characters: ICharacterCard[];
+  displayMessage: boolean;
 }
