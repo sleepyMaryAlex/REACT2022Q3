@@ -26,6 +26,8 @@ export const speciesValues = [
   'Unknown',
 ];
 
+export const statuses = ['Alive', 'Dead', 'Unknown'];
+
 export function sortBy<T>(a: T, b: T, order: string) {
   const reverse = order === 'asc' ? 1 : -1;
   if (a > b) {

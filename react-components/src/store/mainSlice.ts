@@ -3,7 +3,7 @@ import { IData } from '../types/types';
 import { IMainState, IResult } from 'types/types';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './store';
-import { sort } from 'app/common';
+import { sort } from 'app/utils';
 
 const initialState: IMainState = {
   results: [],
