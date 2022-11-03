@@ -1,10 +1,12 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Card from './Card';
+import { Provider } from 'react-redux';
+import store from 'store/store';
 
 const mockedUsedNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
-   ...jest.requireActual('react-router-dom'),
+  ...jest.requireActual('react-router-dom'),
   useNavigate: () => mockedUsedNavigate,
 }));
 
@@ -35,8 +37,11 @@ const results = [
 ];
 
 test('card should contain name', () => {
-  const dispatch = jest.fn();
-  render(<Card card={results[0]} dispatch={dispatch} index={1} />);
-  const name = results[0].name;
+  render(
+    <Provider store={store}>
+      <Card card={results[0]} index={1} />
+    </Provider>
+  );
+  const { name } = results[0];
   expect(screen.getByText(name, { exact: false })).toBeInTheDocument();
 });
