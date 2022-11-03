@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import './AboutCharacter.css';
-import { IAboutCharacter } from 'types/types';
 import { capitalizeString, setColor } from 'app/common';
 import { useNavigate } from 'react-router-dom';
 import returnImg from '../../assets/icons/prev-arrow.svg';
+import { selectIndex, selectResults, setIndex } from 'store/mainSlice';
+import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 
-function AboutCharacter(props: IAboutCharacter) {
-  const { index, results, dispatch } = props;
+function AboutCharacter() {
+  const index = useAppSelector(selectIndex);
+  const results = useAppSelector(selectResults);
+
+  const dispatch = useAppDispatch();
+
   const navigate = useNavigate();
 
   const [counter, setCounter] = useState(3);
@@ -19,7 +24,7 @@ function AboutCharacter(props: IAboutCharacter) {
 
   useEffect(() => {
     return () => {
-      dispatch({ type: 'SET_INDEX', payload: null });
+      dispatch(setIndex(null));
     };
   }, []);
 

@@ -1,14 +1,18 @@
 import { capitalizeString, setColor } from 'app/common';
+import { useAppDispatch } from 'hooks/hooks';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { setIndex } from 'store/mainSlice';
 import { ICard } from 'types/types';
 import './Card.css';
 
 function Card(props: ICard) {
+  const dispatch = useAppDispatch();
+
   const navigate = useNavigate();
 
   function handleClick(index: number) {
-    props.dispatch({ type: 'SET_INDEX', payload: index });
+    dispatch(setIndex(index));
     navigate('/details');
   }
 

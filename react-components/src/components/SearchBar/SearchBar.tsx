@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import './SearchBar.css';
 import icon from '../../assets/icons/icon.svg';
-import { ISearchBar } from 'types/types';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { QueryContext } from 'App';
+import { useAppDispatch } from 'hooks/hooks';
+import { fetchResults, setCurrentPage, setQuery } from 'store/mainSlice';
 
-function SearchBar(props: ISearchBar) {
-  const { dispatch } = props;
-
+function SearchBar() {
   const query = useContext(QueryContext);
+  const dispatch = useAppDispatch();
 
   const {
     register,
@@ -17,8 +17,9 @@ function SearchBar(props: ISearchBar) {
   } = useForm<{ query: string }>({ mode: 'onChange', defaultValues: { query } });
 
   const onSubmit: SubmitHandler<{ query: string }> = (data) => {
-    dispatch({ type: 'SET_QUERY', payload: data.query });
-    props.onSubmit(data.query);
+    dispatch(setQuery(data.query));
+    dispatch(setCurrentPage(1));
+    dispatch(fetchResults());
   };
 
   return (

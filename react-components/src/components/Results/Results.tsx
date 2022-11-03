@@ -6,37 +6,49 @@ import {
   Select,
   SelectChangeEvent,
 } from '@mui/material';
-import { sort } from 'app/common';
 import Cards from 'components/Cards/Cards';
+import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import React from 'react';
-import { IResults } from 'types/types';
+import {
+  fetchResults,
+  selectCount,
+  selectCurrentPage,
+  selectSorting,
+  setCurrentPage,
+  setSorting,
+} from 'store/mainSlice';
 import './Results.css';
 
-function Results(props: IResults) {
-  const { state, dispatch, handlePageChange } = props;
+function Results() {
+  const count = useAppSelector(selectCount);
+  const currentPage = useAppSelector(selectCurrentPage);
+  const sorting = useAppSelector(selectSorting);
+  const dispatch = useAppDispatch();
 
   function handleSortingChange(event: SelectChangeEvent<string>) {
-    const value = event.target.value;
-    dispatch({ type: 'SET_SORTING', payload: value });
-    const results = [...state.results];
-    const sortedResults = sort(results, value);
-    dispatch({ type: 'SET_RESULTS', payload: sortedResults });
+    dispatch(setSorting(event.target.value));
+    dispatch(fetchResults());
+  }
+
+  function handlePageChange(e: React.ChangeEvent<unknown>, page: number) {
+    dispatch(setCurrentPage(page));
+    dispatch(fetchResults());
   }
 
   return (
     <div className="results">
       <div className="results__container">
         <div className="cards__results">
-          <p className="results__title">{state.count} results</p>
+          <p className="results__title">{count} results</p>
           <p className="results__title">
-            page {state.currentPage}/{Math.ceil(state.count / 20)}
+            page {currentPage}/{Math.ceil(count / 20)}
           </p>
         </div>
         <div className="results__wrapper">
           <Pagination
             className="pagination"
-            count={Math.ceil(state.count / 20)}
-            page={state.currentPage}
+            count={Math.ceil(count / 20)}
+            page={currentPage}
             variant="outlined"
             color="primary"
             onChange={handlePageChange}
@@ -46,7 +58,7 @@ function Results(props: IResults) {
             <InputLabel id="select-label">Sorting</InputLabel>
             <Select
               labelId="select-label"
-              value={state.sorting}
+              value={sorting}
               className="sorting"
               onChange={handleSortingChange}
             >
@@ -59,7 +71,7 @@ function Results(props: IResults) {
           </FormControl>
         </div>
       </div>
-      <Cards results={state.results} dispatch={dispatch} />
+      <Cards />
     </div>
   );
 }

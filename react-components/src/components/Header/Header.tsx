@@ -1,10 +1,12 @@
 import React from 'react';
 import './Header.css';
 import { NavLink } from 'react-router-dom';
-import { IHeader } from 'types/types';
+import { useAppSelector } from 'hooks/hooks';
+import { selectIndex, selectResults } from 'store/mainSlice';
 
-function Header(props: IHeader) {
-  const { index, results } = props;
+function Header() {
+  const index = useAppSelector(selectIndex);
+  const results = useAppSelector(selectResults);
 
   return (
     <div className="header">

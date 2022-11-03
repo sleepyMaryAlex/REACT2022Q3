@@ -1,14 +1,17 @@
 import Card from 'components/Card/Card';
+import { useAppSelector } from 'hooks/hooks';
 import React from 'react';
-import { ICards, IResult } from 'types/types';
+import { selectResults } from 'store/mainSlice';
+import { IResult } from 'types/types';
 import './Cards.css';
 
-function Cards(props: ICards) {
-  const { dispatch, results } = props;
+function Cards() {
+  const results = useAppSelector(selectResults);
+
   return (
     <div className="cards">
       {results.map((card: IResult, index) => (
-        <Card dispatch={dispatch} card={card} key={card.id.toString()} index={index} />
+        <Card card={card} key={card.id.toString()} index={index} />
       ))}
     </div>
   );
