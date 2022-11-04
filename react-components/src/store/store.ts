@@ -9,19 +9,19 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 import formSlice from './formSlice';
 import mainSlice from './mainSlice';
+import localforage from 'localforage';
 
 const mainPersistConfig = {
   key: 'main',
-  storage,
+  storage: localforage,
   whitelist: ['currentPage, query, sorting, index'],
 };
 
 const formPersistConfig = {
   key: 'form',
-  storage,
+  storage: localforage,
   whitelist: [
     'name',
     'image',
@@ -46,7 +46,7 @@ const rootReducer = combineReducers({
 
 const persistConfig = {
   key: 'root',
-  storage,
+  storage: localforage,
   whitelist: ['main', 'form'],
 };
 
