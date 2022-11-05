@@ -1,0 +1,19 @@
+@import "../../styles/common";
+
+.cards {
+  max-width: 1280px;
+  padding: 20px;
+
+  @include flex(row, flex-start, stretch);
+
+  flex-wrap: wrap;
+  gap: 20px;
+
+  @media (max-width: 1300px) {
+    max-width: 650px;
+  }
+
+  @media (max-width: 655px) {
+    max-width: 320px;
+  }
+}

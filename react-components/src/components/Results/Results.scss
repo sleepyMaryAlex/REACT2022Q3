@@ -1,0 +1,58 @@
+@import "../../styles/common";
+
+.results {
+  width: 100%;
+
+  @include flex(column, flex-start, center);
+
+  .results-container {
+    width: 100%;
+    background-color: $dark-color;
+    color: $light-color;
+  }
+
+  .line {
+    width: 550px;
+    height: 65px;
+    margin: 0 auto;
+
+    @include flex(row, space-between, stretch);
+
+    @media (max-width: 600px) {
+      width: 280px;
+      height: 90px;
+      margin: 0 auto 10px;
+      align-items: center;
+    }
+
+    .title {
+      font-size: 40px;
+      font-weight: 700;
+      text-align: center;
+
+      @media (max-width: 600px) {
+        font-size: 30px;
+      }
+    }
+  }
+
+  .results-wrapper {
+    background-color: $light-bg-color;
+
+    @include flex(row, center, center);
+
+    @media (max-width: 450px) {
+      flex-direction: column;
+    }
+
+    .pagination {
+      padding: 20px;
+    }
+
+    .sorting {
+      width: 130px;
+      height: 40px;
+      margin-top: 7px;
+    }
+  }
+}

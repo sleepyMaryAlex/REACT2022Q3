@@ -1,0 +1,38 @@
+@import "../../styles/common";
+
+.characters-cards {
+  .title {
+    background-color: $dark-color;
+    color: $light-color;
+    height: 55px;
+
+    @include flex(row, center, center);
+  }
+
+  .wrapper {
+    width: 1157px;
+    margin: 0 auto;
+    padding: 20px 20px 52px;
+
+    @include flex(row, flex-start, stretch);
+
+    flex-wrap: wrap;
+    gap: 52px;
+    min-height: 300px;
+
+    @media (max-width: 1200px) {
+      width: 500px;
+      gap: 20px;
+      padding: 20px 0 52px;
+    }
+
+    @media (max-width: 540px) {
+      width: 280px;
+    }
+  }
+
+  .message {
+    margin: 20px auto;
+    font-weight: 600;
+  }
+}

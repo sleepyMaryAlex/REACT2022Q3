@@ -17,7 +17,7 @@ import {
   setCurrentPage,
   setSorting,
 } from 'store/mainSlice';
-import './Results.css';
+import './Results.scss';
 
 function Results() {
   const count = useAppSelector(selectCount);
@@ -37,14 +37,14 @@ function Results() {
 
   return (
     <div className="results">
-      <div className="results__container">
-        <div className="cards__results">
-          <p className="results__title">{count} results</p>
-          <p className="results__title">
+      <div className="results-container">
+        <div className="line">
+          <p className="title">{count} results</p>
+          <p className="title">
             page {currentPage}/{Math.ceil(count / 20)}
           </p>
         </div>
-        <div className="results__wrapper">
+        <div className="results-wrapper">
           <Pagination
             className="pagination"
             count={Math.ceil(count / 20)}

@@ -1,0 +1,48 @@
+@import "../../styles/common";
+
+.message-container {
+  position: fixed;
+  width: 450px;
+  height: 200px;
+  background-color: $light-color;
+  top: calc(50vh - 100px);
+  left: calc(50vw - 225px);
+  z-index: 5;
+  font-size: 30px;
+  text-shadow: 3px 3px 8px $secondary-color, -3px -3px 8px $secondary-color;
+
+  @media (max-width: 490px) {
+    width: 280px;
+    height: 260px;
+    top: calc(50vh - 130px);
+    left: calc(50vw - 140px);
+    font-size: 27px;
+  }
+
+  .message {
+    text-align: center;
+    margin: 10px;
+
+    &:nth-child(2) {
+      margin-top: 40px;
+
+      @media (max-width: 490px) {
+        margin-top: 65px;
+      }
+    }
+  }
+
+  .close-button {
+    width: 20px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    margin: 5px;
+    cursor: pointer;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

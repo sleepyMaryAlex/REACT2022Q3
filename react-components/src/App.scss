@@ -1,5 +1,6 @@
 @import "https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500&display=swap";
 @import "https://fonts.googleapis.com/css2?family=Paytone+One&display=swap";
+@import "./styles/common";
 
 * {
   margin: 0;
@@ -29,44 +30,30 @@ input[type="text"] {
 
 ::-webkit-scrollbar {
   width: 15px;
-  background-color: #3c3e44;
+  background-color: $dark-bg-color;
+
+  @media (max-width: 1020px) {
+    width: 0;
+  }
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #202329;
+  background-color: $dark-bg-color;
   border-radius: 9em;
-  box-shadow: inset 1px 1px 10px #fff;
+  box-shadow: inset 1px 1px 10px $light-color;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #202329;
+  background-color: $dark-bg-color;
 }
 
 body {
   font-family: Inconsolata, monospace;
   max-height: 100vh;
   overflow: hidden;
-}
 
-.app {
-  max-height: 100vh;
-  overflow-y: scroll;
-}
-
-.app__overlay::before {
-  content: "";
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: #201f1f65;
-  z-index: 3;
-}
-
-@media (max-width: 1020px) {
-  ::-webkit-scrollbar {
-    width: 0;
+  .app {
+    max-height: 100vh;
+    overflow-y: scroll;
   }
 }

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import './SearchBar.css';
+import './SearchBar.scss';
 import icon from '../../assets/icons/icon.svg';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { QueryContext } from 'App';
@@ -24,18 +24,17 @@ function SearchBar() {
 
   return (
     <div className="search">
-      <form className="search__container" onSubmit={handleSubmit(onSubmit)}>
-        <p className="search__title">I want to find</p>
-        <img className="search__image" src={icon} alt="icon" onClick={handleSubmit(onSubmit)} />
+      <form className="container" onSubmit={handleSubmit(onSubmit)}>
+        <p className="title">I want to find</p>
+        <img className="image" src={icon} alt="icon" onClick={handleSubmit(onSubmit)} />
         <input
-          className="search__bar"
+          className="bar"
           type="text"
-          autoFocus
           {...register('query', { maxLength: 20 })}
           spellCheck="false"
         />
       </form>
-      <p className="search__message">{errors.query && 'no more than 20 symbols'}</p>
+      <p className="message">{errors.query && 'no more than 20 symbols'}</p>
     </div>
   );
 }

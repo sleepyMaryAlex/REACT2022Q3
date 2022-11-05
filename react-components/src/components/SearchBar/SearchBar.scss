@@ -1,0 +1,71 @@
+@import "../../styles/common";
+
+.search {
+  width: 100%;
+  height: 65px;
+  background-color: $dark-color;
+
+  @include flex(column, flex-start, center);
+
+  @media (max-width: 600px) {
+    height: 100px;
+  }
+
+  .container {
+    @include flex(row, space-between, stretch);
+
+    background-color: $light-color;
+    border-radius: 10px;
+    width: 550px;
+    height: 40px;
+    border-bottom: 5px solid $primary-color;
+
+    @media (max-width: 600px) {
+      @include flex(column, flex-start, stretch);
+
+      width: 280px;
+      height: 80px;
+      position: relative;
+    }
+  }
+
+  .title {
+    font-size: 26px;
+    padding: 2px 0 0 10px;
+    font-weight: 600;
+
+    @media (max-width: 600px) {
+      padding-top: 7px;
+    }
+  }
+
+  .image {
+    width: 20px;
+    cursor: pointer;
+
+    @media (max-width: 600px) {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+  }
+
+  .bar {
+    width: 300px;
+    font-size: 20px;
+    padding: 0 5px;
+    background: transparent;
+    font-family: inherit;
+
+    @media (max-width: 600px) {
+      width: 270px;
+      align-self: center;
+      padding: 10px 5px;
+    }
+  }
+
+  .message {
+    color: $light-color;
+    margin-top: 2px;
+  }
+}

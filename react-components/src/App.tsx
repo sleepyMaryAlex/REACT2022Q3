@@ -10,7 +10,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import { selectQuery } from 'store/mainSlice';
 import { persistor } from 'store/store';
-import './App.css';
+import './App.scss';
 
 export const QueryContext = createContext('');
 

@@ -1,0 +1,84 @@
+@import "../../styles/common";
+
+.about-character {
+  min-height: calc(100vh - 150px);
+
+  @include flex(column, flex-start, center);
+
+  &.bg-red {
+    background-color: $dead-bg-color;
+  }
+
+  &.bg-blue {
+    background-color: $unknown-bg-color;
+  }
+
+  &.bg-green {
+    background-color: $alive-bg-color;
+  }
+
+  .counter {
+    font-size: 40px;
+    margin: 30px;
+    color: $primary-color;
+  }
+
+  .message {
+    margin: 60px 20px 0;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .wrapper {
+    @include flex(row, space-between, stretch);
+
+    margin: calc(50vh - 300px) 20px 30px;
+    width: 600px;
+
+    @media (max-width: 640px) {
+      @include flex(column, center, stretch);
+
+      margin: 30px 10px;
+      width: 280px;
+    }
+
+    .return-button {
+      margin: 5px 0 30px;
+    }
+
+    .image {
+      width: 280px;
+      height: 300px;
+    }
+
+    .caption {
+      color: $pale-color;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    .container {
+      margin-bottom: 15px;
+    }
+
+    .content {
+      max-width: 280px;
+
+      h3 {
+        font-size: 25px;
+        font-family: "Paytone One", sans-serif;
+        letter-spacing: 1.2px;
+
+        @media (max-width: 640px) {
+          margin-top: 20px;
+        }
+      }
+    }
+
+    span {
+      color: $pale-color;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import "../../styles/common";
+
+.text-field {
+  height: 60px;
+
+  .input {
+    width: 500px;
+    box-shadow: 0 0 4px $shadow-color;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: $light-color;
+    transition: 0.3s box-shadow;
+
+    @media (max-width: 540px) {
+      width: 280px;
+    }
+
+    &:hover {
+      box-shadow: 0 0 4px $shadow-hover-color;
+    }
+
+    &:focus {
+      box-shadow: 0 0 1px 3px $primary-color;
+      outline: none;
+    }
+
+    &::placeholder {
+      color: inherit;
+    }
+  }
+}

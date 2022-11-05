@@ -16,7 +16,7 @@ import localforage from 'localforage';
 const mainPersistConfig = {
   key: 'main',
   storage: localforage,
-  whitelist: ['currentPage, query, sorting, index'],
+  whitelist: ['currentPage, query, sorting'],
 };
 
 const formPersistConfig = {

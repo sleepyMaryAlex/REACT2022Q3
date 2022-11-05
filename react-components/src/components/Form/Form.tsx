@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './Form.css';
+import './Form.scss';
 import InputText from 'components/InputText/InputText';
 import InputFile from 'components/InputFile/InputFile';
 import Select from 'components/Select/Select';
@@ -101,10 +101,10 @@ function Form() {
 
   return (
     <form className="form" onSubmit={onSubmit}>
-      <div className="form__title">
+      <div className="form-title">
         <h2>Create a character</h2>
       </div>
-      <div className="form__container">
+      <div className="container">
         <InputText />
         <InputFile />
         <Select />
@@ -115,7 +115,7 @@ function Form() {
           type="submit"
           value="Create a character"
           disabled={!canSubmit}
-          className={`submit-button${canSubmit ? '' : ' submit-button_disabled'}`}
+          className={`submit-button${canSubmit ? '' : ' disabled'}`}
         />
       </div>
       {displayMessage && <Message />}

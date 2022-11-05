@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.css';
+import './Header.scss';
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from 'hooks/hooks';
 import { selectIndex, selectResults } from 'store/mainSlice';
@@ -10,19 +10,19 @@ function Header() {
 
   return (
     <div className="header">
-      <div className="header__wrapper">
-        <NavLink className="header__title" to="/">
+      <div className="wrapper">
+        <NavLink className="title" to="/">
           Rick and Morty
         </NavLink>
-        <div className="header__nav">
+        <div className="nav">
           <NavLink
-            className={(navData) => (navData.isActive ? 'nav__item_active' : 'nav__item')}
+            className={(navData) => (navData.isActive ? 'item-active' : 'nav-item')}
             to="/characters"
           >
             Characters
           </NavLink>
           <NavLink
-            className={(navData) => (navData.isActive ? 'nav__item_active' : 'nav__item')}
+            className={(navData) => (navData.isActive ? 'item-active' : 'nav-item')}
             to="/details"
           >
             {`About character ${
@@ -30,7 +30,7 @@ function Header() {
             }`}
           </NavLink>
           <NavLink
-            className={(navData) => (navData.isActive ? 'nav__item_active' : 'nav__item')}
+            className={(navData) => (navData.isActive ? 'item-active' : 'nav-item')}
             to="/about"
           >
             About us

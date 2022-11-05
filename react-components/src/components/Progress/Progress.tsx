@@ -1,13 +1,13 @@
 import React from 'react';
-import './Progress.css';
+import './Progress.scss';
 
 function Progress() {
   return (
     <div className="circles">
-      <div className="circles-wrapper">
-        <div className="circle circle-lg">
-          <div className="circle circle-md">
-            <div className="circle circle-sm"></div>
+      <div className="wrapper">
+        <div className="circle large">
+          <div className="circle middle">
+            <div className="circle small"></div>
           </div>
         </div>
       </div>

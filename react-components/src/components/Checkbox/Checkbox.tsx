@@ -7,7 +7,7 @@ import {
   selectSpecies,
   setSpecies,
 } from 'store/formSlice';
-import './Checkbox.css';
+import './Checkbox.scss';
 
 function Checkbox() {
   const species = useAppSelector(selectSpecies);
@@ -30,26 +30,25 @@ function Checkbox() {
   }
 
   return (
-    <div className="checkbox__container">
-      <p className="checkbox__title">Species</p>
+    <div className="checkbox">
+      <p className="title">Species</p>
       {speciesValues.map((value, index) => {
         return (
-          <div className="checkbox__wrapper" key={value}>
+          <div key={value}>
             <input
               type="checkbox"
-              className="checkbox"
+              className="input"
               id={value}
               onChange={() => handleChange(index)}
               checked={species.length === 0 ? false : checkedState[index]}
             />
-            <label className="checkbox__label" htmlFor={value}>
+            <label className="label" htmlFor={value}>
               {value}
             </label>
-            <span className="checkbox__span"></span>
           </div>
         );
       })}
-      <p className="form__message">
+      <p className="error-message">
         {displayErrorMessage && species.length === 0 ? 'Please, select species' : ''}
       </p>
     </div>

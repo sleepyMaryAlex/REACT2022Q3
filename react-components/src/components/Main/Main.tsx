@@ -4,7 +4,7 @@ import SearchBar from 'components/SearchBar/SearchBar';
 import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import React, { useEffect } from 'react';
 import { fetchResults, selectIsFetching, selectNothingFound } from 'store/mainSlice';
-import './Main.css';
+import './Main.scss';
 
 function Main() {
   const nothingFound = useAppSelector(selectNothingFound);
@@ -18,10 +18,10 @@ function Main() {
 
   let content;
   if (nothingFound) {
-    content = <p className="main__message">Sorry, character not found</p>;
+    content = <p className="main-message">Sorry, character not found</p>;
   } else {
     content = (
-      <div className="main__container">
+      <div className="main-container">
         <Results />
       </div>
     );

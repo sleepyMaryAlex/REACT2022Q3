@@ -1,0 +1,21 @@
+@import "../../styles/common";
+
+.main {
+  @include flex(column, flex-start, center);
+
+  min-height: calc(100vh - 150px);
+  background-color: $light-bg-color;
+
+  .main-container {
+    width: 100%;
+
+    @include flex(column, flex-start, center);
+
+    margin-bottom: 30px;
+  }
+
+  .main-message {
+    font-size: 30px;
+    margin: 20px;
+  }
+}

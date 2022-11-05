@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import React from 'react';
 import { selectDate, selectDisplayErrorMessage, setDate } from 'store/formSlice';
-import './InputDate.css';
+import './InputDate.scss';
 
 function InputDate() {
   const date = useAppSelector(selectDate);
@@ -10,18 +10,18 @@ function InputDate() {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="input-date__container">
-      <label htmlFor="date" className="input-date__label">
+    <div className="input-date">
+      <label htmlFor="date" className="label">
         Date of creation
       </label>
       <input
         type="date"
         id="date"
         value={date}
-        className="input-date"
+        className="input"
         onChange={(e) => dispatch(setDate(e.target.value))}
       />
-      <p className="form__message">{displayErrorMessage && !date ? 'Please, select date' : ''}</p>
+      <p className="error-message">{displayErrorMessage && !date ? 'Please, select date' : ''}</p>
     </div>
   );
 }

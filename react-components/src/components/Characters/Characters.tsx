@@ -3,13 +3,13 @@ import Form from 'components/Form/Form';
 import { useAppSelector } from 'hooks/hooks';
 import React from 'react';
 import { selectDisplayMessage } from 'store/formSlice';
-import './Characters.css';
+import './Characters.scss';
 
 function Characters() {
   const displayMessage = useAppSelector(selectDisplayMessage);
 
   return (
-    <div className={`characters${displayMessage ? ' characters__overlay' : ''}`}>
+    <div className={`characters${displayMessage ? ' characters-overlay' : ''}`}>
       <Form />
       <CharactersCards />
     </div>

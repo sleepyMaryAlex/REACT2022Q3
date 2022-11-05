@@ -2,7 +2,7 @@ import { statuses } from 'app/utils';
 import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import React from 'react';
 import { selectDisplayErrorMessage, selectStatus, setStatus } from 'store/formSlice';
-import './Select.css';
+import './Select.scss';
 
 function Select() {
   const status = useAppSelector(selectStatus);
@@ -11,9 +11,9 @@ function Select() {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="form__dropdown-field">
+    <div className="dropdown-field">
       <select
-        className="form__dropdown"
+        className="dropdown"
         value={status}
         onChange={(e) => dispatch(setStatus(e.target.value))}
       >
@@ -22,7 +22,7 @@ function Select() {
           <option key={value}>{value}</option>
         ))}
       </select>
-      <p className="form__message">
+      <p className="error-message">
         {displayErrorMessage && status === 'Status' ? 'Please, select status' : ''}
       </p>
     </div>

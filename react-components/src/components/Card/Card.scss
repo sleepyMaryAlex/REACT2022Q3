@@ -1,0 +1,94 @@
+@import "../../styles/common";
+
+.card {
+  width: 610px;
+  height: 225px;
+  background-color: $dark-bg-color;
+
+  @include flex(row, flex-start, stretch);
+
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: $dark-bg-color 0 20px 30px -10px;
+  transition: box-shadow 0.5s;
+  cursor: pointer;
+
+  @media (max-width: 655px) {
+    width: 280px;
+    height: min-content;
+    flex-direction: column;
+  }
+
+  &:hover {
+    box-shadow: $dark-bg-color 0 20px 90px -20px, $dark-bg-color 0 30px 30px -30px;
+  }
+
+  .content {
+    padding: 20px;
+    color: $light-color;
+  }
+
+  .name {
+    margin-bottom: 5px;
+    letter-spacing: 1.5px;
+    font-size: 25px;
+    font-weight: 600;
+    font-family: "Paytone One", sans-serif;
+
+    @media (max-width: 655px) {
+      margin-bottom: 10px;
+    }
+  }
+
+  img {
+    width: 220px;
+
+    @media (max-width: 655px) {
+      width: 280px;
+    }
+  }
+
+  .caption {
+    color: $pale-color;
+    margin-bottom: 5px;
+
+    p {
+      text-transform: capitalize;
+    }
+  }
+
+  .container,
+  .info {
+    margin-bottom: 16px;
+  }
+
+  .dash {
+    margin: 0 3px;
+  }
+
+  .info {
+    font-weight: 600;
+    letter-spacing: 1px;
+
+    @include flex(row, flex-start, stretch);
+  }
+
+  .circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 3px 7px 3px 0;
+  }
+
+  .circle-blue {
+    background-color: $unknown-color;
+  }
+
+  .circle-green {
+    background-color: $alive-color;
+  }
+
+  .circle-red {
+    background-color: $dead-color;
+  }
+}

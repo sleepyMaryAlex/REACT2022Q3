@@ -1,0 +1,70 @@
+@import "../../styles/common";
+
+.circles {
+  @include flex(row, center, center);
+
+  margin-top: calc(50vh - 200px);
+
+  .wrapper {
+    width: 200px;
+    height: 200px;
+  }
+
+  .circle {
+    border: 2px solid $light-color;
+
+    @include flex(row, center, center);
+
+    border-radius: 50%;
+    position: relative;
+  }
+
+  .circle::before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: $light-color;
+    top: -6px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 6px $alive-color;
+  }
+
+  .large {
+    width: 200px;
+    height: 200px;
+    animation: rotate-circles 3.1s linear infinite;
+  }
+
+  .middle {
+    width: 150px;
+    height: 150px;
+    animation: rotate-circles 3s linear infinite;
+  }
+
+  .middle::before {
+    width: 10px;
+    height: 10px;
+  }
+
+  .small {
+    width: 100px;
+    height: 100px;
+    animation: rotate-circles 2.5s linear infinite;
+  }
+
+  .small::before {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@keyframes rotate-circles {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

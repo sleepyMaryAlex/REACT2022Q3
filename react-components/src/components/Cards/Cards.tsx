@@ -3,7 +3,7 @@ import { useAppSelector } from 'hooks/hooks';
 import React from 'react';
 import { selectResults } from 'store/mainSlice';
 import { IResult } from 'types/types';
-import './Cards.css';
+import './Cards.scss';
 
 function Cards() {
   const results = useAppSelector(selectResults);

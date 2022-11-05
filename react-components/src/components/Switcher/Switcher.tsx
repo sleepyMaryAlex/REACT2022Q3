@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import React from 'react';
 import { selectGender, setGender } from 'store/formSlice';
-import './Switcher.css';
+import './Switcher.scss';
 
 function Switcher() {
   const gender = useAppSelector(selectGender);
@@ -9,15 +9,15 @@ function Switcher() {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="switcher__container">
+    <div className="switcher">
       <input
         type="checkbox"
-        className="switcher"
+        className="input"
         id="switcher"
         checked={gender === 'Male' ? false : true}
         onChange={() => dispatch(setGender(gender === 'Male' ? 'Female' : 'Male'))}
       />
-      <label className="switcher__label" htmlFor="switcher">
+      <label className="label" htmlFor="switcher">
         {gender}
       </label>
     </div>

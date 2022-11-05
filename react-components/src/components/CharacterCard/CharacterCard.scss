@@ -1,0 +1,55 @@
+@import "../../styles/common";
+
+.character {
+  width: 240px;
+  background-color: $dark-bg-color;
+  border-radius: 10px;
+  color: $light-color;
+  border-bottom: 5px solid $primary-color;
+  box-shadow: $shadow-color 0 50px 100px -20px, $shadow-color 0 30px 60px -30px;
+  transition: box-shadow 0.5s;
+  overflow: hidden;
+
+  @media (max-width: 1200px) {
+    width: 240px;
+  }
+
+  @media (max-width: 540px) {
+    width: 280px;
+  }
+
+  &:hover {
+    box-shadow: $shadow-hover-color 0 20px 30px -10px;
+  }
+
+  img {
+    width: 240px;
+
+    @media (max-width: 1200px) {
+      width: 240px;
+    }
+
+    @media (max-width: 540px) {
+      width: 280px;
+    }
+  }
+
+  .content {
+    padding: 10px;
+    font-size: 18px;
+
+    span {
+      color: $primary-color;
+      margin-right: 5px;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+  }
+
+  .name {
+    font-size: 30px;
+    font-family: "Paytone One", sans-serif;
+  }
+}

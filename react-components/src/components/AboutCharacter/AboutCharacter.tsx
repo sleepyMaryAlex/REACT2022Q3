@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './AboutCharacter.css';
+import './AboutCharacter.scss';
 import { capitalizeString, setColor } from 'app/utils';
 import { useNavigate } from 'react-router-dom';
 import returnImg from '../../assets/icons/prev-arrow.svg';
@@ -32,10 +32,10 @@ function AboutCharacter() {
     const { image, name, status, gender, species, type, origin, location, created } =
       results[index as number];
     return (
-      <div className={`about-character about-character__${setColor(status)}`}>
-        <div className="about-character__wrapper">
-          <img src={image} alt="image" className="about-character__image" />
-          <div className="about-character__content">
+      <div className={`about-character bg-${setColor(status)}`}>
+        <div className="wrapper">
+          <img src={image} alt="image" className="image" />
+          <div className="content">
             <h3>{name}</h3>
             <p>
               <span>Gender: </span>
@@ -63,17 +63,17 @@ function AboutCharacter() {
                   })
                 : 'Unknown'}
             </p>
-            <div className="about-character__container">
-              <p className="about-character__caption">First seen in:</p>
+            <div className="container">
+              <p className="caption">First seen in:</p>
               <p>{capitalizeString(origin.name)}</p>
             </div>
-            <div className="about-character__container">
-              <p className="about-character__caption">Last known location:</p>
+            <div className="container">
+              <p className="caption">Last known location:</p>
               <p>{capitalizeString(location.name)}</p>
             </div>
           </div>
         </div>
-        <div className="not-found__return-button" onClick={() => navigate('/')}>
+        <div className="return-button" onClick={() => navigate('/')}>
           <img src={returnImg} alt="image" />
           <p>Return to main page</p>
         </div>
@@ -81,12 +81,12 @@ function AboutCharacter() {
     );
   } else {
     return (
-      <div className="about-character about-character__red">
-        <p className="about-character__message">
+      <div className="about-character bg-red">
+        <p className="message">
           Sorry, you have not selected a character yet. Click on the card on the main page to
           choose.
         </p>
-        <p className="about-character__counter">{counter}</p>
+        <p className="counter">{counter}</p>
       </div>
     );
   }

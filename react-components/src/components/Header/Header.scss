@@ -1,0 +1,60 @@
+@import "../../styles/common";
+
+.header {
+  height: 150px;
+  background-color: $dark-color;
+  position: relative;
+
+  .wrapper {
+    max-width: 1680px;
+
+    @include flex(column, flex-start, center);
+  }
+
+  .title {
+    color: $light-color;
+    font-family: "Paytone One", sans-serif;
+    font-size: 65px;
+    margin-top: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    @media (max-width: 700px) {
+      font-size: 35px;
+      margin-top: 10px;
+    }
+  }
+
+  .nav {
+    @include flex(row, center, stretch);
+
+    gap: 50px;
+    font-size: 20px;
+  }
+
+  .nav-item {
+    color: $light-color;
+    margin-top: 10px;
+
+    &:nth-child(2) {
+      @media (max-width: 700px) {
+        position: absolute;
+        bottom: 20px;
+      }
+    }
+  }
+
+  .item-active {
+    color: $light-color;
+    margin-top: 10px;
+    border-bottom: 2px solid $primary-color;
+    margin-bottom: 7px;
+
+    &:nth-child(2) {
+      @media (max-width: 700px) {
+        position: absolute;
+        bottom: 11px;
+      }
+    }
+  }
+}

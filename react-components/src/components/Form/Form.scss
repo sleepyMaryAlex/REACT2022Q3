@@ -1,0 +1,49 @@
+@import "../../styles/common";
+
+.form {
+  background-size: cover;
+  background-color: $dark-bg-color;
+
+  .form-title {
+    background-color: $dark-color;
+    color: $light-color;
+    height: 55px;
+    text-align: center;
+    padding-top: 10px;
+    border-top: 1px solid $light-bg-color;
+  }
+
+  .container {
+    max-width: 500px;
+    margin: 0 auto;
+
+    @include flex(column, flex-start, center);
+
+    padding: 10px 0 30px;
+
+    @media (max-width: 540px) {
+      max-width: 280px;
+    }
+  }
+
+  .submit-button {
+    width: 200px;
+    height: 50px;
+    background-color: $secondary-color;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s background-color;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 20px;
+
+    &.disabled {
+      cursor: auto;
+      background-color: $light-bg-color;
+      color: $pale-color;
+    }
+  }
+}

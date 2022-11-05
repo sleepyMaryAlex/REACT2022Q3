@@ -1,16 +1,16 @@
 import { capitalizeString } from 'app/utils';
 import React from 'react';
 import { ICharacterCard } from 'types/types';
-import './CharacterCard.css';
+import './CharacterCard.scss';
 
 function CharacterCard(props: { card: ICharacterCard }) {
   const { name, image, status, species, gender, date } = props.card;
 
   return (
-    <div className="character-card">
+    <div className="character">
       <img src={image} alt="character" />
-      <div className="character-card__content">
-        <p className="character__name">{capitalizeString(name)}</p>
+      <div className="content">
+        <p className="name">{capitalizeString(name)}</p>
         <p>
           <span>Status:</span>
           {status.toLowerCase()}

@@ -1,5 +1,5 @@
 import React from 'react';
-import './InputFile.css';
+import './InputFile.scss';
 import uploadImage from '../../assets/icons/upload.svg';
 import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import { selectDisplayErrorMessage, selectFileName, selectImage, setImage } from 'store/formSlice';
@@ -28,15 +28,13 @@ function InputFile() {
   }
 
   return (
-    <div className="form__file-field">
-      <input className="input-file" id="input-file" type="file" onChange={onFileChange} />
-      <label htmlFor="input-file" className="input-file__button">
-        <img className="input-file__image" src={uploadImage} alt="upload" />
-        <span className="input-file__text">
-          {fileName ? editFileName(fileName) : 'Upload image'}
-        </span>
+    <div className="file">
+      <input className="input" id="input-file" type="file" onChange={onFileChange} />
+      <label htmlFor="input-file" className="label">
+        <img className="image" src={uploadImage} alt="upload" />
+        <span>{fileName ? editFileName(fileName) : 'Upload image'}</span>
       </label>
-      <p className="form__message">{displayErrorMessage && !image ? 'Please, upload image' : ''}</p>
+      <p className="error-message">{displayErrorMessage && !image ? 'Please, upload image' : ''}</p>
     </div>
   );
 }
