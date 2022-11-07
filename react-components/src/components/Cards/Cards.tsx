@@ -11,7 +11,7 @@ function Cards() {
   return (
     <div className="cards">
       {results.map((card: IResult, index) => (
-        <Card card={card} key={card.id.toString()} index={index} />
+        <Card card={card} key={card.id} index={index} />
       ))}
     </div>
   );

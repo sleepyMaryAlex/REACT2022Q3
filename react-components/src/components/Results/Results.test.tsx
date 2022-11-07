@@ -16,5 +16,5 @@ test('check if the result title has been rendered and if it has a class', () => 
       <Results />
     </Provider>
   );
-  expect(screen.getByText(/results/i)).toHaveClass('results__title');
+  expect(screen.getByText(/results/i)).toHaveClass('title');
 });

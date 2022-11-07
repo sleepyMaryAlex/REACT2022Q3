@@ -9,5 +9,5 @@ test('render error in notFound component', () => {
       <NotFound />
     </HashRouter>
   );
-  expect(getByText(/404/i)).toHaveClass('error__basic');
+  expect(getByText(/404/i)).toHaveClass('basic');
 });

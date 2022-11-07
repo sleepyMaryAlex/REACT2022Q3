@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import Cards from './Cards';
 import { Provider } from 'react-redux';
 import store from 'store/store';
+import { screen } from '@testing-library/react';
 
 const mockedUsedNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
@@ -11,10 +12,10 @@ jest.mock('react-router-dom', () => ({
 }));
 
 test('count of cards must be the same as count of rendered cards', () => {
-  const { container } = render(
+  render(
     <Provider store={store}>
       <Cards />
     </Provider>
   );
-  expect(container.getElementsByClassName('card').length).toBe(0);
+  expect(screen.queryByRole('button')).not.toBeInTheDocument();
 });

@@ -69,8 +69,9 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^8.24.0",
+    "eslint": "^8.27.0",
     "eslint-plugin-css": "^0.6.0",
+    "eslint-plugin-testing-library": "^5.9.1",
     "jest-localstorage-mock": "^2.4.22",
     "msw": "^0.47.4",
     "sass": "^1.56.0",
