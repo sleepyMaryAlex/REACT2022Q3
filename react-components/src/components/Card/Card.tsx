@@ -22,7 +22,7 @@ function Card(props: ICard) {
     <div className="card" onClick={() => handleClick(props.index)}>
       <img src={image} alt="image" />
       <div className="content">
-        <h3 className="name">{name.length > 18 ? `${name.slice(0, 18)}...` : name}</h3>
+        <h3 className="name">{name}</h3>
         <div className="info">
           <div className={`circle circle-${setColor(status)}`}></div>
           <span>{capitalizeString(status)}</span>
