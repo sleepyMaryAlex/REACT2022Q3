@@ -53,7 +53,6 @@ export interface IMainState {
   index: number | null;
   sorting: string;
   isFetching: boolean;
-  nothingFound: boolean;
 }
 
 export interface IFormState {

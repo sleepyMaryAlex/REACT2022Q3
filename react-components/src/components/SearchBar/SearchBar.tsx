@@ -30,6 +30,7 @@ function SearchBar() {
         <input
           className="bar"
           type="text"
+          autoFocus
           {...register('query', { maxLength: 20 })}
           spellCheck="false"
         />

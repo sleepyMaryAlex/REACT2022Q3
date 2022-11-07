@@ -3,12 +3,12 @@ import Results from 'components/Results/Results';
 import SearchBar from 'components/SearchBar/SearchBar';
 import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import React, { useEffect } from 'react';
-import { fetchResults, selectIsFetching, selectNothingFound } from 'store/mainSlice';
+import { fetchResults, selectIsFetching, selectResults } from 'store/mainSlice';
 import './Main.scss';
 
 function Main() {
-  const nothingFound = useAppSelector(selectNothingFound);
   const isFetching = useAppSelector(selectIsFetching);
+  const results = useAppSelector(selectResults);
 
   const dispatch = useAppDispatch();
 
@@ -17,7 +17,7 @@ function Main() {
   }, []);
 
   let content;
-  if (nothingFound) {
+  if (results.length === 0) {
     content = <p className="main-message">Sorry, character not found</p>;
   } else {
     content = (
