@@ -1,4 +1,4 @@
-import { getData } from 'app/loader';
+import { getData } from 'app/api';
 import { IData } from '../types/types';
 import { IMainState, IResult } from 'types/types';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';

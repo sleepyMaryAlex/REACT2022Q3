@@ -1,4 +1,4 @@
-import { IData } from './../types/types';
+import { IData } from '../types/types';
 
 export async function getData(page: number, query: string): Promise<IData | null> {
   const queryParam = query ? `&name=${query}` : '';
