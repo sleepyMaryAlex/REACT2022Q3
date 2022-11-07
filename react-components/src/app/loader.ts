@@ -1,9 +1,10 @@
 import { IData } from './../types/types';
-const baseUrl = 'https://rickandmortyapi.com/api';
 
 export async function getData(page: number, query: string): Promise<IData | null> {
   const queryParam = query ? `&name=${query}` : '';
-  const response = await fetch(`${baseUrl}/character/?page=${page}${queryParam}`);
+  const response = await fetch(
+    `${process.env.REACT_APP_BASE_URL}/character/?page=${page}${queryParam}`
+  );
   if (response.status === 404) {
     return null;
   } else {
