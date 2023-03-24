@@ -2,8 +2,9 @@
 
 .about-character {
   min-height: calc(100vh - 150px);
+  padding-bottom: 20px;
 
-  @include flex(column, flex-start, center);
+  @include flex(column, center, center);
 
   &.bg-red {
     background-color: $dead-bg-color;
