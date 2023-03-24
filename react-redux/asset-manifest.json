@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/sleepymaryalex-REACT2022Q3/react-redux/static/css/main.3482cb05.css",
-    "main.js": "/sleepymaryalex-REACT2022Q3/react-redux/static/js/main.4353d4ad.js",
+    "main.css": "/sleepymaryalex-REACT2022Q3/react-redux/static/css/main.9f6dd5b3.css",
+    "main.js": "/sleepymaryalex-REACT2022Q3/react-redux/static/js/main.873c28b7.js",
     "static/media/rick-and-morty.png": "/sleepymaryalex-REACT2022Q3/react-redux/static/media/rick-and-morty.ac5509cfbeccebd423c0.png",
-    "static/media/calendar.svg": "/sleepymaryalex-REACT2022Q3/react-redux/static/media/calendar.220210f7028d09d5b26b.svg",
-    "static/media/icon.svg": "/sleepymaryalex-REACT2022Q3/react-redux/static/media/icon.0300815547ab29ee9a9f8ee4e3852e77.svg",
-    "static/media/upload.svg": "/sleepymaryalex-REACT2022Q3/react-redux/static/media/upload.81d47aa93b31b1952a673563517a1d7a.svg",
+    "static/media/calendar.svg": "/sleepymaryalex-REACT2022Q3/react-redux/static/media/calendar.4918d6f99800cba85aa6.svg",
+    "static/media/icon.svg": "/sleepymaryalex-REACT2022Q3/react-redux/static/media/icon.1c751e03da2451211b1e4d9890898d12.svg",
+    "static/media/upload.svg": "/sleepymaryalex-REACT2022Q3/react-redux/static/media/upload.3ba3e23abb594affec049cba1c76bad0.svg",
     "index.html": "/sleepymaryalex-REACT2022Q3/react-redux/index.html",
     "static/media/close-button.svg": "/sleepymaryalex-REACT2022Q3/react-redux/static/media/close-button.e302745f1ceb591b89558fcee9c7820b.svg",
-    "static/media/prev-arrow.svg": "/sleepymaryalex-REACT2022Q3/react-redux/static/media/prev-arrow.ac63c7c4d2e44bfd03e9bc9511e2d9da.svg",
-    "main.3482cb05.css.map": "/sleepymaryalex-REACT2022Q3/react-redux/static/css/main.3482cb05.css.map",
-    "main.4353d4ad.js.map": "/sleepymaryalex-REACT2022Q3/react-redux/static/js/main.4353d4ad.js.map"
+    "static/media/prev-arrow.svg": "/sleepymaryalex-REACT2022Q3/react-redux/static/media/prev-arrow.566fdd2adbf00a279b39258ee01f4e34.svg",
+    "main.9f6dd5b3.css.map": "/sleepymaryalex-REACT2022Q3/react-redux/static/css/main.9f6dd5b3.css.map",
+    "main.873c28b7.js.map": "/sleepymaryalex-REACT2022Q3/react-redux/static/js/main.873c28b7.js.map"
   },
   "entrypoints": [
-    "static/css/main.3482cb05.css",
-    "static/js/main.4353d4ad.js"
+    "static/css/main.9f6dd5b3.css",
+    "static/js/main.873c28b7.js"
   ]
 }
